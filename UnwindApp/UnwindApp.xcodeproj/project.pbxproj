@@ -16,6 +16,11 @@
 		266B3F6424364BE900554474 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266B3F6224364BE900554474 /* LaunchScreen.storyboard */; };
 		266B3F6F24364BE900554474 /* UnwindAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F6E24364BE900554474 /* UnwindAppTests.swift */; };
 		266B3F7A24364BE900554474 /* UnwindAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F7924364BE900554474 /* UnwindAppUITests.swift */; };
+		AA85144F243BB5E700233B3F /* PatientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85144E243BB5E700233B3F /* PatientsView.swift */; };
+		AA851451243BB64700233B3F /* PatientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA851450243BB64700233B3F /* PatientsViewModel.swift */; };
+		AA851453243BB71100233B3F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA851452243BB71100233B3F /* Model.swift */; };
+		AA851455243BB94C00233B3F /* PatientRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA851454243BB94C00233B3F /* PatientRow.swift */; };
+		AA982AAF243BD26E00E8469B /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA982AAE243BD26E00E8469B /* SortButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,11 @@
 		266B3F7524364BE900554474 /* UnwindAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnwindAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		266B3F7924364BE900554474 /* UnwindAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwindAppUITests.swift; sourceTree = "<group>"; };
 		266B3F7B24364BE900554474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA85144E243BB5E700233B3F /* PatientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsView.swift; sourceTree = "<group>"; };
+		AA851450243BB64700233B3F /* PatientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsViewModel.swift; sourceTree = "<group>"; };
+		AA851452243BB71100233B3F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		AA851454243BB94C00233B3F /* PatientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRow.swift; sourceTree = "<group>"; };
+		AA982AAE243BD26E00E8469B /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +119,11 @@
 				266B3F6524364BE900554474 /* Info.plist */,
 				266B3F5824364BE800554474 /* UnwindApp.xcdatamodeld */,
 				266B3F5F24364BE900554474 /* Preview Content */,
+				AA851452243BB71100233B3F /* Model.swift */,
+				AA851450243BB64700233B3F /* PatientsViewModel.swift */,
+				AA85144E243BB5E700233B3F /* PatientsView.swift */,
+				AA851454243BB94C00233B3F /* PatientRow.swift */,
+				AA982AAE243BD26E00E8469B /* SortButton.swift */,
 			);
 			path = UnwindApp;
 			sourceTree = "<group>";
@@ -270,9 +285,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA851455243BB94C00233B3F /* PatientRow.swift in Sources */,
+				AA851453243BB71100233B3F /* Model.swift in Sources */,
+				AA85144F243BB5E700233B3F /* PatientsView.swift in Sources */,
 				266B3F5524364BE800554474 /* AppDelegate.swift in Sources */,
 				266B3F5A24364BE800554474 /* UnwindApp.xcdatamodeld in Sources */,
 				266B3F5C24364BE800554474 /* ContentView.swift in Sources */,
+				AA851451243BB64700233B3F /* PatientsViewModel.swift in Sources */,
+				AA982AAF243BD26E00E8469B /* SortButton.swift in Sources */,
 				266B3F5724364BE800554474 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
