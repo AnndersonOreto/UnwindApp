@@ -16,6 +16,8 @@
 		266B3F6424364BE900554474 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266B3F6224364BE900554474 /* LaunchScreen.storyboard */; };
 		266B3F6F24364BE900554474 /* UnwindAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F6E24364BE900554474 /* UnwindAppTests.swift */; };
 		266B3F7A24364BE900554474 /* UnwindAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F7924364BE900554474 /* UnwindAppUITests.swift */; };
+		AB27E0E9243D0CA700F346CB /* EmotionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0E8243D0CA700F346CB /* EmotionScreen.swift */; };
+		AB27E0EB243D16D000F346CB /* TesteEmotionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0EA243D16D000F346CB /* TesteEmotionModel.swift */; };
 		ABAAF1FF243BB54E00DEC3E6 /* FeelingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAAF1FE243BB54E00DEC3E6 /* FeelingsScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,8 @@
 		266B3F7524364BE900554474 /* UnwindAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnwindAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		266B3F7924364BE900554474 /* UnwindAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwindAppUITests.swift; sourceTree = "<group>"; };
 		266B3F7B24364BE900554474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB27E0E8243D0CA700F346CB /* EmotionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionScreen.swift; sourceTree = "<group>"; };
+		AB27E0EA243D16D000F346CB /* TesteEmotionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteEmotionModel.swift; sourceTree = "<group>"; };
 		ABAAF1FE243BB54E00DEC3E6 /* FeelingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingsScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				ABAAF1FE243BB54E00DEC3E6 /* FeelingsScreen.swift */,
+				AB27E0E8243D0CA700F346CB /* EmotionScreen.swift */,
+				AB27E0EA243D16D000F346CB /* TesteEmotionModel.swift */,
 			);
 			path = UserFlow;
 			sourceTree = "<group>";
@@ -282,6 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				266B3F5524364BE800554474 /* AppDelegate.swift in Sources */,
+				AB27E0EB243D16D000F346CB /* TesteEmotionModel.swift in Sources */,
+				AB27E0E9243D0CA700F346CB /* EmotionScreen.swift in Sources */,
 				266B3F5A24364BE800554474 /* UnwindApp.xcdatamodeld in Sources */,
 				ABAAF1FF243BB54E00DEC3E6 /* FeelingsScreen.swift in Sources */,
 				266B3F5C24364BE800554474 /* ContentView.swift in Sources */,

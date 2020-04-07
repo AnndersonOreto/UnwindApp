@@ -78,8 +78,7 @@ struct FeelingsScreen_Previews: PreviewProvider {
 struct FeelingButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-        .padding(.horizontal, 75)
-        .padding(.vertical, 35)
+        .frame(width: UIScreen.main.bounds.width * 0.29, height: UIScreen.main.bounds.width * 0.24)
         .contentShape(RoundedRectangle(cornerRadius: 8))
     }
 }
@@ -102,7 +101,7 @@ struct SelectFeelings: View {
                             .resizable()
                             .frame(width: self.feelingSize(isWidth: true), height: self.feelingSize(isWidth: false))
                         Text(feeling)
-                            .font(.system(size: 20))
+                            .font(.system(size: 25))
                             .fontWeight(.medium)
                             .foregroundColor(Color.fontColorBlue)
                     }
