@@ -10,23 +10,48 @@ import SwiftUI
 
 struct SortButton: View {
     @EnvironmentObject var viewModel: PatientsViewModel
+    
+    let sortTypes = ["Alfabética", "Data de adição", "Data de modificação"]
+    
     @State var sortAlphabetically: Bool = false
+    @State var selectedSort = 0
+    @State var showList = false
     
     var body: some View {
-        Button(action: {
-            self.sortAlphabetically.toggle()
-            if self.sortAlphabetically {
-                self.viewModel.sortPatientsAlphabetically()
-            } else {
-                self.viewModel.sortPatientsAlphabeticallyReverse()
+        
+        VStack(alignment: .leading) {
+            Button(action: {
+                self.showList.toggle()
+            }) {
+                HStack(alignment: .center) {
+                    Text("Ordenamento")
+                    Image(systemName: "chevron.down")
+                        .colorMultiply(.secondary)
+                }.padding([.top, .leading])
             }
-        }) {
-            HStack(alignment: .center) {
-                Text("Ordem alfabética")
-                Image(systemName: "chevron.down")
-                    .colorMultiply(.secondary)
-            }.padding([.top, .leading])
+            if showList {
+                Picker("", selection: $selectedSort) {
+                    ForEach(0 ..< sortTypes.count) {
+                        Text(self.sortTypes[$0])
+                    }
+                }
+            }
         }
+        
+//        Button(action: {
+//            self.sortAlphabetically.toggle()
+//            if self.sortAlphabetically {
+//                self.viewModel.sortPatientsAlphabetically()
+//            } else {
+//                self.viewModel.sortPatientsAlphabeticallyReverse()
+//            }
+//        }) {
+//            HStack(alignment: .center) {
+//                Text("Ordenamento")
+//                Image(systemName: "chevron.down")
+//                    .colorMultiply(.secondary)
+//            }.padding([.top, .leading])
+//        }
     }
 }
 
