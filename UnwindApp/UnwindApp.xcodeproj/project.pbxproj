@@ -21,6 +21,8 @@
 		AA851453243BB71100233B3F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA851452243BB71100233B3F /* Model.swift */; };
 		AA851455243BB94C00233B3F /* PatientRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA851454243BB94C00233B3F /* PatientRow.swift */; };
 		AA982AAF243BD26E00E8469B /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA982AAE243BD26E00E8469B /* SortButton.swift */; };
+		AAFD295B243D08350049AFD3 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD295A243D08350049AFD3 /* ProgressBar.swift */; };
+		AAFD295D243D28BE0049AFD3 /* SortPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD295C243D28BE0049AFD3 /* SortPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		AA851452243BB71100233B3F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		AA851454243BB94C00233B3F /* PatientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRow.swift; sourceTree = "<group>"; };
 		AA982AAE243BD26E00E8469B /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
+		AAFD295A243D08350049AFD3 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		AAFD295C243D28BE0049AFD3 /* SortPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,8 @@
 				AA85144E243BB5E700233B3F /* PatientsView.swift */,
 				AA851454243BB94C00233B3F /* PatientRow.swift */,
 				AA982AAE243BD26E00E8469B /* SortButton.swift */,
+				AAFD295C243D28BE0049AFD3 /* SortPicker.swift */,
+				AAFD295A243D08350049AFD3 /* ProgressBar.swift */,
 			);
 			path = UnwindApp;
 			sourceTree = "<group>";
@@ -293,6 +299,8 @@
 				266B3F5C24364BE800554474 /* ContentView.swift in Sources */,
 				AA851451243BB64700233B3F /* PatientsViewModel.swift in Sources */,
 				AA982AAF243BD26E00E8469B /* SortButton.swift in Sources */,
+				AAFD295D243D28BE0049AFD3 /* SortPicker.swift in Sources */,
+				AAFD295B243D08350049AFD3 /* ProgressBar.swift in Sources */,
 				266B3F5724364BE800554474 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,19 +9,14 @@
 import SwiftUI
 
 struct SortButton: View {
-    @EnvironmentObject var viewModel: PatientsViewModel
     
-    let sortTypes = ["Alfabética", "Data de adição", "Data de modificação"]
-    
-    @State var sortAlphabetically: Bool = false
-    @State var selectedSort = 0
-    @State var showList = false
+    @Binding var showPicker: Bool
     
     var body: some View {
         
-        VStack(alignment: .leading) {
+        Group {
             Button(action: {
-                self.showList.toggle()
+                self.showPicker.toggle()
             }) {
                 HStack(alignment: .center) {
                     Text("Ordenamento")
@@ -29,34 +24,12 @@ struct SortButton: View {
                         .colorMultiply(.secondary)
                 }.padding([.top, .leading])
             }
-            if showList {
-                Picker("", selection: $selectedSort) {
-                    ForEach(0 ..< sortTypes.count) {
-                        Text(self.sortTypes[$0])
-                    }
-                }
-            }
         }
-        
-//        Button(action: {
-//            self.sortAlphabetically.toggle()
-//            if self.sortAlphabetically {
-//                self.viewModel.sortPatientsAlphabetically()
-//            } else {
-//                self.viewModel.sortPatientsAlphabeticallyReverse()
-//            }
-//        }) {
-//            HStack(alignment: .center) {
-//                Text("Ordenamento")
-//                Image(systemName: "chevron.down")
-//                    .colorMultiply(.secondary)
-//            }.padding([.top, .leading])
-//        }
     }
 }
 
 struct SortButton_Previews: PreviewProvider {
     static var previews: some View {
-        SortButton()
+        SortButton(showPicker: .constant(false))
     }
 }
