@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct SortButton: View {
-    
     @Binding var showPicker: Bool
     
     var body: some View {

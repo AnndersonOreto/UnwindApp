@@ -18,15 +18,18 @@ class PatientsViewModel: ObservableObject {
         self.patients = fakePatients
     }
     
-    func sortPatientsAlphabetically() {
-        self.patients.sort { (patient0, patient1) in
-            patient0.name.lowercased() < patient1.name.lowercased()
-        }
-    }
-    
-    func sortPatientsAlphabeticallyReverse() {
-        self.patients.sort { (patient0, patient1) in
-            patient0.name.lowercased() > patient1.name.lowercased()
+    func sortPatients(by option: SortOptions) {
+        switch option {
+        case .alphabetically:
+            self.patients.sort { (patient0, patient1) in
+                patient0.name.lowercased() < patient1.name.lowercased()
+            }
+        case .addedData:
+            self.patients.sort { (patient0, patient1) in
+                patient0.name.lowercased() > patient1.name.lowercased()
+            }
+        case .modifiedData:
+            break
         }
     }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct PatientsView: View {
     @EnvironmentObject var viewModel: PatientsViewModel
     @State var showPicker: Bool = false
-    @State var selectedSort: Int = 0
+    @State var sortSelected: SortOptions = .alphabetically
     
     var body: some View {
         GeometryReader { geometry in
@@ -34,9 +34,9 @@ struct PatientsView: View {
                         }
                     }.frame(width: geometry.size.width*0.9)
                     .background(Color.white)
-                }
+                }.onTapGesture { if self.showPicker { self.showPicker.toggle() } }
                 if self.showPicker {
-                    SortPicker(selected: self.$selectedSort)
+                    SortPicker(selected: self.$sortSelected)
                 }
             }
         }.background(Color(.sRGB, red: 248/256, green: 250/256, blue: 255/256, opacity: 1))

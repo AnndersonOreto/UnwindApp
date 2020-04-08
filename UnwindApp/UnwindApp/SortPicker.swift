@@ -8,10 +8,16 @@
 
 import SwiftUI
 
-struct SortPicker: View {
-    @Binding var selected: Int
+enum SortOptions: String, CaseIterable, Identifiable {
+    var id: SortOptions { self }
     
-    let options = ["Alfabético", "Data de adição", "Data de modificação"]
+    case alphabetically = "Alfabético"
+    case addedData = "Data de adição"
+    case modifiedData = "Data de modificação"
+}
+
+struct SortPicker: View {
+    @Binding var selected: SortOptions
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -24,30 +30,26 @@ struct SortPicker: View {
                 .frame(height: 200)
             VStack(alignment: .center) {
                 HStack(alignment: .bottom) {
-                    Spacer()
                     Text("Ordenamento")
                         .foregroundColor(.secondary)
-                        .frame(alignment: .center)
-                    Spacer()
-                    Text("\(self.selected)")
+                        .frame(maxWidth: .infinity)
+                    Text("\(self.selected.rawValue)")
                         .foregroundColor(.primary)
-                        .frame(alignment: .center)
-                    Spacer()
+                        .frame(maxWidth: .infinity)
                 }
                 Picker(selection: self.$selected, label: Text("Ordenamento")) {
-                    ForEach(0 ..< self.options.count) {
-                        Text(self.options[$0]).tag($0)
+                    ForEach(SortOptions.allCases) { (element) in
+                        Text(element.rawValue)
                     }
                 }.labelsHidden()
                     .frame(height: 200)
             }
-            
         }
     }
 }
 
 struct SortPicker_Previews: PreviewProvider {
     static var previews: some View {
-        SortPicker(selected: .constant(0))
+        SortPicker(selected: .constant(.alphabetically))
     }
 }
