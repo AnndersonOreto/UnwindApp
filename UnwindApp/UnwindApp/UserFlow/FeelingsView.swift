@@ -16,6 +16,7 @@ extension Color {
     static let strokeGray = Color(red: 217/255, green: 219/255, blue: 226/255)
     static let fontColorBlue = Color(red: 81/255, green: 154/255, blue: 255/255)
     static let fontColorBlack = Color(red: 37/255, green: 46/255, blue: 72/255)
+    static let sendButtonColor = Color(red: 81/255, green: 154/255, blue: 255/255)
 }
 
 class FeelingsViewModel: ObservableObject {
@@ -39,7 +40,7 @@ class FeelingsViewModel: ObservableObject {
 }
 
 
-struct FeelingsScreen: View {
+struct FeelingsView: View {
     
     @ObservedObject var viewModel = FeelingsViewModel()
     
@@ -71,7 +72,7 @@ struct FeelingsScreen: View {
 
 struct FeelingsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        FeelingsScreen()
+        FeelingsView()
     }
 }
 

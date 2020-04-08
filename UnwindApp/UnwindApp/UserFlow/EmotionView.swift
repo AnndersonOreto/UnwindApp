@@ -21,7 +21,7 @@ class EmotionViewModel: ObservableObject {
     
 }
 
-struct EmotionScreen: View {
+struct EmotionView: View {
     
     @ObservedObject var viewModel = EmotionViewModel()
     
@@ -61,7 +61,7 @@ struct EmotionScreen: View {
 
 struct EmotionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        EmotionScreen()
+        EmotionView()
     }
 }
 

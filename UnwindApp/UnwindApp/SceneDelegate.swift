@@ -26,14 +26,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let contentView = ContentView().environment(\.managedObjectContext, context)
         
-        let feelingsView = FeelingsScreen()
+        let feelingsView = FeelingsView()
         
-        let emotionView = EmotionScreen()
+        let emotionView = EmotionView()
+        
+        let describeView = DescribeView()
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: emotionView)
+            window.rootViewController = UIHostingController(rootView: describeView)
             self.window = window
             window.makeKeyAndVisible()
         }
