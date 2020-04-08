@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		265814DB243E42790051815A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265814DA243E42790051815A /* HomeView.swift */; };
+		265814DF243E609F0051815A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265814DE243E609F0051815A /* LoginView.swift */; };
 		266B3F5524364BE800554474 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F5424364BE800554474 /* AppDelegate.swift */; };
 		266B3F5724364BE800554474 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F5624364BE800554474 /* SceneDelegate.swift */; };
 		266B3F5A24364BE800554474 /* UnwindApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F5824364BE800554474 /* UnwindApp.xcdatamodeld */; };
@@ -16,6 +18,8 @@
 		266B3F6424364BE900554474 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266B3F6224364BE900554474 /* LaunchScreen.storyboard */; };
 		266B3F6F24364BE900554474 /* UnwindAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F6E24364BE900554474 /* UnwindAppTests.swift */; };
 		266B3F7A24364BE900554474 /* UnwindAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F7924364BE900554474 /* UnwindAppUITests.swift */; };
+		26890733243CEC82008DDC2B /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26890732243CEC82008DDC2B /* AuthenticationManager.swift */; };
+		26890738243CF423008DDC2B /* AuthenticationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26890737243CF423008DDC2B /* AuthenticationProfile.swift */; };
 		26CEF9A9243CDFF100608866 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26CEF9A8243CDFF100608866 /* GoogleService-Info.plist */; };
 		707341BDBCDFD5D19D45DA3F /* Pods_UnwindApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFE49F10E3D379D0602DE0D /* Pods_UnwindApp.framework */; };
 		714AFABDC7EEA942A39CAD04 /* Pods_UnwindApp_UnwindAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52E7DDA0113552DECCAF492C /* Pods_UnwindApp_UnwindAppUITests.framework */; };
@@ -40,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		265814DA243E42790051815A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		265814DE243E609F0051815A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		266B3F5124364BE800554474 /* UnwindApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnwindApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		266B3F5424364BE800554474 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		266B3F5624364BE800554474 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +61,8 @@
 		266B3F7524364BE900554474 /* UnwindAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnwindAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		266B3F7924364BE900554474 /* UnwindAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwindAppUITests.swift; sourceTree = "<group>"; };
 		266B3F7B24364BE900554474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26890732243CEC82008DDC2B /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		26890737243CF423008DDC2B /* AuthenticationProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProfile.swift; sourceTree = "<group>"; };
 		26CEF9A8243CDFF100608866 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AA313700173F004E6C24460 /* Pods-UnwindApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwindApp.release.xcconfig"; path = "Target Support Files/Pods-UnwindApp/Pods-UnwindApp.release.xcconfig"; sourceTree = "<group>"; };
 		52E7DDA0113552DECCAF492C /* Pods_UnwindApp_UnwindAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnwindApp_UnwindAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +130,9 @@
 			children = (
 				266B3F5424364BE800554474 /* AppDelegate.swift */,
 				266B3F5624364BE800554474 /* SceneDelegate.swift */,
-				266B3F5B24364BE800554474 /* ContentView.swift */,
+				26890736243CF02B008DDC2B /* View */,
+				26890732243CEC82008DDC2B /* AuthenticationManager.swift */,
+				26890737243CF423008DDC2B /* AuthenticationProfile.swift */,
 				266B3F5D24364BE900554474 /* Assets.xcassets */,
 				266B3F6224364BE900554474 /* LaunchScreen.storyboard */,
 				266B3F6524364BE900554474 /* Info.plist */,
@@ -159,6 +169,16 @@
 			path = UnwindAppUITests;
 			sourceTree = "<group>";
 		};
+		26890736243CF02B008DDC2B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				266B3F5B24364BE800554474 /* ContentView.swift */,
+				265814DE243E609F0051815A /* LoginView.swift */,
+				265814DA243E42790051815A /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3A1FA72527CAD8C5D6B24739 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,7 +199,6 @@
 				DB88D3FB0D33DBE2DB11C361 /* Pods-UnwindAppTests.debug.xcconfig */,
 				A7180D8189109B047B03ADC1 /* Pods-UnwindAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -424,8 +443,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				266B3F5524364BE800554474 /* AppDelegate.swift in Sources */,
+				265814DB243E42790051815A /* HomeView.swift in Sources */,
 				266B3F5A24364BE800554474 /* UnwindApp.xcdatamodeld in Sources */,
+				26890738243CF423008DDC2B /* AuthenticationProfile.swift in Sources */,
 				266B3F5C24364BE800554474 /* ContentView.swift in Sources */,
+				26890733243CEC82008DDC2B /* AuthenticationManager.swift in Sources */,
+				265814DF243E609F0051815A /* LoginView.swift in Sources */,
 				266B3F5724364BE800554474 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
