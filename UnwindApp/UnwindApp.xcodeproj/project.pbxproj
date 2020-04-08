@@ -16,11 +16,13 @@
 		266B3F6424364BE900554474 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266B3F6224364BE900554474 /* LaunchScreen.storyboard */; };
 		266B3F6F24364BE900554474 /* UnwindAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F6E24364BE900554474 /* UnwindAppTests.swift */; };
 		266B3F7A24364BE900554474 /* UnwindAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F7924364BE900554474 /* UnwindAppUITests.swift */; };
+		AA6CD980243E5D7100CF7F31 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD97F243E5D7100CF7F31 /* DetailView.swift */; };
 		AA85144F243BB5E700233B3F /* PatientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85144E243BB5E700233B3F /* PatientsView.swift */; };
 		AA851451243BB64700233B3F /* PatientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA851450243BB64700233B3F /* PatientsViewModel.swift */; };
 		AA851453243BB71100233B3F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA851452243BB71100233B3F /* Model.swift */; };
 		AA851455243BB94C00233B3F /* PatientRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA851454243BB94C00233B3F /* PatientRow.swift */; };
 		AA982AAF243BD26E00E8469B /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA982AAE243BD26E00E8469B /* SortButton.swift */; };
+		AAEAE286243E59F40040E71B /* ImageAndTextWithBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAE285243E59F40040E71B /* ImageAndTextWithBorder.swift */; };
 		AAFD295B243D08350049AFD3 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD295A243D08350049AFD3 /* ProgressBar.swift */; };
 		AAFD295D243D28BE0049AFD3 /* SortPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD295C243D28BE0049AFD3 /* SortPicker.swift */; };
 /* End PBXBuildFile section */
@@ -58,11 +60,13 @@
 		266B3F7524364BE900554474 /* UnwindAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnwindAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		266B3F7924364BE900554474 /* UnwindAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwindAppUITests.swift; sourceTree = "<group>"; };
 		266B3F7B24364BE900554474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA6CD97F243E5D7100CF7F31 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		AA85144E243BB5E700233B3F /* PatientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsView.swift; sourceTree = "<group>"; };
 		AA851450243BB64700233B3F /* PatientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsViewModel.swift; sourceTree = "<group>"; };
 		AA851452243BB71100233B3F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		AA851454243BB94C00233B3F /* PatientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRow.swift; sourceTree = "<group>"; };
 		AA982AAE243BD26E00E8469B /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
+		AAEAE285243E59F40040E71B /* ImageAndTextWithBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAndTextWithBorder.swift; sourceTree = "<group>"; };
 		AAFD295A243D08350049AFD3 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		AAFD295C243D28BE0049AFD3 /* SortPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,13 +127,9 @@
 				266B3F6524364BE900554474 /* Info.plist */,
 				266B3F5824364BE800554474 /* UnwindApp.xcdatamodeld */,
 				266B3F5F24364BE900554474 /* Preview Content */,
-				AA851452243BB71100233B3F /* Model.swift */,
-				AA851450243BB64700233B3F /* PatientsViewModel.swift */,
-				AA85144E243BB5E700233B3F /* PatientsView.swift */,
-				AA851454243BB94C00233B3F /* PatientRow.swift */,
-				AA982AAE243BD26E00E8469B /* SortButton.swift */,
-				AAFD295C243D28BE0049AFD3 /* SortPicker.swift */,
-				AAFD295A243D08350049AFD3 /* ProgressBar.swift */,
+				AA6CD985243E5DD600CF7F31 /* Model */,
+				AA6CD984243E5DAF00CF7F31 /* ViewModel */,
+				AA6CD983243E5DA700CF7F31 /* View */,
 			);
 			path = UnwindApp;
 			sourceTree = "<group>";
@@ -158,6 +158,52 @@
 				266B3F7B24364BE900554474 /* Info.plist */,
 			);
 			path = UnwindAppUITests;
+			sourceTree = "<group>";
+		};
+		AA6CD981243E5D7F00CF7F31 /* PatientsList */ = {
+			isa = PBXGroup;
+			children = (
+				AA85144E243BB5E700233B3F /* PatientsView.swift */,
+				AA851454243BB94C00233B3F /* PatientRow.swift */,
+				AA982AAE243BD26E00E8469B /* SortButton.swift */,
+				AAFD295C243D28BE0049AFD3 /* SortPicker.swift */,
+			);
+			path = PatientsList;
+			sourceTree = "<group>";
+		};
+		AA6CD982243E5D8D00CF7F31 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				AA6CD97F243E5D7100CF7F31 /* DetailView.swift */,
+				AAEAE285243E59F40040E71B /* ImageAndTextWithBorder.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		AA6CD983243E5DA700CF7F31 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA6CD981243E5D7F00CF7F31 /* PatientsList */,
+				AA6CD982243E5D8D00CF7F31 /* Detail */,
+				AAFD295A243D08350049AFD3 /* ProgressBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AA6CD984243E5DAF00CF7F31 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AA851450243BB64700233B3F /* PatientsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AA6CD985243E5DD600CF7F31 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA851452243BB71100233B3F /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,8 +341,10 @@
 				AA851453243BB71100233B3F /* Model.swift in Sources */,
 				AA85144F243BB5E700233B3F /* PatientsView.swift in Sources */,
 				266B3F5524364BE800554474 /* AppDelegate.swift in Sources */,
+				AAEAE286243E59F40040E71B /* ImageAndTextWithBorder.swift in Sources */,
 				266B3F5A24364BE800554474 /* UnwindApp.xcdatamodeld in Sources */,
 				266B3F5C24364BE800554474 /* ContentView.swift in Sources */,
+				AA6CD980243E5D7100CF7F31 /* DetailView.swift in Sources */,
 				AA851451243BB64700233B3F /* PatientsViewModel.swift in Sources */,
 				AA982AAF243BD26E00E8469B /* SortButton.swift in Sources */,
 				AAFD295D243D28BE0049AFD3 /* SortPicker.swift in Sources */,
