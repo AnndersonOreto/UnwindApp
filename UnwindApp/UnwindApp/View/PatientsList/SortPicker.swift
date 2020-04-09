@@ -20,30 +20,26 @@ struct SortPicker: View {
     @Binding var selected: SortOptions
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            Rectangle()
-                .foregroundColor(.white)
-                .frame(height: 250)
-                .shadow(radius: 50)
-            Rectangle()
-                .foregroundColor(Color(red: 250/256, green: 251/256, blue: 250/256))
-                .frame(height: 200)
-            VStack(alignment: .center) {
-                HStack(alignment: .bottom) {
-                    Text("Ordenamento")
-                        .foregroundColor(.secondary)
-                        .frame(maxWidth: .infinity)
-                    Text("\(self.selected.rawValue)")
-                        .foregroundColor(.primary)
-                        .frame(maxWidth: .infinity)
+        VStack(alignment: .center, spacing: 0) {
+            HStack(alignment: .bottom) {
+                Text("Ordenamento")
+                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity)
+                Text("\(self.selected.rawValue)")
+                    .foregroundColor(.primary)
+                    .frame(maxWidth: .infinity)
+            }.padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.white)
+            .clipped()
+            .shadow(radius: 10, x: 1, y: 0)
+            Picker(selection: self.$selected, label: Text("Ordenamento")) {
+                ForEach(SortOptions.allCases) { (element) in
+                    Text(element.rawValue)
                 }
-                Picker(selection: self.$selected, label: Text("Ordenamento")) {
-                    ForEach(SortOptions.allCases) { (element) in
-                        Text(element.rawValue)
-                    }
-                }.labelsHidden()
-                    .frame(height: 200)
-            }
+            }.labelsHidden()
+            .frame(maxWidth: .infinity)
+            .background(CustomColor.pickerBackground.color)
         }
     }
 }

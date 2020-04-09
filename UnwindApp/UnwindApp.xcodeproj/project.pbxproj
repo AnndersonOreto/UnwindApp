@@ -19,6 +19,7 @@
 		AA6CD980243E5D7100CF7F31 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD97F243E5D7100CF7F31 /* DetailView.swift */; };
 		AA6CD987243FA26C00CF7F31 /* TitleAndText.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD986243FA26C00CF7F31 /* TitleAndText.swift */; };
 		AA6CD989243FABD900CF7F31 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD988243FABD900CF7F31 /* DetailViewModel.swift */; };
+		AA6CD98B243FC74700CF7F31 /* DateAndHourPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD98A243FC74700CF7F31 /* DateAndHourPicker.swift */; };
 		AA85144F243BB5E700233B3F /* PatientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85144E243BB5E700233B3F /* PatientsView.swift */; };
 		AA851451243BB64700233B3F /* PatientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA851450243BB64700233B3F /* PatientsViewModel.swift */; };
 		AA851453243BB71100233B3F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA851452243BB71100233B3F /* Model.swift */; };
@@ -65,6 +66,7 @@
 		AA6CD97F243E5D7100CF7F31 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		AA6CD986243FA26C00CF7F31 /* TitleAndText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndText.swift; sourceTree = "<group>"; };
 		AA6CD988243FABD900CF7F31 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		AA6CD98A243FC74700CF7F31 /* DateAndHourPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndHourPicker.swift; sourceTree = "<group>"; };
 		AA85144E243BB5E700233B3F /* PatientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsView.swift; sourceTree = "<group>"; };
 		AA851450243BB64700233B3F /* PatientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsViewModel.swift; sourceTree = "<group>"; };
 		AA851452243BB71100233B3F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				AA6CD97F243E5D7100CF7F31 /* DetailView.swift */,
 				AAEAE285243E59F40040E71B /* ImageAndTextWithBorder.swift */,
 				AA6CD986243FA26C00CF7F31 /* TitleAndText.swift */,
+				AA6CD98A243FC74700CF7F31 /* DateAndHourPicker.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				266B3F5724364BE800554474 /* SceneDelegate.swift in Sources */,
 				AA6CD989243FABD900CF7F31 /* DetailViewModel.swift in Sources */,
 				AA6CD987243FA26C00CF7F31 /* TitleAndText.swift in Sources */,
+				AA6CD98B243FC74700CF7F31 /* DateAndHourPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
