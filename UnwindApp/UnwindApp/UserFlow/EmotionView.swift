@@ -42,6 +42,12 @@ struct EmotionView: View {
                     }
                 }
             }
+            
+            //==============================
+            //USE CODE BELLOW TO SAVE THE EMOTIONS
+            //Use emotionTest.name to get emotion
+            //==============================
+            
 //            Button(action: {
 //                for item in self.selectedRows {
 //                    for emotion in self.viewModel.array{

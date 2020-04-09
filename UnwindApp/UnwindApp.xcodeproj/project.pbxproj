@@ -19,6 +19,7 @@
 		AB27E0E9243D0CA700F346CB /* EmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0E8243D0CA700F346CB /* EmotionView.swift */; };
 		AB27E0EB243D16D000F346CB /* TesteEmotionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0EA243D16D000F346CB /* TesteEmotionModel.swift */; };
 		AB27E0ED243E3D3500F346CB /* DescribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0EC243E3D3500F346CB /* DescribeView.swift */; };
+		AB27E0F1243FA9E900F346CB /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0F0243FA9E800F346CB /* Alerts.swift */; };
 		ABAAF1FF243BB54E00DEC3E6 /* FeelingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAAF1FE243BB54E00DEC3E6 /* FeelingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		AB27E0E8243D0CA700F346CB /* EmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionView.swift; sourceTree = "<group>"; };
 		AB27E0EA243D16D000F346CB /* TesteEmotionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteEmotionModel.swift; sourceTree = "<group>"; };
 		AB27E0EC243E3D3500F346CB /* DescribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeView.swift; sourceTree = "<group>"; };
+		AB27E0F0243FA9E800F346CB /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		ABAAF1FE243BB54E00DEC3E6 /* FeelingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 				AB27E0E8243D0CA700F346CB /* EmotionView.swift */,
 				AB27E0EA243D16D000F346CB /* TesteEmotionModel.swift */,
 				AB27E0EC243E3D3500F346CB /* DescribeView.swift */,
+				AB27E0F0243FA9E800F346CB /* Alerts.swift */,
 			);
 			path = UserFlow;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				AB27E0E9243D0CA700F346CB /* EmotionView.swift in Sources */,
 				266B3F5A24364BE800554474 /* UnwindApp.xcdatamodeld in Sources */,
 				ABAAF1FF243BB54E00DEC3E6 /* FeelingsView.swift in Sources */,
+				AB27E0F1243FA9E900F346CB /* Alerts.swift in Sources */,
 				266B3F5C24364BE800554474 /* ContentView.swift in Sources */,
 				266B3F5724364BE800554474 /* SceneDelegate.swift in Sources */,
 			);

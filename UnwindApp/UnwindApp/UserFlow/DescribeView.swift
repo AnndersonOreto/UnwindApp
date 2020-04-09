@@ -35,7 +35,6 @@ class DescribeViewModel: ObservableObject {
     }
 }
 
-
 struct DescribeView: View {
     
     @State var text = ""
@@ -129,6 +128,8 @@ struct SendButtonStyle: ButtonStyle {
     }
 }
 
+
+//A background to get the tap gesture and close the keyboard
 struct Background<Content: View>: View {
     private var content: Content
     
@@ -142,6 +143,8 @@ struct Background<Content: View>: View {
             .overlay(content)
     }
 }
+
+//MARK:- MultiTextField (TextView)
 
 struct MultiLineTextField: UIViewRepresentable {
     

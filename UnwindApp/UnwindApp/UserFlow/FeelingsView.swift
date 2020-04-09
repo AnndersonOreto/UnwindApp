@@ -8,8 +8,6 @@
 
 import SwiftUI
 
-//0,07
-
 extension Color {
     static let lightGreen = Color(red: 245 / 255, green: 255 / 255, blue: 246 / 255)
     static let strokeGreen = Color(red: 132 / 255, green: 219 / 255, blue: 49 / 255)
