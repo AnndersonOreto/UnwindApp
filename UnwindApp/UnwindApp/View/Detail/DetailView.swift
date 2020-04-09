@@ -8,7 +8,25 @@
 
 import SwiftUI
 
+enum DetailViewColor {
+    case background
+    case feelingBorder
+    case feelingText
+    case shadow
+    
+    var color: Color {
+        switch self {
+        case .background: return Color(red: 248/255, green: 250/255, blue: 255/255)
+        case .feelingBorder: return Color(red: 214/255, green: 222/255, blue: 232/255)
+        case .feelingText: return Color(red: 53/255, green: 208/255, blue: 148/255)
+        case .shadow: return Color(red: 15/255, green: 36/255, blue: 83/255, opacity: 0.05)
+        }
+    }
+}
+
 struct DetailView: View {
+    
+    @ObservedObject var viewModel = DetailViewModel()
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -17,12 +35,12 @@ struct DetailView: View {
         ScrollView(.vertical, showsIndicators: false) {
             HStack(alignment: .center) {
                 Group {
-                    Text("Julia, confira")
+                    Text("\(viewModel.userName), confira")
                     Text("suas emoções")
                         .fontWeight(.bold)
                 }.font(.largeTitle)
                 Spacer()
-                Button(action: edit) {
+                Button(action: viewModel.sendReport ) {
                     Text("Enviar relatório")
                         .fontWeight(.bold)
                     .padding()
@@ -38,7 +56,7 @@ struct DetailView: View {
                         VStack(alignment: .leading) {
                             Text("Data e Hora:")
                                 .foregroundColor(.secondary)
-                            Text("Hoje às 15:25")
+                            Text("\(viewModel.date) às \(viewModel.hour)")
                                 .foregroundColor(.primary)
                                 .fontWeight(.semibold)
                         }
@@ -47,10 +65,8 @@ struct DetailView: View {
                             Image(systemName: "pencil")
                                 .colorMultiply(.secondary)
                         }
-                    }.padding()
-                    .frame(height: 205)
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }.frame(height: height*0.14)
+                    .asCard()
                     
                     HStack(alignment: .center) {
                         Text("Como estava \nse sentindo?")
@@ -58,16 +74,14 @@ struct DetailView: View {
                             .fontWeight(.semibold)
                             .multilineTextAlignment(.leading)
                         Spacer()
-                        ImageAndTextWithBorder(imageName: "image", text: "Muito Feliz")
+                        ImageAndTextWithBorder(imageName: viewModel.feeling.imageName, text: viewModel.feeling.description)
                         Spacer()
-                        Button(action: { self.edit() }) {
+                        Button(action: edit) {
                             Image(systemName: "pencil")
                                 .colorMultiply(.secondary)
                         }
-                    }.padding()
-                    .frame(height: 205)
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }.frame(width: width*0.52, height: height*0.14)
+                    .asCard()
                     
                 }
                 HStack(alignment: .center) {
@@ -76,52 +90,41 @@ struct DetailView: View {
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.leading)
                     Spacer()
-                    ImageAndTextWithBorder(imageName: "image", text: "Alegre")
-                    ImageAndTextWithBorder(imageName: "image", text: "Amoroso")
-                    ImageAndTextWithBorder(imageName: "image", text: "Feliz")
+                    ForEach(0 ..< viewModel.numberOfEmotions) { (index) in
+                        ImageAndTextWithBorder(imageName: self.viewModel.emotions[index].imageName, text: self.viewModel.emotions[index].description)
+                    }
                     Spacer()
-                    Button(action: { self.edit() }) {
+                    Button(action: edit) {
                         Image(systemName: "pencil")
                             .colorMultiply(.secondary)
                     }
-                }.padding()
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                
-                VStack(alignment: .leading) {
-                    Text("Qual foi a situação?")
-                    .foregroundColor(.primary)
-                    .fontWeight(.semibold)
-                    Text("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like.")
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.leading)
-                }.padding()
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                VStack(alignment: .leading) {
-                    Text("Qual foi seu pensamento?")
-                    .foregroundColor(.primary)
-                    .fontWeight(.semibold)
-                    Text("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like.")
-                        .foregroundColor(.secondary)
-                        .lineLimit(2)
-                        .multilineTextAlignment(.leading)
-                }.padding()
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                VStack(alignment: .leading) {
-                    Text("Qual foi sua ação?")
-                    .foregroundColor(.primary)
-                    .fontWeight(.semibold)
-                    Text("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like.")
-                        .foregroundColor(.secondary)
-                        .lineLimit(3)
-                        .multilineTextAlignment(.leading)
-                }.padding()
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+                }.asCard()
+                HStack {
+                    TitleAndText(title: "Qual foi a situação?", text: viewModel.situation)
+                    Spacer()
+                    Button(action: edit) {
+                        Image(systemName: "pencil")
+                            .colorMultiply(.secondary)
+                    }
+                }.asCard()
+                HStack {
+                    TitleAndText(title: "Qual foi seu pensamento?", text: viewModel.thought)
+                    Spacer()
+                    Button(action: edit) {
+                        Image(systemName: "pencil")
+                            .colorMultiply(.secondary)
+                    }
+                }.asCard()
+                HStack {
+                    TitleAndText(title: "Qual foi sua ação?", text: viewModel.action)
+                    Spacer()
+                    Button(action: edit) {
+                        Image(systemName: "pencil")
+                            .colorMultiply(.secondary)
+                    }
+                }.asCard()
             }.padding()
-        }.background(Color(red: 248/256, green: 250/256, blue: 255/256))
+        }.background(DetailViewColor.background.color)
     }
 }
 
@@ -135,5 +138,14 @@ extension DetailView {
     func edit() {
         print(self.width)
         print(self.height)
+    }
+}
+
+extension View {
+    func asCard() -> some View {
+        padding()
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+            .shadow(color: DetailViewColor.shadow.color, radius: 10, x: 0, y: 2)
     }
 }

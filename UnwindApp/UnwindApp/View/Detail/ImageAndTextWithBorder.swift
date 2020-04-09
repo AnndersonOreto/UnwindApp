@@ -21,7 +21,7 @@ struct ImageAndTextWithBorder: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             Text(text)
-                .foregroundColor(.blue)
+                .foregroundColor(DetailViewColor.feelingText.color)
                 .font(.system(size: 18))
                 .fontWeight(.semibold)
         }
@@ -29,9 +29,9 @@ struct ImageAndTextWithBorder: View {
         .padding(.vertical, 20)
         .overlay (
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray, lineWidth: 1)
+                .stroke(DetailViewColor.feelingBorder.color, lineWidth: 1)
         )
-        .frame(width: 155, height: 144)
+        .frame(width: width*0.2, height: height*0.14)
     }
 }
 

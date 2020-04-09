@@ -8,16 +8,14 @@
 
 import SwiftUI
 
-enum CustomColor {
+enum PatientsViewColor {
     case background
     case shadow
     
     var color: Color {
         switch self {
-        case .background:
-            return Color(.sRGB, red: 248/255, green: 250/255, blue: 255/255, opacity: 1)
-        case .shadow:
-            return Color(.sRGB, red: 15/255, green: 36/255, blue: 83/255, opacity: 0.1)
+        case .background: return Color(red: 248/255, green: 250/255, blue: 255/255)
+        case .shadow: return Color(red: 15/255, green: 36/255, blue: 83/255, opacity: 0.05)
         }
     }
 }
@@ -50,7 +48,7 @@ struct PatientsView: View {
                     }.frame(width: geometry.size.width*0.9)
                     .background(Color.white)
                     .cornerRadius(10)
-                    .shadow(color: CustomColor.shadow.color, radius: 30, x: 0, y: 0)
+                    .shadow(color: PatientsViewColor.shadow.color, radius: 10, x: 0, y: 2)
                 }.onTapGesture { if self.showPicker { self.showPicker.toggle() } }
                 if self.showPicker {
                     SortPicker(selected: self.$sortSelected)
@@ -59,7 +57,7 @@ struct PatientsView: View {
                     }
                 }
             }
-        }.background(CustomColor.background.color)
+        }.background(PatientsViewColor.background.color)
     }
 }
 
