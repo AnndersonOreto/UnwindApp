@@ -78,7 +78,7 @@ struct DetailView: View {
                             .multilineTextAlignment(.leading)
                         Spacer()
                         ForEach(0 ..< viewModel.numberOfEmotions) { (index) in
-                            ImageAndTextWithBorder(imageName: self.viewModel.emotions[index].imageName, text: self.viewModel.emotions[index].description)
+                            ImageAndTextWithBorder(imageName: self.viewModel.emotions[index].imageName, text: self.viewModel.emotions[index].name)
                         }
                         Spacer()
                         Button(action: edit) {

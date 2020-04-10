@@ -29,13 +29,13 @@ struct Feeling: Identifiable {
 
 let fakeFeeling = Feeling(id: 0, imageName: "image", description: "Muito Feliz")
 
-struct Emotion: Identifiable {
-    let id: Int
-    let imageName: String
-    let description: String
+struct Emotion: Identifiable, Hashable {
+    let id = UUID()
+    let imageName:String = "image"
+    let name: String
 }
 
-let emotion0 = Emotion(id: 0, imageName: "image", description: "Alegre")
-let emotion1 = Emotion(id: 1, imageName: "image", description: "Amoroso")
-let emotion2 = Emotion(id: 2, imageName: "image", description: "Feliz")
+let emotion0 = Emotion(name: "Alegre")
+let emotion1 = Emotion(name: "Amoroso")
+let emotion2 = Emotion(name: "Feliz")
 let fakeEmotions = [emotion0, emotion1, emotion2]
