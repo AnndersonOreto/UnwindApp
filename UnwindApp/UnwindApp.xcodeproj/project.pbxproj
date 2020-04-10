@@ -16,6 +16,7 @@
 		266B3F6424364BE900554474 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266B3F6224364BE900554474 /* LaunchScreen.storyboard */; };
 		266B3F6F24364BE900554474 /* UnwindAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F6E24364BE900554474 /* UnwindAppTests.swift */; };
 		266B3F7A24364BE900554474 /* UnwindAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F7924364BE900554474 /* UnwindAppUITests.swift */; };
+		AA48E0602440DAD200913F4C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA48E05F2440DAD200913F4C /* MailView.swift */; };
 		AA6CD980243E5D7100CF7F31 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD97F243E5D7100CF7F31 /* DetailView.swift */; };
 		AA6CD987243FA26C00CF7F31 /* TitleAndText.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD986243FA26C00CF7F31 /* TitleAndText.swift */; };
 		AA6CD989243FABD900CF7F31 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD988243FABD900CF7F31 /* DetailViewModel.swift */; };
@@ -63,6 +64,7 @@
 		266B3F7524364BE900554474 /* UnwindAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnwindAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		266B3F7924364BE900554474 /* UnwindAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwindAppUITests.swift; sourceTree = "<group>"; };
 		266B3F7B24364BE900554474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA48E05F2440DAD200913F4C /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		AA6CD97F243E5D7100CF7F31 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		AA6CD986243FA26C00CF7F31 /* TitleAndText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndText.swift; sourceTree = "<group>"; };
 		AA6CD988243FABD900CF7F31 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				AA6CD981243E5D7F00CF7F31 /* PatientsList */,
 				AA6CD982243E5D8D00CF7F31 /* Detail */,
 				AAFD295A243D08350049AFD3 /* ProgressBar.swift */,
+				AA48E05F2440DAD200913F4C /* MailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				266B3F5524364BE800554474 /* AppDelegate.swift in Sources */,
 				AAEAE286243E59F40040E71B /* ImageAndTextWithBorder.swift in Sources */,
 				266B3F5A24364BE800554474 /* UnwindApp.xcdatamodeld in Sources */,
+				AA48E0602440DAD200913F4C /* MailView.swift in Sources */,
 				266B3F5C24364BE800554474 /* ContentView.swift in Sources */,
 				AA6CD980243E5D7100CF7F31 /* DetailView.swift in Sources */,
 				AA851451243BB64700233B3F /* PatientsViewModel.swift in Sources */,
