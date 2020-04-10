@@ -1,26 +1,53 @@
 //
-//  ContentView.swift
+//  LoginView.swift
 //  UnwindApp
 //
-//  Created by Annderson Packeiser Oreto on 02/04/20.
+//  Created by Annderson Packeiser Oreto on 08/04/20.
 //  Copyright © 2020 Annderson Packeiser Oreto. All rights reserved.
 //
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        LoginView()
-    }
-}
-
-struct LoginView: View {
+struct LoginViewStruct: View {
     
-    @State private var name: String = "Nome"
-    @State private var phone: String = "Telefone"
-    @State private var username: String = "E-mail"
-    @State private var password: String = "Senha"
+    @EnvironmentObject var authStatus: AuthenticationManager
+    @State private var name: String = ""
+    @State private var phone: String = ""
+    @State private var username: String = ""
+    @State private var password: String = ""
+    @State private var error: String = ""
     @State private var loginSelected: Bool = true
+    @State private var selectedButton: Bool = false
+    
+    func signIn() {
+        
+        authStatus.signIn(email: username, password: password) { (result, error) in
+            
+            if let error = error {
+                
+                self.error = error.localizedDescription
+            } else {
+                
+                self.username = ""
+                self.password = ""
+            }
+        }
+    }
+    
+    func signUp() {
+        
+        authStatus.signUp(email: username, password: password) { (result, error) in
+            
+            if let error = error {
+                
+                self.error = error.localizedDescription
+            } else {
+                
+                self.username = ""
+                self.password = ""
+            }
+        }
+    }
     
     var body: some View {
         
@@ -96,7 +123,7 @@ struct LoginView: View {
                             .stroke(Color.gray, lineWidth: 0.8)
                 )
                 
-                TextField("Senha", text: self.$password)
+                SecureField("Senha", text: self.$password)
                     .textContentType(.password)
                     .padding()
                     .overlay(
@@ -105,7 +132,12 @@ struct LoginView: View {
                 ).padding(.bottom, 32.0)
                 
                 Button(action : {
-                    
+                    if self.loginSelected {
+                        self.signIn()
+                    } else {
+                        self.signUp()
+                    }
+                    print("teste1")
                 }) {
                     Text(self.loginSelected ? "Entrar" : "Cadastrar")
                         .frame(minWidth: geometry.size.width/2, maxWidth: .infinity)
@@ -142,8 +174,17 @@ struct LoginView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct LoginView: View {
+    var body: some View {
+        
+        NavigationView {
+            LoginViewStruct()
+        }
+    }
+}
+
+struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LoginView().environmentObject(AuthenticationManager())
     }
 }
