@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1015229221322-ee2araikmtnvrreve1dpdoca42aidtvo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1015229221322-ee2araikmtnvrreve1dpdoca42aidtvo</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCMbP0yOoijQP_wGd6rSBHP53mX_Q4HIRs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1015229221322</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.annderson.UnwindApp</string>
+	<key>PROJECT_ID</key>
+	<string>unwindapp-e629f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>unwindapp-e629f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1015229221322:ios:c14f35c99864325f4ca733</string>
+	<key>DATABASE_URL</key>
+	<string>https://unwindapp-e629f.firebaseio.com</string>
+</dict>
+</plist>
