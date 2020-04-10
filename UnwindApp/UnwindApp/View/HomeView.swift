@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @EnvironmentObject var authStatus: AuthenticationManager
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        HStack {
+            
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            
+            Button(action: {
+                
+                self.authStatus.logout()
+            }) {
+                
+                Text("Log Out")
+            }
+        }
     }
 }
 
