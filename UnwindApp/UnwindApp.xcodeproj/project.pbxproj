@@ -19,6 +19,11 @@
 		266B3F6424364BE900554474 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266B3F6224364BE900554474 /* LaunchScreen.storyboard */; };
 		266B3F6F24364BE900554474 /* UnwindAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F6E24364BE900554474 /* UnwindAppTests.swift */; };
 		266B3F7A24364BE900554474 /* UnwindAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B3F7924364BE900554474 /* UnwindAppUITests.swift */; };
+		AB27E0E9243D0CA700F346CB /* EmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0E8243D0CA700F346CB /* EmotionView.swift */; };
+		AB27E0EB243D16D000F346CB /* TesteEmotionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0EA243D16D000F346CB /* TesteEmotionModel.swift */; };
+		AB27E0ED243E3D3500F346CB /* DescribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0EC243E3D3500F346CB /* DescribeView.swift */; };
+		AB27E0F1243FA9E900F346CB /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0F0243FA9E800F346CB /* Alerts.swift */; };
+		ABAAF1FF243BB54E00DEC3E6 /* FeelingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAAF1FE243BB54E00DEC3E6 /* FeelingsView.swift */; };
 		AA48E0602440DAD200913F4C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA48E05F2440DAD200913F4C /* MailView.swift */; };
 		AA6CD980243E5D7100CF7F31 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD97F243E5D7100CF7F31 /* DetailView.swift */; };
 		AA6CD987243FA26C00CF7F31 /* TitleAndText.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD986243FA26C00CF7F31 /* TitleAndText.swift */; };
@@ -77,6 +82,11 @@
 		266B3F7524364BE900554474 /* UnwindAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnwindAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		266B3F7924364BE900554474 /* UnwindAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwindAppUITests.swift; sourceTree = "<group>"; };
 		266B3F7B24364BE900554474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB27E0E8243D0CA700F346CB /* EmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionView.swift; sourceTree = "<group>"; };
+		AB27E0EA243D16D000F346CB /* TesteEmotionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteEmotionModel.swift; sourceTree = "<group>"; };
+		AB27E0EC243E3D3500F346CB /* DescribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeView.swift; sourceTree = "<group>"; };
+		AB27E0F0243FA9E800F346CB /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		ABAAF1FE243BB54E00DEC3E6 /* FeelingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingsView.swift; sourceTree = "<group>"; };
 		AA48E05F2440DAD200913F4C /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		AA6CD97F243E5D7100CF7F31 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		AA6CD986243FA26C00CF7F31 /* TitleAndText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndText.swift; sourceTree = "<group>"; };
@@ -167,6 +177,7 @@
 		266B3F5324364BE800554474 /* UnwindApp */ = {
 			isa = PBXGroup;
 			children = (
+				ABAAF1FD243BB52800DEC3E6 /* UserFlow */,
 				2669C45E2440E26F00E6B500 /* Support */,
 				26890736243CF02B008DDC2B /* View */,
 				2687059F2440BCDD00BB8C4F /* ModelView */,
@@ -210,6 +221,16 @@
 			path = UnwindAppUITests;
 			sourceTree = "<group>";
 		};
+		ABAAF1FD243BB52800DEC3E6 /* UserFlow */ = {
+			isa = PBXGroup;
+			children = (
+				ABAAF1FE243BB54E00DEC3E6 /* FeelingsView.swift */,
+				AB27E0E8243D0CA700F346CB /* EmotionView.swift */,
+				AB27E0EA243D16D000F346CB /* TesteEmotionModel.swift */,
+				AB27E0EC243E3D3500F346CB /* DescribeView.swift */,
+				AB27E0F0243FA9E800F346CB /* Alerts.swift */,
+			);
+			path = UserFlow;
 		AA6CD981243E5D7F00CF7F31 /* PatientsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +570,11 @@
 				AA851453243BB71100233B3F /* Model.swift in Sources */,
 				AA85144F243BB5E700233B3F /* PatientsView.swift in Sources */,
 				266B3F5524364BE800554474 /* AppDelegate.swift in Sources */,
+				AB27E0ED243E3D3500F346CB /* DescribeView.swift in Sources */,
+				AB27E0EB243D16D000F346CB /* TesteEmotionModel.swift in Sources */,
+				AB27E0E9243D0CA700F346CB /* EmotionView.swift in Sources */,
+				ABAAF1FF243BB54E00DEC3E6 /* FeelingsView.swift in Sources */,
+				AB27E0F1243FA9E900F346CB /* Alerts.swift in Sources */,
 				AAEAE286243E59F40040E71B /* ImageAndTextWithBorder.swift in Sources */,
 				AA48E0602440DAD200913F4C /* MailView.swift in Sources */,
 				AA6CD980243E5D7100CF7F31 /* DetailView.swift in Sources */,
