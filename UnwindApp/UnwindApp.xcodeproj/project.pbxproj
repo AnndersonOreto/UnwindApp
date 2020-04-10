@@ -231,6 +231,8 @@
 				AB27E0F0243FA9E800F346CB /* Alerts.swift */,
 			);
 			path = UserFlow;
+			sourceTree = "<group>";
+		};
 		AA6CD981243E5D7F00CF7F31 /* PatientsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +262,10 @@
 				AA6CD982243E5D8D00CF7F31 /* Detail */,
 				AAFD295A243D08350049AFD3 /* ProgressBar.swift */,
 				AA48E05F2440DAD200913F4C /* MailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2687059F2440BCDD00BB8C4F /* ModelView */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +309,8 @@
 				AA851452243BB71100233B3F /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
 		3A1FA72527CAD8C5D6B24739 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
