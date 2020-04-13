@@ -40,7 +40,7 @@ class EmotionViewModel: ObservableObject {
 struct EmotionView: View {
     
     @ObservedObject var viewModel = EmotionViewModel()
-    
+    @State var teste: Bool = false
     @State var selectedRows = Set<UUID>()
     
     var body: some View {
@@ -75,12 +75,13 @@ struct EmotionView: View {
                     }
                 }
                 self.viewModel.saveEmotions()
+                self.teste.toggle()
             }) {
                 Text(viewModel.sendButtonText())
                 .kerning(0.3)
                 .font(.system(size: 30)).bold()
             }.buttonStyle(SendButtonStyle())
-        }
+        }.navigate(to: DescribeView(), when: $teste)
     }
 }
 

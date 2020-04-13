@@ -57,7 +57,7 @@ class FeelingsViewModel: ObservableObject {
 struct FeelingsView: View {
     
     @ObservedObject var viewModel = FeelingsViewModel()
-//    @State var teste: Bool = false
+    @State var teste: Bool = false
     
     var body: some View {
         
@@ -94,16 +94,14 @@ struct FeelingsView: View {
                 }
                 Button(action: {
                     self.viewModel.saveFeeling()
-//                    self.teste.toggle()
+                    self.teste.toggle()
                 }) {
                     Text(self.viewModel.sendButtonText())
                     .kerning(0.3)
                     .font(.system(size: 30)).bold()
                 }.buttonStyle(SendButtonStyle())
-            }
+            }.navigate(to: EmotionView(), when: $teste)
 //        }.navigationViewStyle(StackNavigationViewStyle())
-        
-        
     }
     
     func getImageSize() -> CGFloat {
