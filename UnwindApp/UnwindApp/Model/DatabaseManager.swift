@@ -18,6 +18,22 @@ class DatabaseManager {
         ref = Database.database().reference()
     }
     
+    func saveNewProfile(email: String, name: String, phone: String, role: String, userUid: String) {
+        
+        let post = ["email": email,
+                    "name": name,
+                    "phone": phone,
+                    "role": role]
+        
+        ref.child("users").childByAutoId().setValue(post) { (error, ret) in
+            
+            if let error = error {
+                
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func saveFeelings(profile: AuthenticationProfile) {
         
     }

@@ -25,6 +25,14 @@ struct HomeView: View {
                 
                 Text("Log Out")
             }
+            
+            Button(action: {
+                
+                self.authStatus.teste1()
+            }) {
+                
+                Text("teste1")
+            }
         }
     }
 }
