@@ -22,16 +22,16 @@ let patient2 = Patient(id: 2, name: "Carlos", email: "carlos@gmail.com", phoneNu
 let fakePatients = [patient0, patient1, patient2]
 
 struct Feeling: Identifiable {
-    let id: Int
-    let imageName: String
+    let id = UUID()
+    let imageName: String = "Image"
     let description: String
 }
 
-let fakeFeeling = Feeling(id: 0, imageName: "image", description: "Muito Feliz")
+let fakeFeeling = Feeling(description: "Muito Feliz")
 
 struct Emotion: Identifiable, Hashable {
     let id = UUID()
-    let imageName:String = "image"
+    let imageName:String = "Image"
     let name: String
 }
 
