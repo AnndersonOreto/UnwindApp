@@ -41,36 +41,52 @@ class FeelingsViewModel: ObservableObject {
 struct FeelingsView: View {
     
     @ObservedObject var viewModel = FeelingsViewModel()
+    @State var progress: CGFloat = 0.25
     
     var body: some View {
-        VStack(spacing: 50){
-            VStack{
-                HStack{
-                   Text("Julia, como você está se")
-                    .font(.system(size: 40))
-                    .foregroundColor(Color.fontColorBlack)
-                    Text("sentindo?")
-                    .font(.system(size: 40)).bold()
-                    .foregroundColor(Color.fontColorBlack)
+        NavigationView {
+            VStack(spacing: 50){
+                VStack{
+                    HStack{
+                       Text("Julia, como você está se")
+                        .font(.system(size: 40))
+                        .foregroundColor(Color.fontColorBlack)
+                        Text("sentindo?")
+                        .font(.system(size: 40)).bold()
+                        .foregroundColor(Color.fontColorBlack)
+                    }
+                    Image(viewModel.feelingImageName)
+                    Text(viewModel.feelingName)
+                        .font(.system(size: 30))
+                        .fontWeight(.medium)
+                        .foregroundColor(Color.fontColorBlue)
                 }
-                Image(viewModel.feelingImageName)
-                Text(viewModel.feelingName)
-                    .font(.system(size: 30))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color.fontColorBlue)
-            }
-            VStack{
-                ForEach(viewModel.array, id: \.self) { row in
-                    SelectFeelings(array: row, viewModel: self.viewModel)
+                VStack{
+                    ForEach(viewModel.array, id: \.self) { row in
+                        SelectFeelings(array: row, viewModel: self.viewModel)
+                    }
                 }
-            }
-        }
+            }.navigationBarItems(leading:
+                ProgressBar(currentProgress: self.$progress)
+                    .offset(x: UIScreen.main.bounds.width/12)
+            , trailing:
+                NavigationLink(destination: DetailView(), label: {
+                    Image(systemName: "xmark")
+                        .imageScale(.large)
+                        .colorMultiply(.secondary)
+                })
+            )
+            
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct FeelingsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        FeelingsView()
+        Group {
+            FeelingsView().previewDevice(PreviewDevice(rawValue: "iPhone 11"))
+            FeelingsView().previewDevice(PreviewDevice(rawValue: "iPad Pro (9.7-inch)"))
+        }
     }
 }
 

@@ -116,7 +116,7 @@ struct DetailView: View {
                 DateAndHourPicker(selected: $selectedDate)
                     .onDisappear { print(self.selectedDate) }
             }
-        }
+        }.navigationBarTitle("", displayMode: .inline)
     }
 }
 
@@ -135,15 +135,6 @@ extension DetailView {
             .sheet(isPresented: self.$showMailView) {
                 MailView(result: self.$mailResult)
         }
-    }
-}
-
-extension View {
-    func asCard() -> some View {
-        padding()
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-            .shadow(color: CustomColor.shadow.color, radius: 10, x: 0, y: 2)
     }
 }
 

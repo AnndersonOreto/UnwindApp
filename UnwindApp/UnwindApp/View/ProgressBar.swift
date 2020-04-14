@@ -12,29 +12,27 @@ struct ProgressBar: View {
     
     @Binding var currentProgress: CGFloat
     
+    let width = UIScreen.main.bounds.width*0.75
+    let height = UIScreen.main.bounds.width*0.75*0.0268
+    
     var body: some View {
-        GeometryReader { geometry in
-            VStack(alignment: .center, spacing: 20) {
-                ZStack(alignment: .leading) {
-                    Group {
-                        RoundedRectangle(cornerRadius: geometry.size.height/2)
-                            .foregroundColor(.gray)
-                            .opacity(0.3)
-                            .frame(width: geometry.size.width*0.75)
-                        RoundedRectangle(cornerRadius: geometry.size.height/2)
-                            .foregroundColor(.yellow)
-                            .frame(width: self.minWidth(geometry.size.width))
-                            .animation(.linear)
-                    }.frame(height: 20)
-                }
-            }
+        ZStack(alignment: .leading) {
+            Group {
+                RoundedRectangle(cornerRadius: self.height/2)
+                    .foregroundColor(CustomColor.progressBarBottom.color)
+                    .frame(width: self.width)
+                RoundedRectangle(cornerRadius: self.height/2)
+                    .foregroundColor(CustomColor.progressBarTop.color)
+                    .frame(width: self.minWidth())
+                    .animation(.linear)
+            }.frame(height: self.height)
         }
     }
 }
 
 extension ProgressBar {
-    func minWidth(_ base: CGFloat) -> CGFloat {
-        return min(base*0.75, base*0.75*currentProgress)
+    func minWidth() -> CGFloat {
+        return min(width, width*currentProgress)
     }
 }
 

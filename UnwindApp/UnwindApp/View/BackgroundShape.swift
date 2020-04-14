@@ -35,7 +35,7 @@ struct BackgroundWithShape: View {
             BackgroundShape()
                 .fill(Color.blue)
                 .shadow(color: CustomColor.shadow.color, radius: 10)
-        }.edgesIgnoringSafeArea(.all)
+        }
     }
 }
 

@@ -34,8 +34,8 @@ struct SortPicker: View {
             .clipped()
             .shadow(radius: 10, x: 1, y: 0)
             Picker(selection: self.$selected, label: Text("Ordenamento")) {
-                ForEach(SortOptions.allCases) { (element) in
-                    Text(element.rawValue)
+                ForEach(SortOptions.allCases) { (sortOption) in
+                    Text(sortOption.rawValue)
                 }
             }.labelsHidden()
             .frame(maxWidth: .infinity)
