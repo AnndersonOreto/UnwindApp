@@ -67,9 +67,36 @@ struct LoginViewStruct: View {
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.65)
                     
                     Spacer()
+                    
+                    HStack(spacing: 30){
+                        Button(action: {
+                            
+                        }) {
+                            Image("ic_apple")
+                            .resizable()
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.width * 0.09)
+                        .buttonStyle(PlainButtonStyle())
+                        Button(action: {
+                            
+                        }) {
+                            Image("ic_google")
+                            .resizable()
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.width * 0.09)
+                        .buttonStyle(PlainButtonStyle())
+                        Button(action: {
+                            
+                        }) {
+                            Image("ic_facebook")
+                            .resizable()
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.width * 0.09)
+                        .buttonStyle(PlainButtonStyle())
+                    }.padding(.bottom, 25)
                 }
                 
-                VStack(spacing: 100){
+                VStack(spacing: 80){
                     Image("logo_Login")
                         .frame(width: UIScreen.main.bounds.width * 0.13, height: UIScreen.main.bounds.width * 0.17)
                     // Body of login container
@@ -197,7 +224,8 @@ struct LoginViewStruct: View {
                     )
                     
                     Spacer()
-                }.padding(.top, 100)
+                    
+                }.padding(.top, 80)
             }
             
         }
