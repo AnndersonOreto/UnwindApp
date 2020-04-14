@@ -62,7 +62,7 @@ struct FeelingsView: View {
     var body: some View {
         
 //        NavigationView{
-            VStack(spacing:30){
+            VStack(){
 //                NavigationLink("", destination: EmotionView(), isActive: $teste)
                 Spacer()
                 VStack(spacing: 50){
@@ -92,6 +92,7 @@ struct FeelingsView: View {
                         }
                     }
                 }
+                Spacer()
                 Button(action: {
                     self.viewModel.saveFeeling()
                     self.teste.toggle()
