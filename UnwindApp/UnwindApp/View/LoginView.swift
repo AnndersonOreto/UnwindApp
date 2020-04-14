@@ -19,6 +19,14 @@ struct LoginViewStruct: View {
     @State private var loginSelected: Bool = true
     @State private var selectedButton: Bool = false
     
+    var registerColor: Color {
+        return !loginSelected ? Color.strokeBlue : Color.gray
+    }
+    
+    var loginColor: Color {
+        return loginSelected ? Color.strokeBlue : Color.gray
+    }
+    
     func signIn() {
         
         authStatus.signIn(email: username, password: password) { (result, error) in
@@ -53,102 +61,152 @@ struct LoginViewStruct: View {
         
         GeometryReader { geometry in
             
-            // Body of login container
-            VStack(alignment: .center, spacing: CGFloat(8.0)) {
-                
-                // App logo image
-                Image(systemName: "star.fill")
-                
-                // Login switch buttons
-                HStack(alignment: .center, spacing: geometry.size.width/2) {
+            ZStack(){
+                VStack{
+                   Image("bg_Login")
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.65)
                     
-                    Button(action: {
-                        
-                        self.loginSelected = true
-                    }) {
-                        Text("Login")
-                            .bold()
-                            .foregroundColor(Color.black)
-                    }
-                    
-                    Button(action: {
-                        
-                        self.loginSelected = false
-                    }) {
-                        Text("Cadastro")
-                            .bold()
-                            .foregroundColor(Color.gray)
-                    }
+                    Spacer()
                 }
                 
-                // Divier below switch buttons
-                HStack(spacing: 0.0) {
-                    
-                    if self.loginSelected {
-                        ExDividerSelected()
-                        ExDivider()
-                    } else {
-                        ExDivider()
-                        ExDividerSelected()
+                VStack(spacing: 100){
+                    Image("logo_Login")
+                        .frame(width: UIScreen.main.bounds.width * 0.13, height: UIScreen.main.bounds.width * 0.17)
+                    // Body of login container
+                    VStack(spacing: 15) {
+                        
+                        // Login switch buttons
+                        HStack(spacing: UIScreen.main.bounds.width * 0.15) {
+                            
+                            Button(action: {
+                                
+                                self.loginSelected = true
+                            }) {
+                                Text("Login")
+                                    .fontWeight(.semibold)
+                                    .bold()
+                                    .font(.system(size: 28))
+                                    .foregroundColor(self.loginColor)
+                            }
+                            
+                            Button(action: {
+                                
+                                self.loginSelected = false
+                            }) {
+                                Text("Cadastro")
+                                    .bold()
+                                    .font(.system(size: 28))
+                                    .foregroundColor(self.registerColor)
+                            }
+                        }
+                        
+                        // Divier below switch buttons
+                        HStack(spacing: 0.0) {
+                            
+                            if self.loginSelected {
+                                ExDividerSelected()
+                                ExDivider()
+                            } else {
+                                ExDivider()
+                                ExDividerSelected()
+                            }
+                        }.padding(.bottom, 16.0)
+                            .padding(.top, 16.0)
+
+                        
+                        TextField("E-mail", text: self.$username)
+                           .padding(10) .textContentType(.emailAddress)
+                            .font(.system(size: 25))
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 6.0)
+                                    .stroke(Color.strokeGray, lineWidth: 0.8)
+                        )
+                        
+                        SecureField("Senha", text: self.$password)
+                            .padding(10)
+                            .textContentType(.password)
+                            .font(.system(size: 25))
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 6.0)
+                                    .stroke(Color.strokeGray
+                                        , lineWidth: 0.8)
+                        )
+                        // Login or register text fields
+                        if !self.loginSelected {
+                            
+                            TextField("Nome", text: self.$name)
+                               .padding(10) .textContentType(.emailAddress)
+                                .font(.system(size: 25))
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6.0)
+                                        .stroke(Color.strokeGray, lineWidth: 0.8)
+                            )
+                            
+                            TextField("Telefone", text: self.$phone)
+                               .padding(10) .textContentType(.emailAddress)
+                                .font(.system(size: 25))
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 6.0)
+                                        .stroke(Color.strokeGray, lineWidth: 0.8)
+                            )
+                                
+                        }
+                        if self.loginSelected{
+                            HStack{
+                                Spacer()
+                                Button(action: {
+                                    //Esqueceu a senha
+                                }) {
+                                    Text("Esqueceu a senha")
+                                        .font(.system(size: 22))
+                                        .fontWeight(.medium).italic().underline()
+                                }
+                            }
+                        }
+                        
+                        Button(action : {
+                            if self.loginSelected {
+                                self.signIn()
+                            } else {
+                                self.signUp()
+                            }
+                            print("teste1")
+                        }) {
+                            Text(self.loginSelected ? "Entrar" : "Cadastrar")
+                                .font(.system(size: 30))
+                                .fontWeight(.bold)
+                                .lineLimit(nil)
+                                .frame(width: UIScreen.main.bounds.width * 0.59, height: UIScreen.main.bounds.width * 0.05)
+                                .foregroundColor(Color.white)
+                                .padding()
+                                .background(RoundedRectangle(cornerRadius: 38.0).fill(Color.blue))
+                        }.padding(.top, 20)
                     }
-                }.padding(.bottom, 16.0)
-                    .padding(.top, 16.0)
-                
-                // Login or register text fields
-                if !self.loginSelected {
-                    
-                    TextField("Nome", text: self.$name)
-                        .textContentType(.emailAddress)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6.0)
-                                .stroke(Color.gray, lineWidth: 0.8)
+                    .frame(width: UIScreen.main.bounds.width * 0.63)
+                    .padding(.horizontal, 70)
+                    .padding(.top, 60)
+                    .padding(.bottom, 50)
+                    .background(
+                        Color.white
+                        .cornerRadius(10)
+                            .shadow(color: Color(red: 15/255, green: 36/255, blue: 83/255, opacity: 0.04), radius: 10, x: 0, y: 2)
                     )
                     
-                    TextField("Telefone", text: self.$phone)
-                        .textContentType(.emailAddress)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6.0)
-                                .stroke(Color.gray, lineWidth: 0.8)
-                    )
-                    
-                }
-                
-                TextField("E-mail", text: self.$username)
-                    .textContentType(.emailAddress)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 6.0)
-                            .stroke(Color.gray, lineWidth: 0.8)
-                )
-                
-                SecureField("Senha", text: self.$password)
-                    .textContentType(.password)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 6.0)
-                            .stroke(Color.gray, lineWidth: 0.8)
-                ).padding(.bottom, 32.0)
-                
-                Button(action : {
-                    if self.loginSelected {
-                        self.signIn()
-                    } else {
-                        self.signUp()
-                    }
-                    print("teste1")
-                }) {
-                    Text(self.loginSelected ? "Entrar" : "Cadastrar")
-                        .frame(minWidth: geometry.size.width/2, maxWidth: .infinity)
-                        .foregroundColor(Color.white)
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 32.0).fill(Color.blue))
-                }
+                    Spacer()
+                }.padding(.top, 100)
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            .padding(32.0)
+            
         }
+            .edgesIgnoringSafeArea(.all)
+            .padding(.horizontal, 130)
+            .background(Color(red: 248/255, green: 250/255, blue: 255/255))
+            .onTapGesture {
+                UIApplication.shared.endEditing()
+            }
     }
     
     struct ExDivider: View {
@@ -177,9 +235,9 @@ struct LoginViewStruct: View {
 struct LoginView: View {
     var body: some View {
         
-        NavigationView {
+//        NavigationView {
             LoginViewStruct()
-        }
+//        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
