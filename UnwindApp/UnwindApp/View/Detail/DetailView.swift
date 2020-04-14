@@ -21,29 +21,20 @@ struct DetailView: View {
     let height = UIScreen.main.bounds.height
     
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .bottom) {
-                ScrollView(.vertical, showsIndicators: false) {
+        ZStack(alignment: .bottom) {
+            ScrollView(.vertical, showsIndicators: false) {
+                Group {
                     HStack(alignment: .center) {
                         Group {
-                            Text("\(viewModel.userName), confira")
-                            Text("suas emoções")
+                            Text("\(viewModel.userName), confira ")
+                            + Text("suas emoções")
                                 .fontWeight(.bold)
                         }.font(.largeTitle)
+                            .foregroundColor(.white)
                         Spacer()
-                        Button(action: { self.showMailView.toggle() } ) {
-                            Text("Enviar relatório")
-                                .fontWeight(.bold)
-                            .padding()
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 100)
-                                    .stroke(Color.blue, lineWidth: 2)
-                            )
-                        }.disabled(!MFMailComposeViewController.canSendMail())
-                            .sheet(isPresented: $showMailView) {
-                                MailView(result: self.$mailResult)
-                        }
+                        reportButton
                     }.padding([.top,.horizontal])
+                    Spacer().frame(minHeight: 0, maxHeight: 10)
                     VStack(alignment: .center, spacing: 15) {
                         HStack(alignment: .center, spacing: 15) {
                             HStack(alignment: .center) {
@@ -118,19 +109,32 @@ struct DetailView: View {
                             }
                         }.asCard()
                     }.padding()
-                }.background(CustomColor.background.color)
-                if showDatePicker {
-                    DateAndHourPicker(selected: $selectedDate)
-                        .onDisappear { print(self.selectedDate) }
-                }
+                }.background(BackgroundWithShape())
+            }
+            .background(Color.clear)
+            if showDatePicker {
+                DateAndHourPicker(selected: $selectedDate)
+                    .onDisappear { print(self.selectedDate) }
             }
         }
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView()
+extension DetailView {
+    var reportButton: some View {
+        Button(action: { self.showMailView.toggle() } ) {
+            Text("Enviar relatório")
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding()
+                .overlay(
+                RoundedRectangle(cornerRadius: 45)
+                    .stroke(Color.white, lineWidth: 2)
+            )
+        }.disabled(!MFMailComposeViewController.canSendMail())
+            .sheet(isPresented: self.$showMailView) {
+                MailView(result: self.$mailResult)
+        }
     }
 }
 
@@ -140,5 +144,19 @@ extension View {
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
             .shadow(color: CustomColor.shadow.color, radius: 10, x: 0, y: 2)
+    }
+}
+
+struct DetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            DetailView()
+                .previewDevice(.init(rawValue: "iPhone 11"))
+                .previewDisplayName("iPhone 11")
+            DetailView()
+                .previewDevice(.init(rawValue: "iPad Pro (9.7-inch)"))
+                .previewDisplayName("iPad Pro (9.7-inch)")
+        }
+        
     }
 }

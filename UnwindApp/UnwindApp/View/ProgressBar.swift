@@ -10,35 +10,36 @@ import SwiftUI
 
 struct ProgressBar: View {
     
-    @State var currentProgress: CGFloat = 0.0
-    
-    var currentPage: CGFloat
-    var totalPages: CGFloat
-    
-    init(currentPage: CGFloat, totalPages: CGFloat) {
-        self.currentPage = currentPage
-        self.totalPages = totalPages
-        self.currentProgress = self.currentPage/self.totalPages
-    }
+    @Binding var currentProgress: CGFloat
     
     var body: some View {
-        ZStack(alignment: .center) {
-            GeometryReader { geometry in
-                Group {
-                    RoundedRectangle(cornerRadius: 100)
-                        .foregroundColor(.gray)
-                        .frame(width: geometry.size.width*0.75)
-                    RoundedRectangle(cornerRadius: 100)
-                        .foregroundColor(.yellow)
-                        .frame(width: geometry.size.width*0.75*self.currentProgress)
-                }.frame(height: 20)
+        GeometryReader { geometry in
+            VStack(alignment: .center, spacing: 20) {
+                ZStack(alignment: .leading) {
+                    Group {
+                        RoundedRectangle(cornerRadius: geometry.size.height/2)
+                            .foregroundColor(.gray)
+                            .opacity(0.3)
+                            .frame(width: geometry.size.width*0.75)
+                        RoundedRectangle(cornerRadius: geometry.size.height/2)
+                            .foregroundColor(.yellow)
+                            .frame(width: self.minWidth(geometry.size.width))
+                            .animation(.linear)
+                    }.frame(height: 20)
+                }
             }
         }
     }
 }
 
+extension ProgressBar {
+    func minWidth(_ base: CGFloat) -> CGFloat {
+        return min(base*0.75, base*0.75*currentProgress)
+    }
+}
+
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressBar(currentPage: 1, totalPages: 5)
+        ProgressBar(currentProgress: .constant(0.2))
     }
 }
