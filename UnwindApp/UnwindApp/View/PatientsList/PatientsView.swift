@@ -14,6 +14,7 @@ enum CustomColor {
     case feelingText
     case pickerBackground
     case shadow
+    case veryHappy, happy, neutral, sad, verySad, other
     
     var color: Color {
         switch self {
@@ -22,6 +23,12 @@ enum CustomColor {
         case .feelingText: return Color(red: 53/255, green: 208/255, blue: 148/255)
         case .pickerBackground: return Color(red: 250/255, green: 251/255, blue: 250/255)
         case .shadow: return Color(red: 15/255, green: 36/255, blue: 83/255, opacity: 0.05)
+        case .veryHappy: return Color(red: 232/255, green: 135/255, blue: 175/255)
+        case .happy: return Color(red: 249/255, green: 199/255, blue: 85/255)
+        case .neutral: return Color(red: 171/255, green: 140/255, blue: 221/255)
+        case .sad: return Color(red: 103/255, green: 198/255, blue: 198/255)
+        case .verySad: return Color(red: 139/255, green: 200/255, blue: 234/255)
+        case .other: return Color(red: 186/255, green: 189/255, blue: 211/255)
         }
     }
 }
