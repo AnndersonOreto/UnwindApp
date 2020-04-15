@@ -12,10 +12,22 @@ class AuthenticationProfile {
     
     var id: String
     var email: String?
+    var name: String = ""
+    var phone: String = ""
+    var role: String = ""
     
     init(id: String, email: String?) {
         
         self.id = id;
         self.email = email;
+    }
+    
+    init(id: String, email: String?, name: String, phone: String, role: String) {
+        
+        self.id = id
+        self.email = email
+        self.name = name
+        self.phone = phone
+        self.role = role
     }
 }

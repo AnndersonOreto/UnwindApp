@@ -28,7 +28,10 @@ class AuthenticationManager: ObservableObject {
             
             if let user = user {
                 
-                self.profile = AuthenticationProfile(id: user.uid, email: user.email)
+                self.database.getUserProfile(userUid: user.uid, completion: { profile in
+                    
+                    self.profile = profile
+                })
             } else {
                 
                 self.profile = nil
@@ -70,10 +73,6 @@ class AuthenticationManager: ObservableObject {
             
             Auth.auth().removeStateDidChangeListener(handle)
         }
-    }
-    
-    func teste1() {
-        self.database.saveNewProfile(email: "a", name: "a", phone: "a", role: "a", userUid: "a")
     }
     
     deinit {

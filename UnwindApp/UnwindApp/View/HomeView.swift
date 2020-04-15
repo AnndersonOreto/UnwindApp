@@ -14,7 +14,7 @@ struct HomeView: View {
     
     var body: some View {
         
-        HStack {
+        VStack {
             
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
             
@@ -28,10 +28,9 @@ struct HomeView: View {
             
             Button(action: {
                 
-                self.authStatus.teste1()
             }) {
                 
-                Text("teste1")
+                Text("\(self.authStatus.profile?.name ?? "erro")")
             }
         }
     }
