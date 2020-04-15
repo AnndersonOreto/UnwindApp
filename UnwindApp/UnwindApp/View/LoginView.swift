@@ -16,6 +16,7 @@ struct LoginViewStruct: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var error: String = ""
+    @State private var role: String = ""
     @State private var loginSelected: Bool = true
     @State private var selectedButton: Bool = false
     
@@ -36,7 +37,7 @@ struct LoginViewStruct: View {
     
     func signUp() {
         
-        authStatus.signUp(email: username, password: password) { (result, error) in
+        authStatus.signUp(email: username, password: password, phone: phone, name: name, role: role) { (result, error) in
             
             if let error = error {
                 
@@ -45,6 +46,8 @@ struct LoginViewStruct: View {
                 
                 self.username = ""
                 self.password = ""
+                self.phone = ""
+                self.name = ""
             }
         }
     }

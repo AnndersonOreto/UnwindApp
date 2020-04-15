@@ -13,6 +13,7 @@ import Combine
 
 class AuthenticationManager: ObservableObject {
     
+    private var database = DatabaseManager()
     var didchange = PassthroughSubject<AuthenticationManager, Never>()
     @Published var profile: AuthenticationProfile? {
         didSet {
@@ -27,7 +28,10 @@ class AuthenticationManager: ObservableObject {
             
             if let user = user {
                 
-                self.profile = AuthenticationProfile(id: user.uid, email: user.email)
+                self.database.getUserProfile(userUid: user.uid, completion: { profile in
+                    
+                    self.profile = profile
+                })
             } else {
                 
                 self.profile = nil
@@ -35,9 +39,18 @@ class AuthenticationManager: ObservableObject {
         }
     }
     
-    func signUp(email: String, password: String, handler: @escaping AuthDataResultCallback) {
+    func signUp(email: String, password: String, phone: String, name: String, role: String, handler: @escaping AuthDataResultCallback) {
         
-        Auth.auth().createUser(withEmail: email, password: password)
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            
+            if let userResult = user?.user {
+                
+                self.database.saveNewProfile(email: email, name: name, phone: phone, role: role, userUid: userResult.uid)
+            } else {
+                
+                print(error?.localizedDescription ?? "")
+            }
+        }
     }
     
     func signIn(email: String, password: String, handler: @escaping AuthDataResultCallback) {
