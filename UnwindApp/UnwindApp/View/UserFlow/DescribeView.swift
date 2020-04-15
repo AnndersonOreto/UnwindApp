@@ -37,6 +37,7 @@ class DescribeViewModel: ObservableObject {
 
 struct DescribeView: View {
     
+    @EnvironmentObject var authStatus: AuthenticationManager
     @State var text = ""
     @State var value: CGFloat = 0
     @ObservedObject var viewModel = DescribeViewModel()
@@ -63,14 +64,22 @@ struct DescribeView: View {
                     switch self.viewModel.state {
                     case .situation:
                         //Save the situation text here and change the state for thoughts
+                        FeelingsInfo.sharedInstance.user_situation = self.text
+//                        self.authStatus.setUserFeeling(user_feeling: self.text, feelingType: "user_situation")
                         break
                     case .thoughts:
                         //Save the thoughts text here and change the state for action
+                        FeelingsInfo.sharedInstance.user_thoughts = self.text
+//                        self.authStatus.setUserFeeling(user_feeling: self.text, feelingType: "user_thoughts")
                         break
                     case .action:
                         //Save the action text here and pass to next screen
+                        FeelingsInfo.sharedInstance.user_action = self.text
+//                        self.authStatus.setUserFeeling(user_feeling: self.text, feelingType: "user_action")
                         break
                     }
+                    
+                    self.authStatus.saveFeelingsPackage()
                     
                     print(self.text)
                 }) {
@@ -203,7 +212,7 @@ struct MultiLineTextField: UIViewRepresentable {
 
 struct DescribeView_Previews: PreviewProvider {
     static var previews: some View {
-        DescribeView()
+        DescribeView().environmentObject(AuthenticationManager())
     }
 }
 

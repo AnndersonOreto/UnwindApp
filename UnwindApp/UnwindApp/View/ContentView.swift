@@ -21,7 +21,7 @@ struct ContentView: View {
         Group {
             
             if authStatus.profile != nil {
-                HomeView()
+                FeelingsView()
             } else {
                 LoginView()
             }

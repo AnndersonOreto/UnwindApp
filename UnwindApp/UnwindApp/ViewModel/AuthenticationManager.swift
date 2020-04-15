@@ -75,6 +75,13 @@ class AuthenticationManager: ObservableObject {
         }
     }
     
+    func saveFeelingsPackage() {
+        
+        guard let userUid = Auth.auth().currentUser?.uid else { return }
+        
+        self.database.saveFeelings(userUid: userUid)
+    }
+    
     deinit {
         unbind()
     }

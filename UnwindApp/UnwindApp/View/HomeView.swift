@@ -28,6 +28,7 @@ struct HomeView: View {
             
             Button(action: {
                 
+                self.authStatus.saveFeelingsPackage()
             }) {
                 
                 Text("\(self.authStatus.profile?.name ?? "erro")")
