@@ -18,6 +18,11 @@ struct LoginViewStruct: View {
     @State private var error: String = ""
     @State private var loginSelected: Bool = true
     @State private var selectedButton: Bool = false
+    @State private var pickerText: String = "Qual melhor representa você?"
+    @State var value: CGFloat = 0
+    
+    @State var showPicker: Bool = false
+    @State var userType: UserTypeOptions = .patient
     
     var registerColor: Color {
         return !loginSelected ? Color.strokeBlue : Color.gray
@@ -25,6 +30,10 @@ struct LoginViewStruct: View {
     
     var loginColor: Color {
         return loginSelected ? Color.strokeBlue : Color.gray
+    }
+    
+    var isPlaceHolder: Bool {
+        return pickerText == "Qual melhor representa você?" ? true : false
     }
     
     func signIn() {
@@ -96,7 +105,7 @@ struct LoginViewStruct: View {
                     }.padding(.bottom, 25)
                 }
                 
-                VStack(spacing: 80){
+                VStack(spacing: 60){
                     Image("logo_Login")
                         .frame(width: UIScreen.main.bounds.width * 0.13, height: UIScreen.main.bounds.width * 0.17)
                     // Body of login container
@@ -147,7 +156,7 @@ struct LoginViewStruct: View {
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 6.0)
-                                    .stroke(Color.strokeGray, lineWidth: 0.8)
+                                    .stroke(Color(red: 217/255, green: 219/255, blue: 226/255), lineWidth: 1.5)
                         )
                         
                         SecureField("Senha", text: self.$password)
@@ -157,8 +166,7 @@ struct LoginViewStruct: View {
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 6.0)
-                                    .stroke(Color.strokeGray
-                                        , lineWidth: 0.8)
+                                    .stroke(Color(red: 217/255, green: 219/255, blue: 226/255), lineWidth: 1.5)
                         )
                         // Login or register text fields
                         if !self.loginSelected {
@@ -169,7 +177,7 @@ struct LoginViewStruct: View {
                                 .padding()
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 6.0)
-                                        .stroke(Color.strokeGray, lineWidth: 0.8)
+                                        .stroke(Color(red: 217/255, green: 219/255, blue: 226/255), lineWidth: 1.5)
                             )
                             
                             TextField("Telefone", text: self.$phone)
@@ -178,10 +186,21 @@ struct LoginViewStruct: View {
                                 .padding()
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 6.0)
-                                        .stroke(Color.strokeGray, lineWidth: 0.8)
+                                        .stroke(Color(red: 217/255, green: 219/255, blue: 226/255), lineWidth: 1.5)
                             )
-                                
+                            
+                            Button(action: {
+                                self.showPicker.toggle()
+                            }) {
+                                HStack{
+                                    Text(self.pickerText)
+                                    .font(.system(size: 25))
+                                    Spacer()
+                                    Image(systemName: "chevron.down")
+                                }
+                            }.buttonStyle(PickerButtonStyle(isPlaceHolderColor: self.isPlaceHolder))
                         }
+                        
                         if self.loginSelected{
                             HStack{
                                 Spacer()
@@ -194,7 +213,6 @@ struct LoginViewStruct: View {
                                 }
                             }
                         }
-                        
                         Button(action : {
                             if self.loginSelected {
                                 self.signIn()
@@ -226,14 +244,52 @@ struct LoginViewStruct: View {
                     Spacer()
                     
                 }.padding(.top, 80)
+                .offset(y: -self.value)
+                .animation(.spring())
+                .onAppear {
+                    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { (noti) in
+                        
+                        let value = noti.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+                        let height = value.height
+                        
+                        if !self.loginSelected {
+                            self.value = height/1.5
+                            print(self.value)
+                        }
+                    }
+                    
+                    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { (noti) in
+                        
+                        self.value = 0
+                    }
+                }
+                
+                VStack{
+                    
+                    Spacer()
+                    
+                    if self.showPicker {
+                        UserTypePicker(selected: self.$userType)
+                            .onAppear {
+                                self.value = UIScreen.main.bounds.width * 0.22
+                            }
+                            .onDisappear {
+                                self.pickerText = self.userType.rawValue
+                                self.value = 0.0
+                            }
+                        
+                    }
+                }
+                
+                
             }
-            
         }
             .edgesIgnoringSafeArea(.all)
             .padding(.horizontal, 130)
             .background(Color(red: 248/255, green: 250/255, blue: 255/255))
             .onTapGesture {
                 UIApplication.shared.endEditing()
+                if self.showPicker { self.showPicker.toggle() }
             }
     }
     
@@ -260,6 +316,25 @@ struct LoginViewStruct: View {
     }
 }
 
+struct PickerButtonStyle: ButtonStyle {
+    
+    var isPlaceHolderColor: Bool
+    
+    var pickerTextColor: Color {
+        return isPlaceHolderColor ? Color(red: 184/255, green: 188/255, blue: 201/255) : Color.black
+    }
+    
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+        .padding(25)
+        .frame(width: UIScreen.main.bounds.width * 0.63, height: UIScreen.main.bounds.width * 0.1)
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color(red: 217/255, green: 219/255, blue: 226/255), lineWidth: 1.5)
+        )
+        .foregroundColor(pickerTextColor)
+    }
+}
 struct LoginView: View {
     var body: some View {
         
