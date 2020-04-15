@@ -21,6 +21,7 @@ extension Color {
 
 class FeelingsViewModel: ObservableObject {
     
+    @EnvironmentObject var authStatus: AuthenticationManager
     @Published var feeling: Feeling = Feeling(id: 0, imageName: "ic_muito_feliz", description: "Muito Feliz", color: .veryHappy)
     @Published var linkActivate = false
     
@@ -49,6 +50,9 @@ class FeelingsViewModel: ObservableObject {
         //==============================
         //INSERT CODE TO SAVE THE FEELING
         //==============================
+        
+        FeelingsInfo.sharedInstance.user_feeling = feeling.description
+        //authStatus.setUserFeeling(user_feeling: feeling.description, feelingType: "user_feeling")
     }
     
 }
@@ -116,7 +120,7 @@ struct FeelingsView: View {
 
 struct FeelingsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        FeelingsView()
+        FeelingsView().environmentObject(AuthenticationManager())
     }
 }
 

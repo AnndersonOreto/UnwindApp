@@ -10,6 +10,7 @@ import SwiftUI
 
 class EmotionViewModel: ObservableObject {
     
+    @EnvironmentObject var authStatus: AuthenticationManager
     @Published var selected = ""
     @Published var emotionsToSend: [Emotion] = []
     
@@ -33,6 +34,11 @@ class EmotionViewModel: ObservableObject {
         //==============================
         
         //USE emotionsToSend
+        let  emotions = emotionsToSend.map( { $0.name } )
+        
+        FeelingsInfo.sharedInstance.user_emotions = emotions
+        
+        //authStatus.setUserEmotions(user_emotions: emotions)
     }
     
 }
@@ -87,7 +93,7 @@ struct EmotionView: View {
 
 struct EmotionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        EmotionView()
+        EmotionView().environmentObject(AuthenticationManager())
     }
 }
 

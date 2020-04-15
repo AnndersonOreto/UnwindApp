@@ -8,14 +8,30 @@
 
 import Foundation
 
-struct FeelingsInfo {
-    var user_feeling: String
-    var user_emotions: [String]
-    var user_situation: String
-    var user_thoughts: String
-    var user_action: String
+final class FeelingsInfo {
+    
+    static let sharedInstance = FeelingsInfo()
+    
+    var user_feeling: String = ""
+    var user_emotions: [String] = []
+    var user_situation: String = ""
+    var user_thoughts: String = ""
+    var user_action: String = ""
+    
+    init() {
+        
+    }
+}
+
+struct Feelings {
+    
+    var user_feeling: String = ""
+    var user_emotions: String = ""
+    var user_situation: String = ""
+    var user_thoughts: String = ""
+    var user_action: String = ""
 }
 
 struct FeelingsInfoArray {
-    var user_array: [FeelingsInfo]
+    var user_array: [Feelings]
 }
