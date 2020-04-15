@@ -1,15 +1,15 @@
 //
-//  PatientsViewModel.swift
+//  UserHistoryViewModel.swift
 //  UnwindApp
 //
-//  Created by Arthur Bastos Fanck on 06/04/20.
+//  Created by Arthur Bastos Fanck on 15/04/20.
 //  Copyright © 2020 Annderson Packeiser Oreto. All rights reserved.
 //
 
 import Foundation
 
-class PatientsViewModel: ObservableObject, ViewModelProtocol {
-    typealias ContentType = Patient
+class UserHistoryViewModel: ViewModelProtocol {
+    typealias ContentType = UserReport
     
     @Published var content: [ContentType]
     @Published var regularTitle: String
@@ -18,9 +18,9 @@ class PatientsViewModel: ObservableObject, ViewModelProtocol {
     @Published var rowSubtitle: [String]
     
     init() {
-        self.content = fakePatients
+        self.content = fakeReports
         self.regularTitle = ""
-        self.boldTitle = "Carol da Silva"
+        self.boldTitle = "Júlia"
         self.rowTitle = [String]()
         self.rowSubtitle = [String]()
         
@@ -48,30 +48,31 @@ class PatientsViewModel: ObservableObject, ViewModelProtocol {
     
     func makeRowTitle() -> [String] {
         var texts = [String]()
-        self.content.forEach { (patient) in
-            texts.append(patient.name)
+        self.content.forEach { (report) in
+            texts.append(report.feeling.description)
         }
         return texts
     }
     
     func makeRowSubtitle() -> [String] {
         var texts = [String]()
-        self.content.forEach { (patient) in
-            let string = patient.phoneNumber + " | " + patient.email
-            texts.append(string)
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .none
+        
+        self.content.forEach { (report) in
+            texts.append(formatter.string(from: report.date))
         }
         return texts
     }
     
     func sortList(by option: SortOptions) {
         switch option {
-        case .alphabetically:
-            self.content.sort { (patient0, patient1) in
-                patient0.name.lowercased() < patient1.name.lowercased()
-            }
-            self.rowTitle = makeRowTitle()
         case .addedData:
-           break
+            break
+        case .alphabetically:
+            break
         case .modifiedData:
             break
         }

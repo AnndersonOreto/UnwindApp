@@ -11,7 +11,7 @@ import SwiftUI
 enum SortOptions: String, CaseIterable, Identifiable {
     var id: SortOptions { self }
     
-    case alphabetically = "Alfabético"
+    case alphabetically = "Alfabética"
     case addedData = "Data de adição"
     case modifiedData = "Data de modificação"
 }
@@ -22,7 +22,7 @@ struct SortPicker: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             HStack(alignment: .bottom) {
-                Text("Ordenamento")
+                Text("Ordem")
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity)
                 Text("\(self.selected.rawValue)")
