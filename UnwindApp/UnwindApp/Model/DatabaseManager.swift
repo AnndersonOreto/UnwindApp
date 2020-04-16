@@ -44,6 +44,8 @@ class DatabaseManager {
         
         dateFormatter.dateFormat = "hh:mm dd/MM/yyyy"
         
+        FeelingsInfo.sharedInstance.date = dateFormatter.string(from: date)
+        
         let post = ["user_feeling": FeelingsInfo.sharedInstance.user_feeling,
                     "user_emotions": userEmotions,
                     "user_situation": FeelingsInfo.sharedInstance.user_situation,

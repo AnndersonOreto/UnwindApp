@@ -15,6 +15,7 @@ class AuthenticationProfile {
     var name: String = ""
     var phone: String = ""
     var role: String = ""
+    var feelings: FeelingsInfoArray?
     
     init(id: String, email: String?) {
         
