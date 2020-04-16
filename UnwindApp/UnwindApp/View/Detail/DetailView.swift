@@ -23,7 +23,7 @@ struct DetailView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 HStack(alignment: .center) {
                     Group {
-                        Text("\(viewModel.userName), confira")
+                        Text("\(authStatus.profile?.name ?? ""), confira")
                         Text("suas emoções")
                             .fontWeight(.bold)
                     }.font(.largeTitle)
@@ -44,7 +44,7 @@ struct DetailView: View {
                             VStack(alignment: .leading) {
                                 Text("Data e Hora:")
                                     .foregroundColor(.secondary)
-                                Text("\(viewModel.date) às \(viewModel.hour)")
+                                Text("\(FeelingsInfo.sharedInstance.date)")
                                     .foregroundColor(.primary)
                                     .fontWeight(.semibold)
                             }
@@ -88,7 +88,7 @@ struct DetailView: View {
                         }
                     }.asCard()
                     HStack {
-                        TitleAndText(title: "Qual foi a situação?", text: viewModel.situation)
+                        TitleAndText(title: "Qual foi a situação?", text: FeelingsInfo.sharedInstance.user_situation)
                         Spacer()
                         Button(action: edit) {
                             Image(systemName: "pencil")
@@ -96,7 +96,7 @@ struct DetailView: View {
                         }
                     }.asCard()
                     HStack {
-                        TitleAndText(title: "Qual foi seu pensamento?", text: viewModel.thought)
+                        TitleAndText(title: "Qual foi seu pensamento?", text: FeelingsInfo.sharedInstance.user_thoughts)
                         Spacer()
                         Button(action: edit) {
                             Image(systemName: "pencil")
@@ -104,7 +104,7 @@ struct DetailView: View {
                         }
                     }.asCard()
                     HStack {
-                        TitleAndText(title: "Qual foi sua ação?", text: viewModel.action)
+                        TitleAndText(title: "Qual foi sua ação?", text: FeelingsInfo.sharedInstance.user_action)
                         Spacer()
                         Button(action: edit) {
                             Image(systemName: "pencil")
