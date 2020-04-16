@@ -28,7 +28,7 @@ struct DetailView: View {
                 Group {
                     HStack(alignment: .center) {
                         Group {
-                            Text("\(viewModel.userName), confira ")
+                            Text("\(authStatus.profile?.name ?? ""), confira ")
                             + Text("suas emoções")
                                 .fontWeight(.bold)
                         }.font(.largeTitle)
@@ -43,7 +43,7 @@ struct DetailView: View {
                                 VStack(alignment: .leading) {
                                     Text("Data e Hora:")
                                         .foregroundColor(.secondary)
-                                    Text("\(viewModel.date) às \(viewModel.hour)")
+                                    Text("\(FeelingsInfo.sharedInstance.date)")
                                         .foregroundColor(.primary)
                                         .fontWeight(.semibold)
                                 }
@@ -86,34 +86,33 @@ struct DetailView: View {
                                     .colorMultiply(.secondary)
                             }
                         }.asCard()
-                        HStack {
-                            TitleAndText(title: "Qual foi a situação?", text: viewModel.situation)
-                            Spacer()
-                            NavigationLink(destination: DescribeView()){
-                                Image(systemName: "pencil")
-                                    .colorMultiply(.secondary)
-                            }
-                        }.asCard()
-                        HStack {
-                            TitleAndText(title: "Qual foi seu pensamento?", text: viewModel.thought)
-                            Spacer()
-                            NavigationLink(destination: DescribeView()){
-                                Image(systemName: "pencil")
-                                    .colorMultiply(.secondary)
-                            }
-                        }.asCard()
-                        HStack {
-                            TitleAndText(title: "Qual foi sua ação?", text: viewModel.action)
-                            Spacer()
-                            NavigationLink(destination: DescribeView()){
-                                Image(systemName: "pencil")
-                                    .colorMultiply(.secondary)
-                            }
-                        }.asCard()
-                    }.padding()
-                }.background(BackgroundWithShape())
-            }
-            .background(Color.clear)
+                    HStack {
+                        TitleAndText(title: "Qual foi a situação?", text: FeelingsInfo.sharedInstance.user_situation)
+                        Spacer()
+                        Button(action: edit) {
+                            Image(systemName: "pencil")
+                                .colorMultiply(.secondary)
+                        }
+                    }.asCard()
+                    HStack {
+                        TitleAndText(title: "Qual foi seu pensamento?", text: FeelingsInfo.sharedInstance.user_thoughts)
+                        Spacer()
+                        NavigationLink(destination: DescribeView()) {
+                            Image(systemName: "pencil")
+                                .colorMultiply(.secondary)
+                        }
+                    }.asCard()
+                    HStack {
+                        TitleAndText(title: "Qual foi sua ação?", text: FeelingsInfo.sharedInstance.user_action)
+                        Spacer()
+                        NavigationLink(destination: DescribeView()) {
+                            Image(systemName: "pencil")
+                                .colorMultiply(.secondary)
+                        }
+                    }.asCard()
+                }.padding()
+            }.background(BackgroundWithShape())
+      }.background(Color.clear)
             if showDatePicker {
                 DateAndHourPicker(selected: $selectedDate)
                     .onDisappear { print(self.selectedDate) }

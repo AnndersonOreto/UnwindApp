@@ -17,6 +17,7 @@ final class FeelingsInfo {
     var user_situation: String = ""
     var user_thoughts: String = ""
     var user_action: String = ""
+    var date: String = ""
     
     init() {
         
