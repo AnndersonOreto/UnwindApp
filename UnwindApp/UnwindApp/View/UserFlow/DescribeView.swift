@@ -95,8 +95,6 @@ struct DescribeView: View {
 //                        self.authStatus.setUserFeeling(user_feeling: self.text, feelingType: "user_action")
                         break
                     }
-                    
-                    print(self.text)
                 }) {
                     Text("Salvar")
                         .kerning(0.3)
