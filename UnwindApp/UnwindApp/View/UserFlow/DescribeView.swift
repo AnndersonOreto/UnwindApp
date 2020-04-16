@@ -56,9 +56,9 @@ struct DescribeView: View {
     
     var body: some View {
         
-        Background {
-            NavigationLink("", destination: DetailView(), isActive: self.$teste)
+        //Background {
             VStack(spacing: 130){
+                NavigationLink("", destination: DetailView(), isActive: self.$teste)
                 Text(self.viewModel.state.title)
                     .kerning(0.8)
                 .font(.system(size: 40))
@@ -116,12 +116,14 @@ struct DescribeView: View {
                                 self.value = 0
                             }
                         }
-            }.navigationBarItems(trailing:
+            }
+            .onTapGesture {
+                UIApplication.shared.endEditing()
+            }
+            .navigationBarItems(trailing:
                 ProgressBar(currentPage: self.viewModel.state.page).padding(.trailing, UIScreen.main.bounds.width*0.1)
             )
-        }.onTapGesture {
-            UIApplication.shared.endEditing()
-        }
+//        }
         
     }
     
