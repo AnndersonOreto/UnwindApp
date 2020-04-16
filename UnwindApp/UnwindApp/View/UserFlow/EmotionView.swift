@@ -81,7 +81,7 @@ struct EmotionView: View {
     var body: some View {
         
         VStack{
-            NavigationLink("", destination: DescribeView(), isActive: $teste)
+            NavigationLink("", destination: DescribeView(state: .situation), isActive: $teste)
             Spacer()
             VStack(spacing: 77){
                 Text("Qual foi sua emoção neste momento?")

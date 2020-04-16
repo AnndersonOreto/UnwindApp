@@ -47,12 +47,13 @@ class DescribeViewModel: ObservableObject {
 }
 
 struct DescribeView: View {
-    
     @EnvironmentObject var authStatus: AuthenticationManager
     @State var text = ""
     @State var value: CGFloat = 0
     @State var teste: Bool = false
     @ObservedObject var viewModel = DescribeViewModel()
+    @State var state: DescribeState
+    
     
     var body: some View {
         
@@ -91,7 +92,7 @@ struct DescribeView: View {
                         FeelingsInfo.sharedInstance.user_action = self.text
                         self.teste.toggle()
                         
-//                        self.authStatus.saveFeelingsPackage()
+                        self.authStatus.saveFeelingsPackage()
 //                        self.authStatus.setUserFeeling(user_feeling: self.text, feelingType: "user_action")
                         break
                     }
@@ -117,6 +118,9 @@ struct DescribeView: View {
                             }
                         }
             }
+            .onAppear(perform: {
+                self.viewModel.setState(state: self.state)
+            })
             .onTapGesture {
                 UIApplication.shared.endEditing()
             }
@@ -229,7 +233,7 @@ struct MultiLineTextField: UIViewRepresentable {
 
 struct DescribeView_Previews: PreviewProvider {
     static var previews: some View {
-        DescribeView().environmentObject(AuthenticationManager())
+        DescribeView(state: .situation).environmentObject(AuthenticationManager())
     }
 }
 

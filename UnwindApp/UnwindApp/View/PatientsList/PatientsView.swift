@@ -41,7 +41,7 @@ struct PatientsView: View {
     @ObservedObject var viewModel = PatientsViewModel()
     
     var body: some View {
-        SortableList(viewModel: viewModel)
+        SortableList(viewModel: viewModel, isPacient: false)
     }
 }
 
