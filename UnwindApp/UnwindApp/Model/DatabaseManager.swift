@@ -38,11 +38,18 @@ class DatabaseManager {
         
         let userEmotions: String = FeelingsInfo.sharedInstance.user_emotions.reduce("") { text, name in "\(text),\(name)" }
         
+        let date = Date()
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "hh:mm dd/MM/yyyy"
+        
         let post = ["user_feeling": FeelingsInfo.sharedInstance.user_feeling,
                     "user_emotions": userEmotions,
                     "user_situation": FeelingsInfo.sharedInstance.user_situation,
                     "user_thoughts": FeelingsInfo.sharedInstance.user_thoughts,
-                    "user_action": FeelingsInfo.sharedInstance.user_action]
+                    "user_action": FeelingsInfo.sharedInstance.user_action,
+                    "date": dateFormatter.string(from: date)]
         
         ref.child("users").child(userUid).child("feelings").childByAutoId().setValue(post) { (error, ret) in
             

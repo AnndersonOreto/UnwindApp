@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DetailView: View {
     
+    @EnvironmentObject var authStatus: AuthenticationManager
     @ObservedObject var viewModel = DetailViewModel()
     @State var showDatePicker: Bool = false
     @State var selectedDate: Date = Date()
@@ -124,7 +125,7 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView()
+        DetailView().environmentObject(AuthenticationManager())
     }
 }
 

@@ -54,7 +54,7 @@ struct LoginViewStruct: View {
     
     func signUp() {
         
-        authStatus.signUp(email: username, password: password, phone: phone, name: name, role: role) { (result, error) in
+        authStatus.signUp(email: username, password: password, phone: phone, name: name, role: userType.rawValue) { (result, error) in
             
             if let error = error {
                 
