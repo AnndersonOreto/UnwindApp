@@ -28,11 +28,11 @@ struct Feeling: Identifiable, Hashable {
     let color: CustomColor
 }
 
-let fakeFeeling = Feeling(id: 0, imageName: "image", description: "Muito Feliz", color: .feelingBorder)
+let fakeFeeling = Feeling(id: 0, imageName: "Image", description: "Muito Feliz", color: .feelingBorder)
 
 struct Emotion: Identifiable, Hashable {
     let id = UUID()
-    let imageName:String = "image"
+    let imageName:String = "Image"
     let name: String
 }
 
@@ -40,3 +40,20 @@ let emotion0 = Emotion(name: "Alegre")
 let emotion1 = Emotion(name: "Amoroso")
 let emotion2 = Emotion(name: "Feliz")
 let fakeEmotions = [emotion0, emotion1, emotion2]
+
+
+struct UserReport {
+    let id = UUID()
+    let feeling: Feeling
+    let emotions: [Emotion]
+    let situation: String
+    let thought: String
+    let action: String
+    let date: Date
+}
+
+let report0 = UserReport(feeling: fakeFeeling, emotions: fakeEmotions, situation: "Situation", thought: "Thought", action: "Action", date: Date())
+let report1 = UserReport(feeling: fakeFeeling, emotions: fakeEmotions, situation: "Situation", thought: "Thought", action: "Action", date: Date())
+let report2 = UserReport(feeling: fakeFeeling, emotions: fakeEmotions, situation: "Situation", thought: "Thought", action: "Action", date: Date())
+let report3 = UserReport(feeling: fakeFeeling, emotions: fakeEmotions, situation: "Situation", thought: "Thought", action: "Action", date: Date())
+let fakeReports = [report0, report1, report2, report3]

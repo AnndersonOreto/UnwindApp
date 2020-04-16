@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MessageUI
 
 struct DetailView: View {
     
@@ -14,6 +15,9 @@ struct DetailView: View {
     @ObservedObject var viewModel = DetailViewModel()
     @State var showDatePicker: Bool = false
     @State var selectedDate: Date = Date()
+    @State var showMailView: Bool = false
+    @State var mailResult: Result<MFMailComposeResult, Error>? = nil
+    @State var teste: Bool = false
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -21,72 +25,67 @@ struct DetailView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             ScrollView(.vertical, showsIndicators: false) {
-                HStack(alignment: .center) {
-                    Group {
-                        Text("\(authStatus.profile?.name ?? ""), confira")
-                        Text("suas emoções")
-                            .fontWeight(.bold)
-                    }.font(.largeTitle)
-                    Spacer()
-                    Button(action: viewModel.sendReport ) {
-                        Text("Enviar relatório")
-                            .fontWeight(.bold)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 100)
-                                .stroke(Color.blue, lineWidth: 2)
-                        )
-                    }
-                }.padding([.top,.horizontal])
-                VStack(alignment: .center, spacing: 15) {
-                    HStack(alignment: .center, spacing: 15) {
-                        HStack(alignment: .center) {
-                            VStack(alignment: .leading) {
-                                Text("Data e Hora:")
-                                    .foregroundColor(.secondary)
-                                Text("\(FeelingsInfo.sharedInstance.date)")
+                Group {
+                    HStack(alignment: .center) {
+                        Group {
+                            Text("\(authStatus.profile?.name ?? ""), confira ")
+                            + Text("suas emoções")
+                                .fontWeight(.bold)
+                        }.font(.largeTitle)
+                            .foregroundColor(.white)
+                        Spacer()
+                        reportButton
+                    }.padding([.top,.horizontal])
+                    Spacer().frame(minHeight: 0, maxHeight: 10)
+                    VStack(alignment: .center, spacing: 15) {
+                        HStack(alignment: .center, spacing: 15) {
+                            HStack(alignment: .center) {
+                                VStack(alignment: .leading) {
+                                    Text("Data e Hora:")
+                                        .foregroundColor(.secondary)
+                                    Text("\(FeelingsInfo.sharedInstance.date)")
+                                        .foregroundColor(.primary)
+                                        .fontWeight(.semibold)
+                                }
+                                Spacer()
+                                Button(action: { self.showDatePicker.toggle() }) {
+                                    Image(systemName: "pencil")
+                                        .colorMultiply(.secondary)
+                                }
+                            }.frame(height: height*0.14)
+                            .asCard()
+                            
+                            HStack(alignment: .center) {
+                                Text("Como estava \nse sentindo?")
                                     .foregroundColor(.primary)
                                     .fontWeight(.semibold)
-                            }
-                            Spacer()
-                            Button(action: { self.showDatePicker.toggle() }) {
-                                Image(systemName: "pencil")
-                                    .colorMultiply(.secondary)
-                            }
-                        }.frame(height: height*0.14)
-                        .asCard()
-                        
+                                    .multilineTextAlignment(.leading)
+                                Spacer()
+                                ImageAndTextWithBorder(imageName: viewModel.feeling.imageName, text: viewModel.feeling.description)
+                                Spacer()
+                                NavigationLink(destination: FeelingsView()){
+                                    Image(systemName: "pencil")
+                                        .colorMultiply(.secondary)
+                                }
+                            }.frame(width: width*0.52, height: height*0.14)
+                            .asCard()
+                            
+                        }
                         HStack(alignment: .center) {
-                            Text("Como estava \nse sentindo?")
+                            Text("Qual foi \nsua emoção?")
                                 .foregroundColor(.primary)
                                 .fontWeight(.semibold)
                                 .multilineTextAlignment(.leading)
                             Spacer()
-                            ImageAndTextWithBorder(imageName: viewModel.feeling.imageName, text: viewModel.feeling.description)
+                            ForEach(0 ..< viewModel.numberOfEmotions) { (index) in
+                                ImageAndTextWithBorder(imageName: self.viewModel.emotions[index].imageName, text: self.viewModel.emotions[index].name)
+                            }
                             Spacer()
-                            Button(action: edit) {
+                            NavigationLink(destination: EmotionView(feeling: Feeling(id: 0, imageName: "", description: "", color: .happy))){
                                 Image(systemName: "pencil")
                                     .colorMultiply(.secondary)
                             }
-                        }.frame(width: width*0.52, height: height*0.14)
-                        .asCard()
-                        
-                    }
-                    HStack(alignment: .center) {
-                        Text("Qual foi \nsua emoção?")
-                            .foregroundColor(.primary)
-                            .fontWeight(.semibold)
-                            .multilineTextAlignment(.leading)
-                        Spacer()
-                        ForEach(0 ..< viewModel.numberOfEmotions) { (index) in
-                            ImageAndTextWithBorder(imageName: self.viewModel.emotions[index].imageName, text: self.viewModel.emotions[index].name)
-                        }
-                        Spacer()
-                        Button(action: edit) {
-                            Image(systemName: "pencil")
-                                .colorMultiply(.secondary)
-                        }
-                    }.asCard()
+                        }.asCard()
                     HStack {
                         TitleAndText(title: "Qual foi a situação?", text: FeelingsInfo.sharedInstance.user_situation)
                         Spacer()
@@ -98,7 +97,7 @@ struct DetailView: View {
                     HStack {
                         TitleAndText(title: "Qual foi seu pensamento?", text: FeelingsInfo.sharedInstance.user_thoughts)
                         Spacer()
-                        Button(action: edit) {
+                        NavigationLink(destination: DescribeView()) {
                             Image(systemName: "pencil")
                                 .colorMultiply(.secondary)
                         }
@@ -106,19 +105,43 @@ struct DetailView: View {
                     HStack {
                         TitleAndText(title: "Qual foi sua ação?", text: FeelingsInfo.sharedInstance.user_action)
                         Spacer()
-                        Button(action: edit) {
+                        NavigationLink(destination: DescribeView()) {
                             Image(systemName: "pencil")
                                 .colorMultiply(.secondary)
                         }
                     }.asCard()
                 }.padding()
-            }.background(CustomColor.background.color)
+            }.background(BackgroundWithShape())
+      }.background(Color.clear)
             if showDatePicker {
                 DateAndHourPicker(selected: $selectedDate)
-                    .onDisappear {
-                        print(self.selectedDate)
-                }
+                    .onDisappear { print(self.selectedDate) }
             }
+        }.navigationBarTitle("", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+            Button(action: { self.authStatus.selectedTab = 1 }, label: {
+                Image(systemName: "chevron.left")
+                    .colorMultiply(.accentColor)
+            })
+        )
+    }
+}
+
+extension DetailView {
+    var reportButton: some View {
+        Button(action: { self.showMailView.toggle() } ) {
+            Text("Enviar relatório")
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding()
+                .overlay(
+                RoundedRectangle(cornerRadius: 45)
+                    .stroke(Color.white, lineWidth: 2)
+            )
+        }.disabled(!MFMailComposeViewController.canSendMail())
+            .sheet(isPresented: self.$showMailView) {
+                MailView(result: self.$mailResult)
         }
     }
 }
@@ -126,21 +149,5 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailView().environmentObject(AuthenticationManager())
-    }
-}
-
-extension DetailView {
-    func edit() {
-        print(self.width)
-        print(self.height)
-    }
-}
-
-extension View {
-    func asCard() -> some View {
-        padding()
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-            .shadow(color: CustomColor.shadow.color, radius: 10, x: 0, y: 2)
     }
 }

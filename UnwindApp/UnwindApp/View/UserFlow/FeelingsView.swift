@@ -22,6 +22,7 @@ extension Color {
 class FeelingsViewModel: ObservableObject {
     
     @EnvironmentObject var authStatus: AuthenticationManager
+    @State var currentPage: CGFloat = 1
     @Published var feeling: Feeling = Feeling(id: 0, imageName: "ic_muito_feliz", description: "Muito Feliz", color: .veryHappy)
     @Published var linkActivate = false
     
@@ -64,49 +65,49 @@ struct FeelingsView: View {
     @State var teste: Bool = false
     
     var body: some View {
-        
-//        NavigationView{
-            VStack(){
-//                NavigationLink("", destination: EmotionView(), isActive: $teste)
-                Spacer()
-                VStack(spacing: 50){
-                    VStack(spacing:50){
-                        HStack{
-                           Text("Julia, como você está se")
-                            .font(.system(size: 40))
-                            .foregroundColor(Color.fontColorBlack)
-                            Text("sentindo?")
-                            .font(.system(size: 40)).bold()
-                            .foregroundColor(Color.fontColorBlack)
-                        }
-                        Image(viewModel.getBigImage())
-                            .frame(width: getImageSize(), height: getImageSize())
-                        Text(viewModel.feeling.description)
-                            .font(.system(size: 30))
-                            .fontWeight(.medium)
-                            .foregroundColor(Color.selectFeelingFontColor)
+
+        VStack(){
+            NavigationLink("", destination: EmotionView(feeling: viewModel.feeling), isActive: $teste)
+            VStack(spacing: 50){
+                VStack(spacing:15){
+                    HStack{
+                       Text("Julia, como você está se")
+                        .font(.system(size: 40))
+                        .foregroundColor(Color.fontColorBlack)
+                        Text("sentindo?")
+                        .font(.system(size: 40)).bold()
+                        .foregroundColor(Color.fontColorBlack)
                     }
-                    VStack{
-                        ForEach(viewModel.array, id: \.self) { row in
-                            HStack(spacing: 10){
-                                ForEach(row, id: \.self) { feeling in
-                                    ButtonFeeling(feeling: feeling, viewModel: self.viewModel)
-                                }
+                    Image(viewModel.getBigImage())
+                        .resizable()
+                        .frame(width: getImageSize(), height: getImageSize())
+                    Text(viewModel.feeling.description)
+                        .font(.system(size: 30))
+                        .fontWeight(.medium)
+                        .foregroundColor(Color.selectFeelingFontColor)
+                }
+                VStack{
+                    ForEach(viewModel.array, id: \.self) { row in
+                        HStack(spacing: 10){
+                            ForEach(row, id: \.self) { feeling in
+                                ButtonFeeling(feeling: feeling, viewModel: self.viewModel)
                             }
                         }
                     }
                 }
-                Spacer()
-                Button(action: {
-                    self.viewModel.saveFeeling()
-                    self.teste.toggle()
-                }) {
-                    Text(self.viewModel.sendButtonText())
-                    .kerning(0.3)
-                    .font(.system(size: 30)).bold()
-                }.buttonStyle(SendButtonStyle())
-            }.navigate(to: EmotionView(), when: $teste)
-//        }.navigationViewStyle(StackNavigationViewStyle())
+            }
+            Spacer()
+            Button(action: {
+                self.viewModel.saveFeeling()
+                self.teste.toggle()
+            }) {
+                Text(self.viewModel.sendButtonText())
+                .kerning(0.3)
+                .font(.system(size: 30)).bold()
+            }.buttonStyle(SendButtonStyle())
+        }.navigationBarItems(trailing:
+            ProgressBar(currentPage: self.viewModel.currentPage).padding(.trailing, UIScreen.main.bounds.width*0.1)
+        )
     }
     
     func getImageSize() -> CGFloat {

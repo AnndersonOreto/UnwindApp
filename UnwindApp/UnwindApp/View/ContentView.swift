@@ -23,9 +23,54 @@ struct ContentView: View {
             if authStatus.profile != nil {
                 
                 if authStatus.profile?.role == "Paciente" {
-                    FeelingsView()
+                    TabView(selection: $authStatus.selectedTab) {
+                        NavigationView {
+                            FeelingsView()
+                        }.navigationViewStyle(StackNavigationViewStyle())
+                        .tabItem {
+                            VStack {
+                                Image(systemName: "heart")
+                                Text("Emoção")
+                            }
+                        }.tag(0)
+                        
+                        NavigationView {
+                            UserHistoryView()
+                        }.navigationViewStyle(StackNavigationViewStyle())
+                        .tabItem {
+                            VStack {
+                                Image(systemName: "calendar")
+                                Text("Histórico")
+                            }
+                        }.tag(1)
+                        
+                        DetailView().tabItem {
+                            VStack {
+                                Image(systemName: "person")
+                                Text("Perfil")
+                            }
+                        }.tag(2)
+                    }
                 } else {
-                    PatientsView()
+                    TabView(selection: $authStatus.selectedTab) {
+                        NavigationView {
+                            PatientsView()
+                        }
+                        .navigationViewStyle(StackNavigationViewStyle())
+                        .tabItem {
+                            VStack {
+                                Image(systemName: "calendar")
+                                Text("Histórico")
+                            }
+                        }.tag(0)
+                        DetailView().tabItem {
+                            VStack {
+                                Image(systemName: "person")
+                                Text("Perfil")
+                            }
+                        }.tag(1)
+                    }
+
                 }
             } else {
                 LoginView()
