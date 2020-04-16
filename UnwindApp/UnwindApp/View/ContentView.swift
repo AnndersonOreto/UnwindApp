@@ -21,7 +21,12 @@ struct ContentView: View {
         Group {
             
             if authStatus.profile != nil {
-                FeelingsView()
+                
+                if authStatus.profile?.role == "Paciente" {
+                    FeelingsView()
+                } else {
+                    PatientsView()
+                }
             } else {
                 LoginView()
             }

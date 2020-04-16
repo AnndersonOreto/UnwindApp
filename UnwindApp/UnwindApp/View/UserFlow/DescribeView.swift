@@ -79,9 +79,15 @@ struct DescribeView: View {
                         break
                     }
                     
-                    self.authStatus.saveFeelingsPackage()
+                    self.text = ""
                     
-                    print(self.text)
+                    if self.viewModel.state == DescribeState.situation {
+                        self.viewModel.state = DescribeState.thoughts
+                    } else if self.viewModel.state == DescribeState.thoughts {
+                        self.viewModel.state = DescribeState.action
+                    } else {
+                        self.authStatus.saveFeelingsPackage()
+                    }
                 }) {
                     Text("Salvar")
                         .kerning(0.3)
