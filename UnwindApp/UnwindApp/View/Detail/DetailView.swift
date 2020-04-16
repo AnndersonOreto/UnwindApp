@@ -121,12 +121,6 @@ struct DetailView: View {
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView().environmentObject(AuthenticationManager())
-    }
-}
-
 extension DetailView {
     var reportButton: some View {
         Button(action: { self.showMailView.toggle() } ) {
@@ -147,14 +141,6 @@ extension DetailView {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            DetailView()
-                .previewDevice(.init(rawValue: "iPhone 11"))
-                .previewDisplayName("iPhone 11")
-            DetailView()
-                .previewDevice(.init(rawValue: "iPad Pro (9.7-inch)"))
-                .previewDisplayName("iPad Pro (9.7-inch)")
-        }
-        
+        DetailView().environmentObject(AuthenticationManager())
     }
 }
