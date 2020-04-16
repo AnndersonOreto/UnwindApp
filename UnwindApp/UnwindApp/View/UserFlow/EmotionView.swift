@@ -15,11 +15,25 @@ class EmotionViewModel: ObservableObject {
     @Published var emotionsToSend: [Emotion] = []
     @State var currentPage: CGFloat = 2
     
-    let array: [[Emotion]] = [
-        [Emotion(name: "emocao1"), Emotion(name: "emocao2"), Emotion(name: "emocao3"), Emotion(name: "emocao4")],
-        [Emotion(name: "emocao5"), Emotion(name: "emocao6"), Emotion(name: "emocao7"), Emotion(name: "emocao8")],
-        [Emotion(name: "emocao9"), Emotion(name: "emocao10"), Emotion(name: "emocao11"), Emotion(name: "emocao12")],
-        [Emotion(name: "emocao13"), Emotion(name: "emocao14"), Emotion(name: "emocao15"), Emotion(name: "emocao16")]
+    @Published var array: [[Emotion]] = []
+    
+    let happyArray: [[Emotion]] = [
+    [Emotion(name: "Ansioso"), Emotion(name: "Alegre"), Emotion(name: "Amoroso"), Emotion(name: "Feliz")],
+    [Emotion(name: "Otimista"), Emotion(name: "Calmo"), Emotion(name: "Leve"), Emotion(name: "Especial")],
+    [Emotion(name: "Orgulhoso"), Emotion(name: "Excitado"), Emotion(name: "Constrangido")],
+    ]
+    
+    let neutralArray: [[Emotion]] = [
+        [Emotion(name: "Medo"), Emotion(name: "Ansioso"), Emotion(name: "Calmo"), Emotion(name: "Envergonhado")],
+        [Emotion(name: "Indiferente"), Emotion(name: "Constrangido"), Emotion(name: "Inseguro"), Emotion(name: "Aborrecido")],
+        [Emotion(name: "Assustado"), Emotion(name: "Frustado")],
+    ]
+    
+    let sadArray: [[Emotion]] = [
+        [Emotion(name: "Medo"), Emotion(name: "Triste"), Emotion(name: "Ansioso"), Emotion(name: "Raiva")],
+        [Emotion(name: "Envergonhado"), Emotion(name: "Constrangido"), Emotion(name: "Inseguro"), Emotion(name: "Assustado")],
+        [Emotion(name: "Frustado"), Emotion(name: "Deprimido"), Emotion(name: "Irritado"), Emotion(name: "Magoado")],
+        [Emotion(name: "Culpado"), Emotion(name: "Humilhado")],
     ]
     
     func sendButtonText() -> String {
@@ -42,6 +56,19 @@ class EmotionViewModel: ObservableObject {
         //authStatus.setUserEmotions(user_emotions: emotions)
     }
     
+    func setArray(feeling: Feeling) {
+        
+        switch feeling.description {
+        case "Muito Feliz", "Feliz":
+            array = happyArray
+        case "Neutro":
+            array = neutralArray
+        case "Muito Triste", "Triste":
+            array = sadArray
+        default:
+            array = happyArray
+        }
+    }
 }
 
 struct EmotionView: View {
@@ -49,6 +76,7 @@ struct EmotionView: View {
     @ObservedObject var viewModel = EmotionViewModel()
     @State var teste: Bool = false
     @State var selectedRows = Set<UUID>()
+    @State var feeling: Feeling
     
     var body: some View {
         
@@ -91,13 +119,16 @@ struct EmotionView: View {
             }.buttonStyle(SendButtonStyle())
         }.navigationBarItems(trailing:
             ProgressBar(currentPage: self.viewModel.currentPage).padding(.trailing, UIScreen.main.bounds.width*0.1)
+                .onAppear{
+                    self.viewModel.setArray(feeling: self.feeling)
+            }
         )
     }
 }
 
 struct EmotionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        EmotionView().environmentObject(AuthenticationManager())
+        EmotionView(feeling: Feeling(id: 0, imageName: "", description: "", color: .happy)).environmentObject(AuthenticationManager())
     }
 }
 
