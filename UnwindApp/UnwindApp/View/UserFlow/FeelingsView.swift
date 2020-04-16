@@ -65,8 +65,9 @@ struct FeelingsView: View {
     @State var teste: Bool = false
     
     var body: some View {
+
         VStack(){
-            NavigationLink("", destination: EmotionView(), isActive: $teste)
+            NavigationLink("", destination: EmotionView(feeling: viewModel.feeling), isActive: $teste)
             VStack(spacing: 50){
                 VStack(spacing:15){
                     HStack{
