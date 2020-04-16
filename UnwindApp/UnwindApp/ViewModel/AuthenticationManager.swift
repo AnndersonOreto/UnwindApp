@@ -82,6 +82,16 @@ class AuthenticationManager: ObservableObject {
         self.database.saveFeelings(userUid: userUid)
     }
     
+    func getFeelingsList() {
+        
+        guard let userUid = Auth.auth().currentUser?.uid else { return }
+        
+        self.database.getFeelings(userUid: userUid, completion: { feelings in
+            
+            self.profile?.feelings = feelings
+        })
+    }
+    
     deinit {
         unbind()
     }
