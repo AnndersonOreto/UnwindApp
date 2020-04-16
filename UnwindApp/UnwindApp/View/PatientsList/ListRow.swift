@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-struct PatientRow: View {
+struct ListRow: View {
     
-    let name: String
-    let phoneNumber: String
-    let email: String
+    //let imageName: String
+    let text1: String
+    let text2: String
     
     var body: some View {
         HStack(alignment: .center) {
@@ -21,16 +21,12 @@ struct PatientRow: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 80)
             VStack(alignment: .leading) {
-                Text(name)
+                Text(text1)
                     .foregroundColor(.primary)
                     .font(.system(size: 20, weight: .semibold))
-                HStack(alignment: .center) {
-                    Text(phoneNumber)
-                    Text("|")
-                    Text(email)
-                }.foregroundColor(.secondary)
+                Text(text2).foregroundColor(.secondary)
                     .font(.system(size: 15, weight: .semibold))
-                .lineLimit(1)
+                    .lineLimit(1)
             }
         }
     }
@@ -38,6 +34,6 @@ struct PatientRow: View {
 
 struct PatientRow_Previews: PreviewProvider {
     static var previews: some View {
-        PatientRow(name: "Name", phoneNumber: "Phone number", email: "e-mail")
+        ListRow(text1: "Name", text2: "Phone number | e-mail")
     }
 }

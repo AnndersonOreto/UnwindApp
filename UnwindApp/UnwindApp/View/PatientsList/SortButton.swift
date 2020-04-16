@@ -12,7 +12,6 @@ struct SortButton: View {
     @Binding var showPicker: Bool
     
     var body: some View {
-        
         Group {
             Button(action: {
                 self.showPicker.toggle()
@@ -23,7 +22,7 @@ struct SortButton: View {
                         .colorMultiply(.secondary)
                 }.padding([.top, .leading])
             }
-        }
+        }.shadow(color: .gray, radius: 20, x: 0, y: 0)
     }
 }
 

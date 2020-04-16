@@ -13,16 +13,22 @@ struct MailView: UIViewControllerRepresentable {
     
     typealias UIViewControllerType = MFMailComposeViewController
     
+    @Environment(\.presentationMode) var presentation
     @Binding var result: Result<MFMailComposeResult, Error>?
     
     class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
+        @Binding var presentation: PresentationMode
         @Binding var result: Result<MFMailComposeResult, Error>?
         
-        init(result: Binding<Result<MFMailComposeResult, Error>?>) {
+        init(presentation: Binding<PresentationMode>, result: Binding<Result<MFMailComposeResult, Error>?>) {
+            _presentation = presentation
             _result = result
         }
         
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+            defer {
+                $presentation.wrappedValue.dismiss()
+            }
             guard error == nil else {
                 self.result = .failure(error!)
                 return
@@ -32,13 +38,13 @@ struct MailView: UIViewControllerRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(result: $result)
+        return Coordinator(presentation: presentation, result: $result)
     }
     
     func makeUIViewController(context: Context) -> MFMailComposeViewController {
-        let vc = MFMailComposeViewController()
-        vc.mailComposeDelegate = context.coordinator
-        return vc
+        let vcMail = MFMailComposeViewController()
+        vcMail.mailComposeDelegate = context.coordinator
+        return vcMail
     }
     
     func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) { }
