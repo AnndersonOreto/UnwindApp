@@ -17,6 +17,7 @@ struct DetailView: View {
     @State var selectedDate: Date = Date()
     @State var showMailView: Bool = false
     @State var mailResult: Result<MFMailComposeResult, Error>? = nil
+    @State var teste: Bool = false
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -62,7 +63,7 @@ struct DetailView: View {
                                 Spacer()
                                 ImageAndTextWithBorder(imageName: viewModel.feeling.imageName, text: viewModel.feeling.description)
                                 Spacer()
-                                NavigationLink(destination: FeelingsView().navigationBarHidden(true)){
+                                NavigationLink(destination: FeelingsView()){
                                     Image(systemName: "pencil")
                                         .colorMultiply(.secondary)
                                 }
@@ -118,6 +119,13 @@ struct DetailView: View {
                     .onDisappear { print(self.selectedDate) }
             }
         }.navigationBarTitle("", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+            Button(action: { self.authStatus.selectedTab = 1 }, label: {
+                Image(systemName: "chevron.left")
+                    .colorMultiply(.accentColor)
+            })
+        )
     }
 }
 

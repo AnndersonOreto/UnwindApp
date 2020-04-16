@@ -22,6 +22,9 @@ class AuthenticationManager: ObservableObject {
     }
     var handle: AuthStateDidChangeListenerHandle?
     
+    
+    @Published var selectedTab: Int = 0
+    
     func listen() {
         
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in

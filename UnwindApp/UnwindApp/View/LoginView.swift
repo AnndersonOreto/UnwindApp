@@ -109,7 +109,7 @@ struct LoginViewStruct: View {
                 }
                 
                 VStack(spacing: 60){
-                    Image("logo_Login")
+                    Image("logo_login")
                         .frame(width: UIScreen.main.bounds.width * 0.13, height: UIScreen.main.bounds.width * 0.17)
                     // Body of login container
                     VStack(spacing: 15) {
