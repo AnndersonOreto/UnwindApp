@@ -10,7 +10,10 @@ import SwiftUI
 
 struct ProgressBar: View {
     
-    @Binding var currentProgress: CGFloat
+    var currentPage: CGFloat
+    @State var currentProgress: CGFloat = 0
+    
+    let totalPages: CGFloat = 5
     
     let width = UIScreen.main.bounds.width*0.75
     let height = UIScreen.main.bounds.width*0.75*0.0268
@@ -31,13 +34,20 @@ struct ProgressBar: View {
 }
 
 extension ProgressBar {
+    func calculateProgress() {
+        DispatchQueue.main.async {
+            self.currentProgress = self.currentPage/self.totalPages
+        }
+    }
+    
     func minWidth() -> CGFloat {
+        calculateProgress()
         return min(width, width*currentProgress)
     }
 }
 
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressBar(currentProgress: .constant(0.2))
+        ProgressBar(currentPage: 1)
     }
 }
