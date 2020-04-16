@@ -22,6 +22,7 @@ extension Color {
 class FeelingsViewModel: ObservableObject {
     
     @EnvironmentObject var authStatus: AuthenticationManager
+    @State var currentPage: CGFloat = 1
     @Published var feeling: Feeling = Feeling(id: 0, imageName: "ic_muito_feliz", description: "Muito Feliz", color: .veryHappy)
     @Published var linkActivate = false
     
@@ -65,12 +66,11 @@ struct FeelingsView: View {
     
     var body: some View {
         
-//        NavigationView{
+        NavigationView{
             VStack(){
-//                NavigationLink("", destination: EmotionView(), isActive: $teste)
-                Spacer()
+                NavigationLink("", destination: EmotionView(), isActive: $teste)
                 VStack(spacing: 50){
-                    VStack(spacing:50){
+                    VStack(spacing:15){
                         HStack{
                            Text("Julia, como você está se")
                             .font(.system(size: 40))
@@ -80,6 +80,7 @@ struct FeelingsView: View {
                             .foregroundColor(Color.fontColorBlack)
                         }
                         Image(viewModel.getBigImage())
+                            .resizable()
                             .frame(width: getImageSize(), height: getImageSize())
                         Text(viewModel.feeling.description)
                             .font(.system(size: 30))
@@ -105,8 +106,10 @@ struct FeelingsView: View {
                     .kerning(0.3)
                     .font(.system(size: 30)).bold()
                 }.buttonStyle(SendButtonStyle())
-            }.navigate(to: EmotionView(), when: $teste)
-//        }.navigationViewStyle(StackNavigationViewStyle())
+            }.navigationBarItems(trailing:
+                ProgressBar(currentPage: self.viewModel.currentPage).padding(.trailing, UIScreen.main.bounds.width*0.1)
+            )
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     func getImageSize() -> CGFloat {

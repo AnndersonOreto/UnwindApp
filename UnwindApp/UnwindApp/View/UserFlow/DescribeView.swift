@@ -23,6 +23,17 @@ enum DescribeState {
             return "Júlia, qual foi sua ação nesse momento?"
         }
     }
+    
+    var page: CGFloat {
+        switch self {
+        case .situation:
+            return 3
+        case .thoughts:
+            return 4
+        case .action:
+            return 5
+        }
+    }
 }
 
 class DescribeViewModel: ObservableObject {
@@ -40,13 +51,14 @@ struct DescribeView: View {
     @EnvironmentObject var authStatus: AuthenticationManager
     @State var text = ""
     @State var value: CGFloat = 0
+    @State var teste: Bool = false
     @ObservedObject var viewModel = DescribeViewModel()
     
     var body: some View {
         
         Background {
+            NavigationLink("", destination: DetailView(), isActive: self.$teste)
             VStack(spacing: 130){
-                Text("ProgressBAR") 
                 Text(self.viewModel.state.title)
                     .kerning(0.8)
                 .font(.system(size: 40))
@@ -65,28 +77,23 @@ struct DescribeView: View {
                     case .situation:
                         //Save the situation text here and change the state for thoughts
                         FeelingsInfo.sharedInstance.user_situation = self.text
+                        self.viewModel.state = .thoughts
 //                        self.authStatus.setUserFeeling(user_feeling: self.text, feelingType: "user_situation")
                         break
                     case .thoughts:
                         //Save the thoughts text here and change the state for action
                         FeelingsInfo.sharedInstance.user_thoughts = self.text
+                        self.viewModel.state = .action
 //                        self.authStatus.setUserFeeling(user_feeling: self.text, feelingType: "user_thoughts")
                         break
                     case .action:
                         //Save the action text here and pass to next screen
                         FeelingsInfo.sharedInstance.user_action = self.text
+                        self.teste.toggle()
+                        
+//                        self.authStatus.saveFeelingsPackage()
 //                        self.authStatus.setUserFeeling(user_feeling: self.text, feelingType: "user_action")
                         break
-                    }
-                    
-                    self.text = ""
-                    
-                    if self.viewModel.state == DescribeState.situation {
-                        self.viewModel.state = DescribeState.thoughts
-                    } else if self.viewModel.state == DescribeState.thoughts {
-                        self.viewModel.state = DescribeState.action
-                    } else {
-                        self.authStatus.saveFeelingsPackage()
                     }
                 }) {
                     Text("Salvar")
@@ -109,7 +116,9 @@ struct DescribeView: View {
                                 self.value = 0
                             }
                         }
-            }
+            }.navigationBarItems(trailing:
+                ProgressBar(currentPage: self.viewModel.state.page).padding(.trailing, UIScreen.main.bounds.width*0.1)
+            )
         }.onTapGesture {
             UIApplication.shared.endEditing()
         }
@@ -139,7 +148,7 @@ struct SendButtonStyle: ButtonStyle {
         .background(Color.sendButtonColor)
         .cornerRadius(100)
         .foregroundColor(Color.white)
-        .padding(.bottom, UIScreen.main.bounds.width * 0.07)
+        .padding(.bottom, UIScreen.main.bounds.width * 0.1)
     }
 }
 

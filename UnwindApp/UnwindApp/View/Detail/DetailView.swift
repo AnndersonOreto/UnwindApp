@@ -62,7 +62,7 @@ struct DetailView: View {
                                 Spacer()
                                 ImageAndTextWithBorder(imageName: viewModel.feeling.imageName, text: viewModel.feeling.description)
                                 Spacer()
-                                NavigationLink(destination: FeelingsView()){
+                                NavigationLink(destination: FeelingsView().navigationBarHidden(true)){
                                     Image(systemName: "pencil")
                                         .colorMultiply(.secondary)
                                 }

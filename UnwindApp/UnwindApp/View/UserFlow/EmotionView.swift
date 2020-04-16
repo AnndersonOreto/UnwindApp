@@ -13,6 +13,7 @@ class EmotionViewModel: ObservableObject {
     @EnvironmentObject var authStatus: AuthenticationManager
     @Published var selected = ""
     @Published var emotionsToSend: [Emotion] = []
+    @State var currentPage: CGFloat = 2
     
     let array: [[Emotion]] = [
         [Emotion(name: "emocao1"), Emotion(name: "emocao2"), Emotion(name: "emocao3"), Emotion(name: "emocao4")],
@@ -52,6 +53,7 @@ struct EmotionView: View {
     var body: some View {
         
         VStack{
+            NavigationLink("", destination: DescribeView(), isActive: $teste)
             Spacer()
             VStack(spacing: 77){
                 Text("Qual foi sua emoção neste momento?")
@@ -87,7 +89,9 @@ struct EmotionView: View {
                 .kerning(0.3)
                 .font(.system(size: 30)).bold()
             }.buttonStyle(SendButtonStyle())
-        }.navigate(to: DescribeView(), when: $teste)
+        }.navigationBarItems(trailing:
+            ProgressBar(currentPage: self.viewModel.currentPage).padding(.trailing, UIScreen.main.bounds.width*0.1)
+        )
     }
 }
 

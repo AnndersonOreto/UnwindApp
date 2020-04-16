@@ -28,7 +28,7 @@ struct Feeling: Identifiable, Hashable {
     let color: CustomColor
 }
 
-let fakeFeeling = Feeling(id: 0, imageName: "image", description: "Muito Feliz", color: .feelingBorder)
+let fakeFeeling = Feeling(id: 0, imageName: "Image", description: "Muito Feliz", color: .feelingBorder)
 
 struct Emotion: Identifiable, Hashable {
     let id = UUID()
