@@ -45,6 +45,8 @@
 		AAEAE286243E59F40040E71B /* ImageAndTextWithBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAE285243E59F40040E71B /* ImageAndTextWithBorder.swift */; };
 		AAFD295B243D08350049AFD3 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD295A243D08350049AFD3 /* ProgressBar.swift */; };
 		AAFD295D243D28BE0049AFD3 /* SortPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD295C243D28BE0049AFD3 /* SortPicker.swift */; };
+		AB0DDBEF2444FC0A0090A29E /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0DDBEE2444FC0A0090A29E /* Navigation.swift */; };
+		AB0DDBF124463A640090A29E /* UserTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0DDBF024463A640090A29E /* UserTypePicker.swift */; };
 		AB27E0E9243D0CA700F346CB /* EmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0E8243D0CA700F346CB /* EmotionView.swift */; };
 		AB27E0ED243E3D3500F346CB /* DescribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0EC243E3D3500F346CB /* DescribeView.swift */; };
 		AB27E0F1243FA9E900F346CB /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0F0243FA9E800F346CB /* Alerts.swift */; };
@@ -117,6 +119,8 @@
 		AAEAE285243E59F40040E71B /* ImageAndTextWithBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAndTextWithBorder.swift; sourceTree = "<group>"; };
 		AAFD295A243D08350049AFD3 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		AAFD295C243D28BE0049AFD3 /* SortPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortPicker.swift; sourceTree = "<group>"; };
+		AB0DDBEE2444FC0A0090A29E /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		AB0DDBF024463A640090A29E /* UserTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypePicker.swift; sourceTree = "<group>"; };
 		AB27E0E8243D0CA700F346CB /* EmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionView.swift; sourceTree = "<group>"; };
 		AB27E0EC243E3D3500F346CB /* DescribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeView.swift; sourceTree = "<group>"; };
 		AB27E0F0243FA9E800F346CB /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				268705A22440CE9C00BB8C4F /* DatabaseManager.swift */,
 				2669C45C2440E04600E6B500 /* FeelingsInfo.swift */,
 				AA851452243BB71100233B3F /* Model.swift */,
+				AB0DDBEE2444FC0A0090A29E /* Navigation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				265814DA243E42790051815A /* HomeView.swift */,
 				AACF8BAC2444FF7D00EF7223 /* BackgroundShape.swift */,
 				AAA61F8B24479F5400A074F1 /* SortableList.swift */,
+				AB0DDBF024463A640090A29E /* UserTypePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -619,6 +625,8 @@
 				266B3F5A24364BE800554474 /* UnwindApp.xcdatamodeld in Sources */,
 				26890738243CF423008DDC2B /* AuthenticationProfile.swift in Sources */,
 				266B3F5C24364BE800554474 /* ContentView.swift in Sources */,
+				AB0DDBEF2444FC0A0090A29E /* Navigation.swift in Sources */,
+				AB0DDBF124463A640090A29E /* UserTypePicker.swift in Sources */,
 				26890733243CEC82008DDC2B /* AuthenticationManager.swift in Sources */,
 				AACF8BAD2444FF7D00EF7223 /* BackgroundShape.swift in Sources */,
 				265814DF243E609F0051815A /* LoginView.swift in Sources */,
@@ -793,7 +801,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"UnwindApp/Preview Content\"";
-				DEVELOPMENT_TEAM = V4HVD5P383;
+				DEVELOPMENT_TEAM = LZ4KUFVTZH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = UnwindApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -814,7 +822,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"UnwindApp/Preview Content\"";
-				DEVELOPMENT_TEAM = V4HVD5P383;
+				DEVELOPMENT_TEAM = LZ4KUFVTZH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = UnwindApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
