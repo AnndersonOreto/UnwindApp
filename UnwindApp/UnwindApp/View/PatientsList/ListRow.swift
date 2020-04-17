@@ -10,13 +10,13 @@ import SwiftUI
 
 struct ListRow: View {
     
-    //let imageName: String
+    let imageName: String
     let text1: String
     let text2: String
     
     var body: some View {
         HStack(alignment: .center) {
-            Image(systemName: "person.crop.circle")
+            Image(imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 80)
@@ -32,8 +32,8 @@ struct ListRow: View {
     }
 }
 
-struct PatientRow_Previews: PreviewProvider {
-    static var previews: some View {
-        ListRow(text1: "Name", text2: "Phone number | e-mail")
-    }
-}
+//struct PatientRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ListRow(text1: "Name", text2: "Phone number | e-mail")
+//    }
+//}

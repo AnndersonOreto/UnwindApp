@@ -34,7 +34,7 @@ class DatabaseManager {
         }
     }
     
-    func saveFeelings(userUid: String) {
+    func saveFeelings(userUid: String, completion: @escaping(FeelingsInfoArray)->()) {
         
         let userEmotions: String = FeelingsInfo.sharedInstance.user_emotions.reduce("") { text, name in "\(text),\(name)" }
         
@@ -51,13 +51,21 @@ class DatabaseManager {
                     "user_situation": FeelingsInfo.sharedInstance.user_situation,
                     "user_thoughts": FeelingsInfo.sharedInstance.user_thoughts,
                     "user_action": FeelingsInfo.sharedInstance.user_action,
-                    "date": dateFormatter.string(from: date)]
+                    "date": dateFormatter.string(from: date),
+                    "image": FeelingsInfo.sharedInstance.image]
         
         ref.child("users").child(userUid).child("feelings").childByAutoId().setValue(post) { (error, ret) in
             
             if let error = error {
                 
                 print(error.localizedDescription)
+            } else {
+                
+                self.getFeelings(userUid: userUid, completion: { data in
+                    
+                    fakeReports = data.user_array
+                    completion(data)
+                })
             }
         }
     }
@@ -95,25 +103,29 @@ class DatabaseManager {
         
         ref.child("users").child(userUid).child("feelings").observeSingleEvent(of: .value, with: { (snapshot) in
             
-            if let value = snapshot.value as? NSArray {
+            if let value = snapshot.value as? NSDictionary {
                 
                 var feelings: [Feelings] = []
                 
                 for val in value {
                     
-                    let feelingDict = val as? NSDictionary
+                    let feelingDict = val.value as? NSDictionary
                     let user_feeling = feelingDict?["user_feeling"] as? String ?? ""
                     let user_emotions: String = feelingDict?["user_emotions"] as? String ?? ""
                     let user_situation: String = feelingDict?["user_situation"] as? String ?? ""
                     let user_thoughts: String = feelingDict?["user_thoughts"] as? String ?? ""
                     let user_action: String = feelingDict?["user_action"] as? String ?? ""
-                    let feeling = Feelings(user_feeling: user_feeling, user_emotions: user_emotions, user_situation: user_situation, user_thoughts: user_thoughts, user_action: user_action)
+                    let date: String = feelingDict?["date"] as? String ?? ""
+                    let image: String = feelingDict?["image"] as? String ?? ""
+                    let feeling = Feelings(user_feeling: user_feeling, user_emotions: user_emotions, user_situation: user_situation, user_thoughts: user_thoughts, user_action: user_action, date: date, image: image)
                     feelings.append(feeling)
                 }
                 
                 let feelingsArray: FeelingsInfoArray = FeelingsInfoArray(user_array: feelings)
                 
                 completion(feelingsArray)
+            } else {
+                print("erro")
             }
         })
     }

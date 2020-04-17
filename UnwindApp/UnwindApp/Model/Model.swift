@@ -56,4 +56,5 @@ let report0 = UserReport(feeling: fakeFeeling, emotions: fakeEmotions, situation
 let report1 = UserReport(feeling: fakeFeeling, emotions: fakeEmotions, situation: "Situation", thought: "Thought", action: "Action", date: Date())
 let report2 = UserReport(feeling: fakeFeeling, emotions: fakeEmotions, situation: "Situation", thought: "Thought", action: "Action", date: Date())
 let report3 = UserReport(feeling: fakeFeeling, emotions: fakeEmotions, situation: "Situation", thought: "Thought", action: "Action", date: Date())
-let fakeReports = [report0, report1, report2, report3]
+var fakeReports: [Feelings] = []
+var profileName: String = ""

@@ -16,6 +16,7 @@ class PatientsViewModel: ObservableObject, ViewModelProtocol {
     @Published var boldTitle: String
     @Published var rowTitle: [String]
     @Published var rowSubtitle: [String]
+    @Published var rowImage: [String]
     
     init() {
         self.content = fakePatients
@@ -23,28 +24,17 @@ class PatientsViewModel: ObservableObject, ViewModelProtocol {
         self.boldTitle = "Carol da Silva"
         self.rowTitle = [String]()
         self.rowSubtitle = [String]()
+        self.rowImage = [String]()
         
         self.regularTitle = makeRegularTitle()
         self.rowTitle = makeRowTitle()
         self.rowSubtitle = makeRowSubtitle()
     }
     
-//    func makeRegularTitle() -> String {
-//        var regularTitle: String
-//        
-//        let date = Date()
-//        let calendar = Calendar.current
-//        let hour = calendar.component(.hour, from: date)
-//        
-//        if hour > 5 && hour < 12 {
-//            regularTitle = "Bom dia, "
-//        } else if hour >= 12 && hour < 18 {
-//            regularTitle = "Boa tarde, "
-//        } else {
-//            regularTitle = "Boa noite, "
-//        }
-//        return regularTitle
-//    }
+    func makeRowImage() -> [String] {
+        
+        return []
+    }
     
     func makeRowTitle() -> [String] {
         var texts = [String]()

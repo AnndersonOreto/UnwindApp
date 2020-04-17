@@ -27,12 +27,12 @@ struct SortableList<T: ViewModelProtocol>: View {
                             Divider()
                             List(0 ..< self.viewModel.content.count) { (index) in
                                 if self.isPacient {
-                                    NavigationLink(destination: CustomDetailView()) {
-                                        ListRow(text1: self.viewModel.rowTitle[index], text2: self.viewModel.rowSubtitle[index])
+                                    NavigationLink(destination: CustomDetailView(index: index)) {
+                                        ListRow(imageName: self.viewModel.rowImage[index], text1: self.viewModel.rowTitle[index], text2: self.viewModel.rowSubtitle[index])
                                     }
                                 } else {
                                     NavigationLink(destination: UserHistoryView()) {
-                                        ListRow(text1: self.viewModel.rowTitle[index], text2: self.viewModel.rowSubtitle[index])
+                                        ListRow(imageName: self.viewModel.rowImage[index], text1: self.viewModel.rowTitle[index], text2: self.viewModel.rowSubtitle[index])
                                     }
                                 }
                             }.padding(.horizontal)

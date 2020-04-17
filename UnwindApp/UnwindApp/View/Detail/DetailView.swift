@@ -61,7 +61,7 @@ struct DetailView: View {
                                     .fontWeight(.semibold)
                                     .multilineTextAlignment(.leading)
                                 Spacer()
-                                ImageAndTextWithBorder(imageName: viewModel.feeling.imageName, text: viewModel.feeling.description)
+                                ImageAndTextWithBorder(imageName: FeelingsInfo.sharedInstance.image, text: FeelingsInfo.sharedInstance.user_feeling)
                                 Spacer()
                                 NavigationLink(destination: FeelingsView()){
                                     Image(systemName: "pencil")
@@ -140,6 +140,7 @@ struct CustomDetailView: View {
     @State var showMailView: Bool = false
     @State var mailResult: Result<MFMailComposeResult, Error>? = nil
     @State var teste: Bool = false
+    @State var index: Int
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -150,7 +151,7 @@ struct CustomDetailView: View {
                 Group {
                     HStack(alignment: .center) {
                         Group {
-                            Text("\(viewModel.userName), confira ")
+                            Text("\(authStatus.profile?.name ?? ""), confira ")
                             + Text("suas emoções")
                                 .fontWeight(.bold)
                         }.font(.largeTitle)
@@ -165,7 +166,7 @@ struct CustomDetailView: View {
                                 VStack(alignment: .leading) {
                                     Text("Data e Hora:")
                                         .foregroundColor(.secondary)
-                                    Text("\(viewModel.date) às \(viewModel.hour)")
+                                    Text("\(self.authStatus.profile?.feelings?.user_array[self.index].date ?? "")")
                                         .foregroundColor(.primary)
                                         .fontWeight(.semibold)
                                 }
@@ -183,7 +184,7 @@ struct CustomDetailView: View {
                                     .fontWeight(.semibold)
                                     .multilineTextAlignment(.leading)
                                 Spacer()
-                                ImageAndTextWithBorder(imageName: viewModel.feeling.imageName, text: viewModel.feeling.description)
+                                ImageAndTextWithBorder(imageName: self.authStatus.profile?.feelings?.user_array[self.index].image ?? "", text: self.authStatus.profile?.feelings?.user_array[self.index].user_feeling ?? "")
                                 Spacer()
                                 NavigationLink(destination: FeelingsView()){
                                     Image(systemName: "pencil")
@@ -199,8 +200,8 @@ struct CustomDetailView: View {
                                 .fontWeight(.semibold)
                                 .multilineTextAlignment(.leading)
                             Spacer()
-                            ForEach(0 ..< viewModel.numberOfEmotions) { (index) in
-                                ImageAndTextWithBorder(imageName: self.viewModel.emotions[index].imageName, text: self.viewModel.emotions[index].name)
+                            ForEach(0 ..< getEmotionsCount()) { (index) in
+                                EmotionTextWithBorder(text: "\(self.authStatus.profile?.feelings?.user_array[self.index].user_emotions.split(separator: ",")[index] ?? "erro")")
                             }
                             Spacer()
                             NavigationLink(destination: EmotionView(feeling: self.viewModel.feeling)){
@@ -209,7 +210,7 @@ struct CustomDetailView: View {
                             }
                         }.asCard()
                         HStack {
-                            TitleAndText(title: "Qual foi a situação?", text: FeelingsInfo.sharedInstance.user_situation)
+                            TitleAndText(title: "Qual foi a situação?", text: self.authStatus.profile?.feelings?.user_array[self.index].user_situation ?? "")
                             Spacer()
                             NavigationLink(destination: DescribeView(state: .situation)) {
                                 Image(systemName: "pencil")
@@ -217,7 +218,7 @@ struct CustomDetailView: View {
                             }
                         }.asCard()
                         HStack {
-                            TitleAndText(title: "Qual foi seu pensamento?", text: FeelingsInfo.sharedInstance.user_thoughts)
+                            TitleAndText(title: "Qual foi seu pensamento?", text: self.authStatus.profile?.feelings?.user_array[self.index].user_thoughts ?? "")
                             Spacer()
                             NavigationLink(destination: DescribeView(state: .thoughts)){
                                 Image(systemName: "pencil")
@@ -225,7 +226,7 @@ struct CustomDetailView: View {
                             }
                         }.asCard()
                         HStack {
-                            TitleAndText(title: "Qual foi sua ação?", text: FeelingsInfo.sharedInstance.user_action)
+                            TitleAndText(title: "Qual foi sua ação?", text: self.authStatus.profile?.feelings?.user_array[self.index].user_action ?? "")
                             Spacer()
                             NavigationLink(destination: DescribeView(state: .action)){
                                 Image(systemName: "pencil")
@@ -241,6 +242,17 @@ struct CustomDetailView: View {
                     .onDisappear { print(self.selectedDate) }
             }
         }.navigationBarTitle("", displayMode: .inline)
+    }
+    
+    func getEmotionsCount() -> Int {
+        
+        let val = self.authStatus.profile?.feelings?.user_array[self.index].user_emotions.split(separator: ",").count ?? 0
+        
+        if val > 3 {
+            return 3
+        } else {
+            return val
+        }
     }
 }
 

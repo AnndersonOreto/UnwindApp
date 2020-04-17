@@ -9,9 +9,11 @@
 import SwiftUI
 
 struct UserHistoryView: View {
+    
     @ObservedObject var viewModel = UserHistoryViewModel()
     
     var body: some View {
+        
         SortableList(viewModel: viewModel, isPacient: true)
         .navigationBarHidden(true)
         .navigationBarTitle("")

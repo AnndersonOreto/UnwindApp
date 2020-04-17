@@ -35,6 +35,35 @@ struct ImageAndTextWithBorder: View {
     }
 }
 
+struct EmotionTextWithBorder: View {
+    @State var text: String
+    
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            Spacer()
+            HStack {
+                Spacer()
+                Text(text)
+                .foregroundColor(CustomColor.feelingText.color)
+                .font(.system(size: 18))
+                .fontWeight(.semibold)
+                Spacer()
+            }
+            Spacer()
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 20)
+        .overlay (
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(CustomColor.feelingBorder.color, lineWidth: 1)
+        )
+        .frame(width: width*0.2, height: height*0.14)
+    }
+}
+
 struct ImageAndTextWithBorder_Previews: PreviewProvider {
     static var previews: some View {
         ImageAndTextWithBorder(imageName: "image", text: "Muito Feliz")

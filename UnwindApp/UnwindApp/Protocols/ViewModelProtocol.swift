@@ -16,9 +16,11 @@ protocol ViewModelProtocol: ObservableObject {
     var boldTitle: String { get }
     var rowTitle: [String] { get }
     var rowSubtitle: [String] { get }
+    var rowImage: [String] { get }
     
     func makeRowTitle() -> [String]
     func makeRowSubtitle() -> [String]
+    func makeRowImage() -> [String]
     func sortList(by option: SortOptions)
 }
 
