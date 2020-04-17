@@ -77,8 +77,8 @@ struct DetailView: View {
                                 .fontWeight(.semibold)
                                 .multilineTextAlignment(.leading)
                             Spacer()
-                            ForEach(0 ..< viewModel.numberOfEmotions) { (index) in
-                                ImageAndTextWithBorder(imageName: self.viewModel.emotions[index].imageName, text: self.viewModel.emotions[index].name)
+                            ForEach(FeelingsInfo.sharedInstance.user_emotions, id: \.self) { emotion in
+                                EmotionTextWithBorder(text: "\(emotion)")
                             }
                             Spacer()
                             NavigationLink(destination: EmotionView(feeling: self.viewModel.feeling)){
@@ -243,17 +243,6 @@ struct CustomDetailView: View {
             }
         }.navigationBarTitle("", displayMode: .inline)
     }
-    
-    func getEmotionsCount() -> Int {
-        
-        let val = self.authStatus.profile?.feelings?.user_array[self.index].user_emotions.split(separator: ",").count ?? 0
-        
-        if val > 3 {
-            return 3
-        } else {
-            return val
-        }
-    }
 }
 
 extension DetailView {
@@ -288,6 +277,17 @@ extension CustomDetailView {
         }.disabled(!MFMailComposeViewController.canSendMail())
             .sheet(isPresented: self.$showMailView) {
                 MailView(result: self.$mailResult)
+        }
+    }
+    
+    func getEmotionsCount() -> Int {
+        
+        let val = self.authStatus.profile?.feelings?.user_array[self.index].user_emotions.split(separator: ",").count ?? 0
+        
+        if val > 3 {
+            return 3
+        } else {
+            return val
         }
     }
 }

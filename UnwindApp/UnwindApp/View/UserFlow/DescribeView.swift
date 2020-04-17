@@ -16,11 +16,11 @@ enum DescribeState {
     var title: String {
         switch self {
         case .situation:
-            return "Júlia, em que situação isso fez despertar essas emoções?"
+            return "Em que situação isso fez despertar essas emoções?"
         case .thoughts:
             return "Que pensamentos você teve neste momento?"
         case .action:
-            return "Júlia, qual foi sua ação nesse momento?"
+            return "Qual foi sua ação nesse momento?"
         }
     }
     
@@ -109,7 +109,7 @@ struct DescribeView: View {
                                 let value = noti.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
                                 let height = value.height
                                 
-                                self.value = height
+                                self.value = height/1.5
                             }
                             
                             NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { (noti) in
@@ -131,6 +131,9 @@ struct DescribeView: View {
         
     }
     
+    func resetText(text: Binding<String>) {
+        self.text = $text.wrappedValue
+    }
     
     func getTextFieldSize(isWidth: Bool) -> CGFloat{
         
@@ -154,7 +157,7 @@ struct SendButtonStyle: ButtonStyle {
         .background(Color.sendButtonColor)
         .cornerRadius(100)
         .foregroundColor(Color.white)
-        .padding(.bottom, UIScreen.main.bounds.width * 0.1)
+        .padding(.bottom, UIScreen.main.bounds.width * 0.07)
     }
 }
 

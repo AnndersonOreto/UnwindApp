@@ -61,7 +61,7 @@ class FeelingsViewModel: ObservableObject {
 
 
 struct FeelingsView: View {
-    
+    @EnvironmentObject var authStatus: AuthenticationManager
     @ObservedObject var viewModel = FeelingsViewModel()
     @State var teste: Bool = false
     
@@ -72,7 +72,7 @@ struct FeelingsView: View {
             VStack(spacing: 50){
                 VStack(spacing:15){
                     HStack{
-                       Text("Julia, como você está se")
+                        Text("\(self.authStatus.profile?.name ?? ""), como você está se")
                         .font(.system(size: 40))
                         .foregroundColor(Color.fontColorBlack)
                         Text("sentindo?")
