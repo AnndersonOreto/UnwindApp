@@ -50,6 +50,7 @@
 		AB27E0E9243D0CA700F346CB /* EmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0E8243D0CA700F346CB /* EmotionView.swift */; };
 		AB27E0ED243E3D3500F346CB /* DescribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0EC243E3D3500F346CB /* DescribeView.swift */; };
 		AB27E0F1243FA9E900F346CB /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0F0243FA9E800F346CB /* Alerts.swift */; };
+		AB9C32A12450AFD20020ECB7 /* PatientProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9C32A02450AFD20020ECB7 /* PatientProfile.swift */; };
 		ABAAF1FF243BB54E00DEC3E6 /* FeelingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAAF1FE243BB54E00DEC3E6 /* FeelingsView.swift */; };
 		B0F190096FE76F85DAC61B5D /* Pods_UnwindAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F767F76C1CBF9C5AF611CCC7 /* Pods_UnwindAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,7 @@
 		AB27E0E8243D0CA700F346CB /* EmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionView.swift; sourceTree = "<group>"; };
 		AB27E0EC243E3D3500F346CB /* DescribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeView.swift; sourceTree = "<group>"; };
 		AB27E0F0243FA9E800F346CB /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		AB9C32A02450AFD20020ECB7 /* PatientProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientProfile.swift; sourceTree = "<group>"; };
 		ABAAF1FE243BB54E00DEC3E6 /* FeelingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingsView.swift; sourceTree = "<group>"; };
 		BF6201C0A1E84221AFB96358 /* Pods-UnwindApp-UnwindAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwindApp-UnwindAppUITests.release.xcconfig"; path = "Target Support Files/Pods-UnwindApp-UnwindAppUITests/Pods-UnwindApp-UnwindAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DB88D3FB0D33DBE2DB11C361 /* Pods-UnwindAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwindAppTests.debug.xcconfig"; path = "Target Support Files/Pods-UnwindAppTests/Pods-UnwindAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		26890736243CF02B008DDC2B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AB9C32A22450AFDA0020ECB7 /* Profile */,
 				ABAAF1FD243BB52800DEC3E6 /* UserFlow */,
 				AA6CD981243E5D7F00CF7F31 /* PatientsList */,
 				AA6CD982243E5D8D00CF7F31 /* Detail */,
@@ -345,6 +348,14 @@
 				AAA61F8D2447A38900A074F1 /* ViewModelProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AB9C32A22450AFDA0020ECB7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AB9C32A02450AFD20020ECB7 /* PatientProfile.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		ABAAF1FD243BB52800DEC3E6 /* UserFlow */ = {
@@ -610,6 +621,7 @@
 				AA48E0602440DAD200913F4C /* MailView.swift in Sources */,
 				AA6CD980243E5D7100CF7F31 /* DetailView.swift in Sources */,
 				AA851451243BB64700233B3F /* PatientsViewModel.swift in Sources */,
+				AB9C32A12450AFD20020ECB7 /* PatientProfile.swift in Sources */,
 				AA982AAF243BD26E00E8469B /* SortButton.swift in Sources */,
 				AAFD295D243D28BE0049AFD3 /* SortPicker.swift in Sources */,
 				AAFD295B243D08350049AFD3 /* ProgressBar.swift in Sources */,
@@ -801,7 +813,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"UnwindApp/Preview Content\"";
-				DEVELOPMENT_TEAM = V4HVD5P383;
+				DEVELOPMENT_TEAM = LZ4KUFVTZH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = UnwindApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -822,7 +834,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"UnwindApp/Preview Content\"";
-				DEVELOPMENT_TEAM = V4HVD5P383;
+				DEVELOPMENT_TEAM = LZ4KUFVTZH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = UnwindApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -47,7 +47,7 @@ struct AlertsView: View {
     
     var body: some View {
         ZStack{
-                Color.black.opacity(0.4)
+//                Color.black.opacity(0.4)
                 self.showAlert()
             }
             .edgesIgnoringSafeArea(.all)
@@ -351,7 +351,7 @@ struct OtherButtonStyle: ButtonStyle {
 
 struct Alerts_Previews: PreviewProvider {
     static var previews: some View {
-        AlertsView(alertType: .otherFeeling)
+        AlertsView(alertType: .confirmation)
     }
 }
 
