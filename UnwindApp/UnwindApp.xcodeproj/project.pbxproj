@@ -26,6 +26,8 @@
 		707341BDBCDFD5D19D45DA3F /* Pods_UnwindApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFE49F10E3D379D0602DE0D /* Pods_UnwindApp.framework */; };
 		714AFABDC7EEA942A39CAD04 /* Pods_UnwindApp_UnwindAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52E7DDA0113552DECCAF492C /* Pods_UnwindApp_UnwindAppUITests.framework */; };
 		AA48E0602440DAD200913F4C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA48E05F2440DAD200913F4C /* MailView.swift */; };
+		AA4BBE372450B1A1009C8555 /* PatientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BBE362450B1A1009C8555 /* PatientListView.swift */; };
+		AA4BBE3B2450B33E009C8555 /* PatientListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BBE3A2450B33E009C8555 /* PatientListViewModel.swift */; };
 		AA6CD980243E5D7100CF7F31 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD97F243E5D7100CF7F31 /* DetailView.swift */; };
 		AA6CD987243FA26C00CF7F31 /* TitleAndText.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD986243FA26C00CF7F31 /* TitleAndText.swift */; };
 		AA6CD989243FABD900CF7F31 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CD988243FABD900CF7F31 /* DetailViewModel.swift */; };
@@ -100,6 +102,8 @@
 		805FCE6F06F6E17112176D89 /* Pods-UnwindApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwindApp.debug.xcconfig"; path = "Target Support Files/Pods-UnwindApp/Pods-UnwindApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A7180D8189109B047B03ADC1 /* Pods-UnwindAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwindAppTests.release.xcconfig"; path = "Target Support Files/Pods-UnwindAppTests/Pods-UnwindAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA48E05F2440DAD200913F4C /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		AA4BBE362450B1A1009C8555 /* PatientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListView.swift; sourceTree = "<group>"; };
+		AA4BBE3A2450B33E009C8555 /* PatientListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewModel.swift; sourceTree = "<group>"; };
 		AA6CD97F243E5D7100CF7F31 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		AA6CD986243FA26C00CF7F31 /* TitleAndText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndText.swift; sourceTree = "<group>"; };
 		AA6CD988243FABD900CF7F31 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 		26890736243CF02B008DDC2B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AA4BBE352450B116009C8555 /* DoctorFlow */,
 				ABAAF1FD243BB52800DEC3E6 /* UserFlow */,
 				AA6CD981243E5D7F00CF7F31 /* PatientsList */,
 				AA6CD982243E5D8D00CF7F31 /* Detail */,
@@ -288,6 +293,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AA4BBE352450B116009C8555 /* DoctorFlow */ = {
+			isa = PBXGroup;
+			children = (
+				AA4BBE362450B1A1009C8555 /* PatientListView.swift */,
+			);
+			path = DoctorFlow;
+			sourceTree = "<group>";
+		};
 		AA6CD981243E5D7F00CF7F31 /* PatientsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +332,7 @@
 				AA851450243BB64700233B3F /* PatientsViewModel.swift */,
 				AA6CD988243FABD900CF7F31 /* DetailViewModel.swift */,
 				AAA61F8924477DB100A074F1 /* UserHistoryViewModel.swift */,
+				AA4BBE3A2450B33E009C8555 /* PatientListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -601,6 +615,7 @@
 				AA851455243BB94C00233B3F /* ListRow.swift in Sources */,
 				AA851453243BB71100233B3F /* Model.swift in Sources */,
 				AA85144F243BB5E700233B3F /* PatientsView.swift in Sources */,
+				AA4BBE372450B1A1009C8555 /* PatientListView.swift in Sources */,
 				266B3F5524364BE800554474 /* AppDelegate.swift in Sources */,
 				AB27E0ED243E3D3500F346CB /* DescribeView.swift in Sources */,
 				AB27E0E9243D0CA700F346CB /* EmotionView.swift in Sources */,
@@ -613,6 +628,7 @@
 				AA982AAF243BD26E00E8469B /* SortButton.swift in Sources */,
 				AAFD295D243D28BE0049AFD3 /* SortPicker.swift in Sources */,
 				AAFD295B243D08350049AFD3 /* ProgressBar.swift in Sources */,
+				AA4BBE3B2450B33E009C8555 /* PatientListViewModel.swift in Sources */,
 				AAA61F7E24462E7800A074F1 /* ListTitle.swift in Sources */,
 				AA6CD989243FABD900CF7F31 /* DetailViewModel.swift in Sources */,
 				AA6CD987243FA26C00CF7F31 /* TitleAndText.swift in Sources */,

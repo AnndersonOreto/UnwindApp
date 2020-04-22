@@ -16,13 +16,13 @@ struct ListRow: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            Image(imageName)
+            Image(systemName: imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 80)
             VStack(alignment: .leading) {
                 Text(text1)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.black)
                     .font(.system(size: 20, weight: .semibold))
                 Text(text2).foregroundColor(.secondary)
                     .font(.system(size: 15, weight: .semibold))

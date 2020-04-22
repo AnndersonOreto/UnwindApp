@@ -11,7 +11,7 @@ import Foundation
 protocol ViewModelProtocol: ObservableObject {
     associatedtype ContentType
     
-    var content: [ContentType] { get }
+    var content: [ContentType] { get } 
     var regularTitle: String { get }
     var boldTitle: String { get }
     var rowTitle: [String] { get }

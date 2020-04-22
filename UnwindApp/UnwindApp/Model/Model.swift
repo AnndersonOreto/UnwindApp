@@ -9,17 +9,20 @@
 import Foundation
 
 struct Patient: Identifiable {
-    let id: Int
+    let id = UUID()
     let name: String
     let email: String
     let phoneNumber: String
-    let imageData: Data
+    let imageName: String = "person.crop.circle"
 }
 
-let patient0 = Patient(id: 0, name: "Vitor", email: "vitor@gmail.com", phoneNumber: "51989878789", imageData: Data())
-let patient1 = Patient(id: 1, name: "Arthur", email: "arthur@gmail.com", phoneNumber: "51989878789", imageData: Data())
-let patient2 = Patient(id: 2, name: "Carlos", email: "carlos@gmail.com", phoneNumber: "51989878789", imageData: Data())
-let fakePatients = [patient0, patient1, patient2]
+let patient0 = Patient(name: "Vitor", email: "vitor@gmail.com", phoneNumber: "51989878789")
+let patient1 = Patient(name: "Arthur", email: "arthur@gmail.com", phoneNumber: "51989878789")
+let patient2 = Patient(name: "Carlos", email: "carlos@gmail.com", phoneNumber: "51989878789")
+let patient3 = Patient(name: "Marcus", email: "marcus@gmail.com", phoneNumber: "51989878789")
+let patient4 = Patient(name: "Daniela", email: "daniela@gmail.com", phoneNumber: "51989878789")
+let patient5 = Patient(name: "Annderson", email: "chumiga@gmail.com", phoneNumber: "51989878789")
+let fakePatients = [patient0, patient1, patient2, patient3, patient4, patient5]
 
 struct Feeling: Identifiable, Hashable {
     let id: Int
