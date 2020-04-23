@@ -1,22 +1,18 @@
 //
-//  UserHistoryViewModel.swift
+//  HistoryViewModel.swift
 //  UnwindApp
 //
-//  Created by Arthur Bastos Fanck on 15/04/20.
+//  Created by Arthur Bastos Fanck on 22/04/20.
 //  Copyright © 2020 Annderson Packeiser Oreto. All rights reserved.
 //
 
 import Foundation
-import SwiftUI
 
-class UserHistoryViewModel: ObservableObject {
-    
+class HistoryViewModel: ObservableObject {
     @Published var feelings: [Feelings]
-    @Published var userName: String
     
     init() {
         self.feelings = fakeReports
-        self.userName = "Júlia"
     }
     
     func sortList(by option: SortOptions) {

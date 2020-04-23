@@ -54,7 +54,7 @@ struct ContentView: View {
                 } else {
                     TabView(selection: $authStatus.selectedTab) {
                         NavigationView {
-                            PatientsView()
+                            PatientListView()
                         }
                         .navigationViewStyle(StackNavigationViewStyle())
                         .tabItem {

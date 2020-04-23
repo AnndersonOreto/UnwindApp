@@ -25,8 +25,8 @@ final class FeelingsInfo {
     }
 }
 
-struct Feelings {
-    
+struct Feelings: Identifiable {
+    let id = UUID()
     var user_feeling: String = ""
     var user_emotions: String = ""
     var user_situation: String = ""

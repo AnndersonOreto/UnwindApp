@@ -1,15 +1,16 @@
 //
-//  PatientList.swift
+//  UserHistoryView.swift
 //  UnwindApp
 //
-//  Created by Arthur Bastos Fanck on 22/04/20.
+//  Created by Arthur Bastos Fanck on 15/04/20.
 //  Copyright © 2020 Annderson Packeiser Oreto. All rights reserved.
 //
 
 import SwiftUI
 
-struct PatientListView: View {
-    @ObservedObject var viewModel = PatientListViewModel()
+struct UserHistoryView: View {
+    
+    @ObservedObject var viewModel = UserHistoryViewModel()
     @State var showPicker: Bool = false
     @State var sortSelected: SortOptions = .alphabetically
     
@@ -21,15 +22,15 @@ struct PatientListView: View {
         GeometryReader { geometry in
             ZStack(alignment: .bottom) {
                 VStack(alignment: .leading) {
-                    ListTitle(regularText: "", boldText: self.viewModel.doctorName)
+                    ListTitle(regularText: "", boldText: self.viewModel.userName)
                         .padding(.top, geometry.size.height*0.09)
                         .padding(.leading)
                     Spacer().frame(minHeight: 0, maxHeight: 10)
                     List {
                         Section(header: HeaderView(showPicker: self.$showPicker, selected: self.$sortSelected)) {
-                            ForEach(self.viewModel.patients) { patient in
-                                NavigationLink(destination: HistoryView()) {
-                                    ListRow(imageName: patient.imageName, text1: patient.name, text2: "\(patient.phoneNumber) | \(patient.email)")
+                            ForEach(0 ..< self.viewModel.feelings.count) { index in
+                                NavigationLink(destination: CustomDetailView(index: index)) {
+                                    ListRow(imageName: self.viewModel.feelings[index].image, text1: self.viewModel.feelings[index].user_feeling, text2: self.viewModel.feelings[index].date)
                                 }
                             }
                         }
@@ -43,12 +44,14 @@ struct PatientListView: View {
                 }
             }
         }.background(BackgroundWithShape())
+        .navigationBarHidden(true)
+        .navigationBarTitle("")
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
-struct PatientListView_Previews: PreviewProvider {
+struct UserHistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        PatientListView()
-        .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch) (2nd generation)"))
+        UserHistoryView()
     }
 }

@@ -16,7 +16,7 @@ struct ListRow: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            Image(systemName: imageName)
+            Image(imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 80)
