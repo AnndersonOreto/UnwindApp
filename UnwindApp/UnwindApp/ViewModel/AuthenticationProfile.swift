@@ -15,6 +15,7 @@ class AuthenticationProfile {
     var name: String = ""
     var phone: String = ""
     var role: String = ""
+    var pending: String = ""
     var feelings: FeelingsInfoArray?
     
     init(id: String, email: String?) {
@@ -23,12 +24,13 @@ class AuthenticationProfile {
         self.email = email;
     }
     
-    init(id: String, email: String?, name: String, phone: String, role: String) {
+    init(id: String, email: String?, name: String, phone: String, role: String, pending: String) {
         
         self.id = id
         self.email = email
         self.name = name
         self.phone = phone
         self.role = role
+        self.pending = pending
     }
 }

@@ -31,7 +31,7 @@ class AuthenticationManager: ObservableObject {
             
             if let user = user {
                 
-                self.database.getUserProfile(userUid: user.uid, completion: { profile in
+                self.database.getUserProfile(userUid: user.email ?? "", completion: { profile in
                     
                     self.profile = profile
                     profileName = profile.name
@@ -83,7 +83,7 @@ class AuthenticationManager: ObservableObject {
     
     func saveFeelingsPackage() {
         
-        guard let userUid = Auth.auth().currentUser?.uid else { return }
+        guard let userUid = Auth.auth().currentUser?.email else { return }
         
         self.database.saveFeelings(userUid: userUid) { data in
             
@@ -93,7 +93,7 @@ class AuthenticationManager: ObservableObject {
     
     func getFeelingsList() {
         
-        guard let userUid = Auth.auth().currentUser?.uid else { return }
+        guard let userUid = Auth.auth().currentUser?.email else { return }
         
         self.database.getFeelings(userUid: userUid, completion: { feelings in
             
