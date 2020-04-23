@@ -20,10 +20,25 @@ class PatientProfileViewModel: ObservableObject {
     @Published var userType: UserTypeOptions = .patient
     
     @Published var navigateToSolicitation: Bool = false
+    
+    func setData(name: String, email: String, phone: String, role: String) {
+        self.userName = name
+        self.userEmail = email
+        self.userPhone = phone
+        
+        if role == "Paciente" {
+            self.userType = .patient
+        } else if role == "Psiquiatra" {
+            self.userType = .psychiatrit
+        } else {
+            self.userType = .therapist
+        }
+    }
 }
 
 struct PatientProfile: View {
     
+    @EnvironmentObject var authStatus: AuthenticationManager
     @ObservedObject var viewModel: PatientProfileViewModel = PatientProfileViewModel()
     
     var paddingAccordingDevice: CGFloat {
@@ -123,7 +138,7 @@ struct PatientProfile: View {
                         Divider()
                         
                         Button(action: {
-                            
+                            self.authStatus.logout()
                         }) {
                             HStack(spacing: geometry.size.width * 0.019){
                                     Image("ic_logout")
@@ -150,6 +165,14 @@ struct PatientProfile: View {
                 
             }
         }.background(BackgroundWithShape())
+            .onAppear {
+                guard let name = self.authStatus.profile?.name else { return }
+                guard let email = self.authStatus.profile?.email else { return }
+                guard let phone = self.authStatus.profile?.phone else { return }
+                guard let role = self.authStatus.profile?.role else { return }
+                
+                self.viewModel.setData(name: name, email: email, phone: phone, role: role)
+        }
             
     }
 }

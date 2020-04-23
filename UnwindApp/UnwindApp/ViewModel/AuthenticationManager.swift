@@ -104,6 +104,20 @@ class AuthenticationManager: ObservableObject {
         })
     }
     
+    func getPendingStatus() {
+        guard let userUid = Auth.auth().currentUser?.email else { return }
+        
+        self.database.getPendingStatus(userUid: self.replaceEmail(email: userUid)) { (pendingStatus) in
+            self.profile?.pending = pendingStatus
+        }
+    }
+    
+    func acceptPending() {
+        guard let userUid = Auth.auth().currentUser?.email else { return }
+        
+        self.database.acceptPending(source: self.replaceEmail(email: userUid), target: self.profile?.pending ?? "")
+    }
+    
     func replaceEmail(email: String) -> String {
         
         if email.contains(".") {

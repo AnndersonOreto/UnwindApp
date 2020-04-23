@@ -9,10 +9,10 @@
 import Foundation
 
 class PatientListViewModel: ObservableObject {
-    @Published var patients: [Patient]
+    @Published var patients: [Patient] = []
     
-    init() {
-        self.patients = fakePatients
+    func setPatients(_ patients: [Patient]) {
+        self.patients = patients
     }
     
     func sortList(by option: SortOptions) {

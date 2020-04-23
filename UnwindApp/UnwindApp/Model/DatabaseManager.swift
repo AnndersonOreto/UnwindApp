@@ -110,15 +110,21 @@ class DatabaseManager {
         ref.child("users").child(userUid).observeSingleEvent(of: .value, with: { (snapshopt) in
             
             let value = snapshopt.value as? NSDictionary
-            let email = ""
+            let email = userUid.replacingOccurrences(of: "(dot)", with: ".").lowercased()
             let name = value?["name"] as? String ?? ""
             let phone = value?["phone"] as? String ?? ""
             let role = value?["role"] as? String ?? ""
             let pending = value?["pending"] as? String ?? ""
             
-            let profile = AuthenticationProfile(id: userUid, email: email, name: name, phone: phone, role: role, pending: pending)
+            var patients = [String]()
             
-            completion(profile)
+            self.getPacientsList(userUid: userUid) { (patientList) in
+                patients = patientList
+                
+                let profile = AuthenticationProfile(id: userUid, email: email, name: name, phone: phone, role: role, pending: pending, patients: patients)
+                
+                completion(profile)
+            }
         })
     }
     
@@ -167,10 +173,24 @@ class DatabaseManager {
                     pacients.append(pacient ?? "")
                 }
                 
+                
+                
                 completion(pacients)
             } else {
                 print("erro")
             }
         })
+    }
+    
+    func getPendingStatus(userUid: String, completion: @escaping(String)->()) {
+        ref.child("users").child(userUid).observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? NSDictionary {
+                if let pendingEmail = value["pending"] as? String {
+                    completion(pendingEmail)
+                } else {
+                    completion("")
+                }
+            }
+        }
     }
 }

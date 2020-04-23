@@ -9,8 +9,17 @@
 import SwiftUI
 
 struct SolicitationView: View {
+    @EnvironmentObject var authStatus: AuthenticationManager
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(self.authStatus.profile?.pending ?? "")
+            if authStatus.profile?.pending != "" {
+                Button(action: { self.authStatus.acceptPending() }, label: { Text("Aceitar") })
+            } else {
+                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            }
+        }
     }
 }
 

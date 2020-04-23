@@ -44,6 +44,9 @@ struct PatientListView: View {
                 }
             }
         }.background(BackgroundWithShape())
+            .onAppear {
+                self.authStatus.profile?.patients
+        }
     }
 }
 

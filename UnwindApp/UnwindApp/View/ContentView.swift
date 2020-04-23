@@ -41,34 +41,30 @@ struct ContentView: View {
                         }.tag(1)
                         
                         NavigationView{
-                            PatientProfile().tabItem {
-                                VStack {
-                                    Image(systemName: "person")
-                                    Text("Perfil")
-                                }
-                            }.tag(2)
-                        }
+                            PatientProfile()
+                        }.navigationViewStyle(StackNavigationViewStyle())
+                        .tabItem {
+                            Image(systemName: "person")
+                            Text("Perfil")
+                        }.tag(2)
                     }
                 } else {
                     TabView(selection: $authStatus.selectedTab) {
                         NavigationView {
                             PatientListView()
-                        }
-                        .navigationViewStyle(StackNavigationViewStyle())
+                        }.navigationViewStyle(StackNavigationViewStyle())
                         .tabItem {
-                            VStack {
-                                Image(systemName: "calendar")
-                                Text("Histórico")
-                            }
+                            Image(systemName: "calendar")
+                            Text("Histórico")
                         }.tag(0)
+                        
                         NavigationView{
-                            DoctorProfile().tabItem {
-                                VStack {
-                                    Image(systemName: "person")
-                                    Text("Perfil")
-                                }
-                            }.tag(1)
-                        }
+                            DoctorProfile()
+                        }.navigationViewStyle(StackNavigationViewStyle())
+                        .tabItem {
+                            Image(systemName: "person")
+                            Text("Perfil")
+                        }.tag(1)
                     }
 
                 }
