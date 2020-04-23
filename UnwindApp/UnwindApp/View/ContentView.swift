@@ -28,20 +28,16 @@ struct ContentView: View {
                             FeelingsView()
                         }.navigationViewStyle(StackNavigationViewStyle())
                         .tabItem {
-                            VStack {
-                                Image(systemName: "heart")
-                                Text("Emoção")
-                            }
+                            Image(systemName: "heart")
+                            Text("Emoção")
                         }.tag(0)
                         
                         NavigationView {
                             UserHistoryView()
                         }.navigationViewStyle(StackNavigationViewStyle())
                         .tabItem {
-                            VStack {
-                                Image(systemName: "calendar")
-                                Text("Histórico")
-                            }
+                            Image(systemName: "calendar")
+                            Text("Histórico")
                         }.tag(1)
                         
                         NavigationView{
@@ -56,7 +52,7 @@ struct ContentView: View {
                 } else {
                     TabView(selection: $authStatus.selectedTab) {
                         NavigationView {
-                            PatientsView()
+                            PatientListView()
                         }
                         .navigationViewStyle(StackNavigationViewStyle())
                         .tabItem {

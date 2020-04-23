@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SortButton: View {
     @Binding var showPicker: Bool
+    @Binding var selected: SortOptions
     
     var body: some View {
         Group {
@@ -17,7 +18,7 @@ struct SortButton: View {
                 self.showPicker.toggle()
             }) {
                 HStack(alignment: .center) {
-                    Text("Ordenamento")
+                    Text("Ordem \(selected.rawValue.lowercased())")
                     Image(systemName: "chevron.down")
                         .colorMultiply(.secondary)
                 }.padding([.top, .leading])
@@ -28,6 +29,6 @@ struct SortButton: View {
 
 struct SortButton_Previews: PreviewProvider {
     static var previews: some View {
-        SortButton(showPicker: .constant(false))
+        SortButton(showPicker: .constant(false), selected: .constant(.alphabetically))
     }
 }

@@ -1,14 +1,14 @@
 //
-//  PatientsView.swift
+//  CustomColor.swift
 //  UnwindApp
 //
-//  Created by Arthur Bastos Fanck on 06/04/20.
+//  Created by Arthur Bastos Fanck on 22/04/20.
 //  Copyright © 2020 Annderson Packeiser Oreto. All rights reserved.
 //
 
 import SwiftUI
 
-enum CustomColor {
+public enum CustomColor {
     case background
     case feelingBorder
     case feelingText
@@ -34,27 +34,5 @@ enum CustomColor {
         case .verySad: return Color(red: 139/255, green: 200/255, blue: 234/255)
         case .other: return Color(red: 186/255, green: 189/255, blue: 211/255)
         }
-    }
-}
-
-struct PatientsView: View {
-    @ObservedObject var viewModel = PatientsViewModel()
-    
-    var body: some View {
-        SortableList(viewModel: viewModel, isPacient: false)
-    }
-}
-
-struct PatientsView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            PatientsView(viewModel: PatientsViewModel())
-                .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
-                .previewDisplayName("iPhone 11")
-            PatientsView(viewModel: PatientsViewModel())
-                .previewDevice(PreviewDevice(rawValue: "iPad Pro (9.7-inch)"))
-                .previewDisplayName("iPad Pro (9.7-inch)")
-        }
-        
     }
 }

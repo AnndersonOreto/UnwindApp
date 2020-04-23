@@ -20,12 +20,11 @@ class DatabaseManager {
     
     func saveNewProfile(email: String, name: String, phone: String, role: String, userUid: String) {
         
-        let post = ["email": email,
-                    "name": name,
+        let post = ["name": name,
                     "phone": phone,
                     "role": role]
         
-        ref.child("users").child(userUid).setValue(post) { (error, ret) in
+        ref.child("users").child(email).setValue(post) { (error, ret) in
             
             if let error = error {
                 
@@ -70,11 +69,34 @@ class DatabaseManager {
         }
     }
     
-    func saveMaster(userUid: String, master: String) {
+    func sendPending(source: String, target: String) {
         
-        let post = ["master": master]
+        let post = ["pending": source]
         
-        ref.child("users").child(userUid).setValue(post) { (error, ret) in
+        ref.child("users").child(target).setValue(post) { (error, ret) in
+            
+            if let error = error {
+                
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func acceptPending(source: String, target: String) {
+        
+        var post = ["pending": ""]
+        
+        ref.child("users").child(source).setValue(post) { (error, ret) in
+            
+            if let error = error {
+                
+                print(error.localizedDescription)
+            }
+        }
+        
+        post = [ref.childByAutoId().key ?? "": source]
+        
+        ref.child("users").child(target).child("professional_list").setValue(post) { (error, ret) in
             
             if let error = error {
                 
@@ -92,8 +114,9 @@ class DatabaseManager {
             let name = value?["name"] as? String ?? ""
             let phone = value?["phone"] as? String ?? ""
             let role = value?["role"] as? String ?? ""
+            let pending = value?["pending"] as? String ?? ""
             
-            let profile = AuthenticationProfile(id: userUid, email: email, name: name, phone: phone, role: role)
+            let profile = AuthenticationProfile(id: userUid, email: email, name: name, phone: phone, role: role, pending: pending)
             
             completion(profile)
         })
@@ -124,6 +147,27 @@ class DatabaseManager {
                 let feelingsArray: FeelingsInfoArray = FeelingsInfoArray(user_array: feelings)
                 
                 completion(feelingsArray)
+            } else {
+                print("erro")
+            }
+        })
+    }
+    
+    func getPacientsList(userUid: String, completion: @escaping([String])->()) {
+        
+        ref.child("users").child(userUid).child("professional_list").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let value = snapshot.value as? NSDictionary {
+                
+                var pacients: [String] = []
+                
+                for val in value {
+                    
+                    let pacient = val.value as? String
+                    pacients.append(pacient ?? "")
+                }
+                
+                completion(pacients)
             } else {
                 print("erro")
             }
