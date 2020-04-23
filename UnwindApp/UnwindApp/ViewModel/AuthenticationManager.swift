@@ -31,7 +31,7 @@ class AuthenticationManager: ObservableObject {
             
             if let user = user {
                 
-                self.database.getUserProfile(userUid: user.email ?? "", completion: { profile in
+                self.database.getUserProfile(userUid: self.replaceEmail(email: user.email ?? ""), completion: { profile in
                     
                     self.profile = profile
                     profileName = profile.name
@@ -51,7 +51,7 @@ class AuthenticationManager: ObservableObject {
             
             if let userResult = user?.user {
                 
-                self.database.saveNewProfile(email: email, name: name, phone: phone, role: role, userUid: userResult.uid)
+                self.database.saveNewProfile(email: self.replaceEmail(email: email), name: name, phone: phone, role: role, userUid: userResult.uid)
             } else {
                 
                 print(error?.localizedDescription ?? "")
@@ -85,6 +85,8 @@ class AuthenticationManager: ObservableObject {
         
         guard let userUid = Auth.auth().currentUser?.email else { return }
         
+        print(userUid)
+        
         self.database.saveFeelings(userUid: userUid) { data in
             
             self.profile?.feelings = data
@@ -95,13 +97,24 @@ class AuthenticationManager: ObservableObject {
         
         guard let userUid = Auth.auth().currentUser?.email else { return }
         
-        self.database.getFeelings(userUid: userUid, completion: { feelings in
+        print(userUid)
+        
+        self.database.getFeelings(userUid: self.replaceEmail(email: userUid), completion: { feelings in
             
             DispatchQueue.main.async {
                 self.profile?.feelings = feelings
                 fakeReports = feelings.user_array
             }
         })
+    }
+    
+    func replaceEmail(email: String) -> String {
+        
+        if email.contains(".") {
+            return email.replacingOccurrences(of: ".", with: "(dot)")
+        } else {
+            return email.replacingOccurrences(of: "(dot)", with: ".")
+        }
     }
     
     deinit {
