@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct HistoryView: View {
+    
     @ObservedObject var viewModel = HistoryViewModel()
     @State var showPicker: Bool = false
     @State var sortSelected: SortOptions = .alphabetically

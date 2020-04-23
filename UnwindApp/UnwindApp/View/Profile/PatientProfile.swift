@@ -21,18 +21,10 @@ class PatientProfileViewModel: ObservableObject {
     
     @Published var navigateToSolicitation: Bool = false
     
-    func setData(name: String, email: String, phone: String, role: String) {
+    func setData(name: String, email: String, phone: String) {
         self.userName = name
         self.userEmail = email
         self.userPhone = phone
-        
-        if role == "Paciente" {
-            self.userType = .patient
-        } else if role == "Psiquiatra" {
-            self.userType = .psychiatrit
-        } else {
-            self.userType = .therapist
-        }
     }
 }
 
@@ -169,11 +161,9 @@ struct PatientProfile: View {
                 guard let name = self.authStatus.profile?.name else { return }
                 guard let email = self.authStatus.profile?.email else { return }
                 guard let phone = self.authStatus.profile?.phone else { return }
-                guard let role = self.authStatus.profile?.role else { return }
                 
-                self.viewModel.setData(name: name, email: email, phone: phone, role: role)
+                self.viewModel.setData(name: name, email: email, phone: phone)
         }
-            
     }
 }
 

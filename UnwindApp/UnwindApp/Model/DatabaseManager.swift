@@ -116,15 +116,13 @@ class DatabaseManager {
             let role = value?["role"] as? String ?? ""
             let pending = value?["pending"] as? String ?? ""
             
-            var patients = [String]()
+            let profile = AuthenticationProfile(id: userUid, email: email, name: name, phone: phone, role: role, pending: pending)
             
             self.getPacientsList(userUid: userUid) { (patientList) in
-                patients = patientList
-                
-                let profile = AuthenticationProfile(id: userUid, email: email, name: name, phone: phone, role: role, pending: pending, patients: patients)
-                
-                completion(profile)
+                profile.setPatients(patientList)
             }
+            
+            completion(profile)
         })
     }
     
@@ -154,7 +152,7 @@ class DatabaseManager {
                 
                 completion(feelingsArray)
             } else {
-                print("erro")
+                print("error - getFeelings")
             }
         })
     }
@@ -173,11 +171,9 @@ class DatabaseManager {
                     pacients.append(pacient ?? "")
                 }
                 
-                
-                
                 completion(pacients)
             } else {
-                print("erro")
+                print("error - getPacientsList")
             }
         })
     }

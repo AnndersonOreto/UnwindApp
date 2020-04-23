@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SolicitationView: View {
+    
     @EnvironmentObject var authStatus: AuthenticationManager
     
     var body: some View {

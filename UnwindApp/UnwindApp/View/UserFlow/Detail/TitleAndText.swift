@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct TitleAndText: View {
+    
     @State var title: String
     @State var text: String
     

@@ -9,6 +9,7 @@
 import Foundation
 
 class DetailViewModel: ObservableObject {
+    
     @Published var userName: String
     @Published var date = FeelingsInfo.sharedInstance.date
     @Published var feeling: Feeling

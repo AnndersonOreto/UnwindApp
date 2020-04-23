@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct BackgroundShape: Shape {
+    
     func path(in rect: CGRect) -> Path {
         Path { path in
             var height = min(rect.size.height, UIScreen.main.bounds.height)
@@ -28,6 +29,7 @@ struct BackgroundShape: Shape {
 }
 
 struct BackgroundWithShape: View {
+    
     var body: some View {
         ZStack(alignment: .top) {
             Rectangle()

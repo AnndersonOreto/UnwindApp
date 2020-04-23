@@ -48,7 +48,6 @@
 		AAEAE286243E59F40040E71B /* ImageAndTextWithBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAE285243E59F40040E71B /* ImageAndTextWithBorder.swift */; };
 		AAFD295B243D08350049AFD3 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD295A243D08350049AFD3 /* ProgressBar.swift */; };
 		AAFD295D243D28BE0049AFD3 /* SortPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD295C243D28BE0049AFD3 /* SortPicker.swift */; };
-		AB0DDBEF2444FC0A0090A29E /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0DDBEE2444FC0A0090A29E /* Navigation.swift */; };
 		AB0DDBF124463A640090A29E /* UserTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0DDBF024463A640090A29E /* UserTypePicker.swift */; };
 		AB14DFC924520CD00049F3F7 /* DoctorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14DFC824520CD00049F3F7 /* DoctorProfile.swift */; };
 		AB14DFCB24520D5C0049F3F7 /* ProfilesStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14DFCA24520D5C0049F3F7 /* ProfilesStructs.swift */; };
@@ -129,7 +128,6 @@
 		AAEAE285243E59F40040E71B /* ImageAndTextWithBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAndTextWithBorder.swift; sourceTree = "<group>"; };
 		AAFD295A243D08350049AFD3 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		AAFD295C243D28BE0049AFD3 /* SortPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortPicker.swift; sourceTree = "<group>"; };
-		AB0DDBEE2444FC0A0090A29E /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		AB0DDBF024463A640090A29E /* UserTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypePicker.swift; sourceTree = "<group>"; };
 		AB14DFC824520CD00049F3F7 /* DoctorProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProfile.swift; sourceTree = "<group>"; };
 		AB14DFCA24520D5C0049F3F7 /* ProfilesStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesStructs.swift; sourceTree = "<group>"; };
@@ -255,7 +253,6 @@
 				268705A22440CE9C00BB8C4F /* DatabaseManager.swift */,
 				2669C45C2440E04600E6B500 /* FeelingsInfo.swift */,
 				AA851452243BB71100233B3F /* Model.swift */,
-				AB0DDBEE2444FC0A0090A29E /* Navigation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -660,7 +657,6 @@
 				266B3F5A24364BE800554474 /* UnwindApp.xcdatamodeld in Sources */,
 				26890738243CF423008DDC2B /* AuthenticationProfile.swift in Sources */,
 				266B3F5C24364BE800554474 /* ContentView.swift in Sources */,
-				AB0DDBEF2444FC0A0090A29E /* Navigation.swift in Sources */,
 				AB0DDBF124463A640090A29E /* UserTypePicker.swift in Sources */,
 				26890733243CEC82008DDC2B /* AuthenticationManager.swift in Sources */,
 				AACF8BAD2444FF7D00EF7223 /* BackgroundShape.swift in Sources */,

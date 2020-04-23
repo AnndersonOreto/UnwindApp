@@ -9,6 +9,7 @@
 import Foundation
 
 class HistoryViewModel: ObservableObject {
+    
     @Published var feelings: [Feelings]
     
     init() {

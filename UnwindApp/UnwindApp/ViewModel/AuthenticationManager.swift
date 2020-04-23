@@ -70,7 +70,7 @@ class AuthenticationManager: ObservableObject {
             try Auth.auth().signOut()
             self.profile = nil
         } catch {
-            print("Logout error")
+            print(error.localizedDescription)
         }
     }
     

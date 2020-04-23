@@ -9,6 +9,7 @@
 import SwiftUI
 
 public enum CustomColor {
+    
     case background
     case feelingBorder
     case feelingText

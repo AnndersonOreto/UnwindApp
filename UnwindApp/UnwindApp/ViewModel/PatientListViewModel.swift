@@ -9,6 +9,7 @@
 import Foundation
 
 class PatientListViewModel: ObservableObject {
+    
     @Published var patients: [Patient] = []
     
     func setPatients(_ patients: [Patient]) {

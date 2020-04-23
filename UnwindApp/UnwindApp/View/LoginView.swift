@@ -222,7 +222,6 @@ struct LoginViewStruct: View {
                             } else {
                                 self.signUp()
                             }
-                            print("teste1")
                         }) {
                             Text(self.loginSelected ? "Entrar" : "Cadastrar")
                                 .font(.system(size: 30))
@@ -257,7 +256,6 @@ struct LoginViewStruct: View {
                         
                         if !self.loginSelected {
                             self.value = height/1.5
-                            print(self.value)
                         }
                     }
                     

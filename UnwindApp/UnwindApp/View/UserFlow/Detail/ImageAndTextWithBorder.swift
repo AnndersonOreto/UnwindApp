@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ImageAndTextWithBorder: View {
+    
     @State var imageName: String
     @State var text: String
     
@@ -36,6 +37,7 @@ struct ImageAndTextWithBorder: View {
 }
 
 struct EmotionTextWithBorder: View {
+    
     @State var text: String
     
     let width = UIScreen.main.bounds.width

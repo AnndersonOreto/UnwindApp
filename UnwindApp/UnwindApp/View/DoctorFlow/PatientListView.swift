@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct PatientListView: View {
+    
     @EnvironmentObject var authStatus: AuthenticationManager
     @ObservedObject var viewModel = PatientListViewModel()
     @State var showPicker: Bool = false
@@ -44,9 +45,6 @@ struct PatientListView: View {
                 }
             }
         }.background(BackgroundWithShape())
-            .onAppear {
-                self.authStatus.profile?.patients
-        }
     }
 }
 

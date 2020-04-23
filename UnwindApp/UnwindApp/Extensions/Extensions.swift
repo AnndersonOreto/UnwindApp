@@ -19,6 +19,7 @@ extension View {
 }
 
 extension UINavigationController {
+    
     open override func viewDidLoad() {
         let standardAppearance = UINavigationBarAppearance()
         standardAppearance.configureWithTransparentBackground()

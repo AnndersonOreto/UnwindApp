@@ -10,6 +10,7 @@ import SwiftUI
 import MessageUI
 
 struct CustomDetailView: View {
+    
     @EnvironmentObject var authStatus: AuthenticationManager
     @ObservedObject var viewModel = DetailViewModel()
     @State var showDatePicker: Bool = false

@@ -131,6 +131,7 @@ struct DetailView: View {
 }
 
 extension DetailView {
+    
     var reportButton: some View {
         Button(action: { self.showMailView.toggle() } ) {
             Text("Enviar relatório")

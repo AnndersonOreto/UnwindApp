@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct UserHistoryView: View {
+    
     @EnvironmentObject var authStatus: AuthenticationManager
     @ObservedObject var viewModel = HistoryViewModel()
     @State var showPicker: Bool = false

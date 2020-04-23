@@ -34,6 +34,7 @@ struct ProgressBar: View {
 }
 
 extension ProgressBar {
+    
     func calculateProgress() {
         DispatchQueue.main.async {
             self.currentProgress = self.currentPage/self.totalPages

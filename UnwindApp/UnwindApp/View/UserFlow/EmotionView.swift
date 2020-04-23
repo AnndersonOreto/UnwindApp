@@ -104,7 +104,6 @@ struct EmotionView: View {
                     for row in self.viewModel.array{
                         for emotion in row {
                             if emotion.id == item {
-                                print(emotion.name)
                                 self.viewModel.emotionsToSend.append(emotion)
                             }
                         }
