@@ -18,7 +18,7 @@ final class FeelingsInfo {
     var user_thoughts: String = ""
     var user_action: String = ""
     var date: String = ""
-    var image: String = ""
+    var image: String = "default"
     
     init() {
         
@@ -33,7 +33,7 @@ struct Feelings: Identifiable {
     var user_thoughts: String = ""
     var user_action: String = ""
     var date: String = ""
-    var image: String = ""
+    var image: String = "default"
 }
 
 struct FeelingsInfoArray {

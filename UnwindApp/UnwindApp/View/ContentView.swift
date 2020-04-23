@@ -28,27 +28,21 @@ struct ContentView: View {
                             FeelingsView()
                         }.navigationViewStyle(StackNavigationViewStyle())
                         .tabItem {
-                            VStack {
-                                Image(systemName: "heart")
-                                Text("Emoção")
-                            }
+                            Image(systemName: "heart")
+                            Text("Emoção")
                         }.tag(0)
                         
                         NavigationView {
                             UserHistoryView()
                         }.navigationViewStyle(StackNavigationViewStyle())
                         .tabItem {
-                            VStack {
-                                Image(systemName: "calendar")
-                                Text("Histórico")
-                            }
+                            Image(systemName: "calendar")
+                            Text("Histórico")
                         }.tag(1)
                         
                         DetailView().tabItem {
-                            VStack {
-                                Image(systemName: "person")
-                                Text("Perfil")
-                            }
+                            Image(systemName: "person")
+                            Text("Perfil")
                         }.tag(2)
                     }
                 } else {

@@ -24,94 +24,93 @@ struct DetailView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             ScrollView(.vertical, showsIndicators: false) {
-                Group {
-                    HStack(alignment: .center) {
-                        Group {
-                            Text("\(authStatus.profile?.name ?? ""), confira ")
-                            + Text("suas emoções")
-                                .fontWeight(.bold)
-                        }.font(.largeTitle)
-                            .foregroundColor(.white)
-                        Spacer()
-                        reportButton
-                    }.padding([.top,.horizontal])
-                    Spacer().frame(minHeight: 0, maxHeight: 10)
-                    VStack(alignment: .center, spacing: 15) {
-                        HStack(alignment: .center, spacing: 15) {
-                            HStack(alignment: .center) {
-                                VStack(alignment: .leading) {
-                                    Text("Data e Hora:")
-                                        .foregroundColor(.secondary)
-                                    Text("\(FeelingsInfo.sharedInstance.date)")
-                                        .foregroundColor(.primary)
-                                        .fontWeight(.semibold)
-                                }
-                                Spacer()
-                                Button(action: { self.showDatePicker.toggle() }) {
-                                    Image(systemName: "pencil")
-                                        .colorMultiply(.secondary)
-                                }
-                            }.frame(height: height*0.14)
-                            .asCard()
-                            
-                            HStack(alignment: .center) {
-                                Text("Como estava \nse sentindo?")
+                HStack(alignment: .center) {
+                    Group {
+                        Text("\(authStatus.profile?.name ?? ""), confira ")
+                        + Text("suas emoções")
+                            .fontWeight(.bold)
+                    }.font(.largeTitle)
+                        .foregroundColor(.white)
+                    Spacer()
+                    reportButton
+                }.padding([.top,.horizontal])
+                Spacer().frame(minHeight: 0, maxHeight: 10)
+                VStack(alignment: .center, spacing: 15) {
+                    HStack(alignment: .center, spacing: 15) {
+                        HStack(alignment: .center) {
+                            VStack(alignment: .leading) {
+                                Text("Data e Hora:")
+                                    .foregroundColor(.secondary)
+                                Text("\(FeelingsInfo.sharedInstance.date)")
                                     .foregroundColor(.primary)
                                     .fontWeight(.semibold)
-                                    .multilineTextAlignment(.leading)
-                                Spacer()
-                                ImageAndTextWithBorder(imageName: FeelingsInfo.sharedInstance.image, text: FeelingsInfo.sharedInstance.user_feeling)
-                                Spacer()
-                                NavigationLink(destination: FeelingsView()){
-                                    Image(systemName: "pencil")
-                                        .colorMultiply(.secondary)
-                                }
-                            }.frame(width: width*0.52, height: height*0.14)
-                            .asCard()
-                            
-                        }
+                            }
+                            Spacer()
+                            Button(action: { self.showDatePicker.toggle() }) {
+                                Image(systemName: "pencil")
+                                    .colorMultiply(.secondary)
+                            }
+                        }.frame(height: height*0.14)
+                        .asCard()
+                        
                         HStack(alignment: .center) {
-                            Text("Qual foi \nsua emoção?")
+                            Text("Como estava \nse sentindo?")
                                 .foregroundColor(.primary)
                                 .fontWeight(.semibold)
                                 .multilineTextAlignment(.leading)
                             Spacer()
-                            ForEach(FeelingsInfo.sharedInstance.user_emotions, id: \.self) { emotion in
-                                EmotionTextWithBorder(text: "\(emotion)")
-                            }
+                            ImageAndTextWithBorder(imageName: FeelingsInfo.sharedInstance.image, text: FeelingsInfo.sharedInstance.user_feeling)
                             Spacer()
-                            NavigationLink(destination: EmotionView(feeling: self.viewModel.feeling)){
+                            NavigationLink(destination: FeelingsView()){
                                 Image(systemName: "pencil")
                                     .colorMultiply(.secondary)
                             }
-                        }.asCard()
-                        HStack {
-                            TitleAndText(title: "Qual foi a situação?", text: FeelingsInfo.sharedInstance.user_situation)
-                            Spacer()
-                            NavigationLink(destination: DescribeView(state: .situation)) {
-                                Image(systemName: "pencil")
-                                    .colorMultiply(.secondary)
-                            }
-                        }.asCard()
-                        HStack {
-                            TitleAndText(title: "Qual foi seu pensamento?", text: FeelingsInfo.sharedInstance.user_thoughts)
-                            Spacer()
-                            NavigationLink(destination: DescribeView(state: .thoughts)){
-                                Image(systemName: "pencil")
-                                    .colorMultiply(.secondary)
-                            }
-                        }.asCard()
-                        HStack {
-                            TitleAndText(title: "Qual foi sua ação?", text: FeelingsInfo.sharedInstance.user_action)
-                            Spacer()
-                            NavigationLink(destination: DescribeView(state: .action)){
-                                Image(systemName: "pencil")
-                                    .colorMultiply(.secondary)
-                            }
-                        }.asCard()
-                    }.padding()
-                }.background(BackgroundWithShape())
-            }.background(Color.clear)
+                        }.frame(width: width*0.52, height: height*0.14)
+                        .asCard()
+                        
+                    }
+                    HStack(alignment: .center) {
+                        Text("Qual foi \nsua emoção?")
+                            .foregroundColor(.primary)
+                            .fontWeight(.semibold)
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                        ForEach(FeelingsInfo.sharedInstance.user_emotions, id: \.self) { emotion in
+                            EmotionTextWithBorder(text: "\(emotion)")
+                        }
+                        Spacer()
+                        NavigationLink(destination: EmotionView(feeling: self.viewModel.feeling)){
+                            Image(systemName: "pencil")
+                                .colorMultiply(.secondary)
+                        }
+                    }.asCard()
+                    HStack {
+                        TitleAndText(title: "Qual foi a situação?", text: FeelingsInfo.sharedInstance.user_situation)
+                        Spacer()
+                        NavigationLink(destination: DescribeView(state: .situation)) {
+                            Image(systemName: "pencil")
+                                .colorMultiply(.secondary)
+                        }
+                    }.asCard()
+                    HStack {
+                        TitleAndText(title: "Qual foi seu pensamento?", text: FeelingsInfo.sharedInstance.user_thoughts)
+                        Spacer()
+                        NavigationLink(destination: DescribeView(state: .thoughts)){
+                            Image(systemName: "pencil")
+                                .colorMultiply(.secondary)
+                        }
+                    }.asCard()
+                    HStack {
+                        TitleAndText(title: "Qual foi sua ação?", text: FeelingsInfo.sharedInstance.user_action)
+                        Spacer()
+                        NavigationLink(destination: DescribeView(state: .action)){
+                            Image(systemName: "pencil")
+                                .colorMultiply(.secondary)
+                        }
+                    }.asCard()
+                }.padding()
+            }
+            .background(BackgroundWithShape().edgesIgnoringSafeArea(.top))
             if showDatePicker {
                 DateAndHourPicker(selected: $selectedDate)
                     .onDisappear { print(self.selectedDate) }
@@ -124,6 +123,8 @@ struct DetailView: View {
             }, label: {
                 Image(systemName: "chevron.left")
                     .colorMultiply(.accentColor)
+                    .imageScale(.large)
+                    .font(Font.system(size: 18, weight: .semibold))
             })
         )
     }
