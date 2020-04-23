@@ -47,6 +47,9 @@
 		AAFD295D243D28BE0049AFD3 /* SortPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD295C243D28BE0049AFD3 /* SortPicker.swift */; };
 		AB0DDBEF2444FC0A0090A29E /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0DDBEE2444FC0A0090A29E /* Navigation.swift */; };
 		AB0DDBF124463A640090A29E /* UserTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0DDBF024463A640090A29E /* UserTypePicker.swift */; };
+		AB14DFC924520CD00049F3F7 /* DoctorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14DFC824520CD00049F3F7 /* DoctorProfile.swift */; };
+		AB14DFCB24520D5C0049F3F7 /* ProfilesStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14DFCA24520D5C0049F3F7 /* ProfilesStructs.swift */; };
+		AB14DFCD245210E60049F3F7 /* Solicitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14DFCC245210E60049F3F7 /* Solicitation.swift */; };
 		AB27E0E9243D0CA700F346CB /* EmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0E8243D0CA700F346CB /* EmotionView.swift */; };
 		AB27E0ED243E3D3500F346CB /* DescribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0EC243E3D3500F346CB /* DescribeView.swift */; };
 		AB27E0F1243FA9E900F346CB /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB27E0F0243FA9E800F346CB /* Alerts.swift */; };
@@ -122,6 +125,9 @@
 		AAFD295C243D28BE0049AFD3 /* SortPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortPicker.swift; sourceTree = "<group>"; };
 		AB0DDBEE2444FC0A0090A29E /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		AB0DDBF024463A640090A29E /* UserTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypePicker.swift; sourceTree = "<group>"; };
+		AB14DFC824520CD00049F3F7 /* DoctorProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProfile.swift; sourceTree = "<group>"; };
+		AB14DFCA24520D5C0049F3F7 /* ProfilesStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesStructs.swift; sourceTree = "<group>"; };
+		AB14DFCC245210E60049F3F7 /* Solicitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solicitation.swift; sourceTree = "<group>"; };
 		AB27E0E8243D0CA700F346CB /* EmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionView.swift; sourceTree = "<group>"; };
 		AB27E0EC243E3D3500F346CB /* DescribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeView.swift; sourceTree = "<group>"; };
 		AB27E0F0243FA9E800F346CB /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -354,6 +360,9 @@
 			isa = PBXGroup;
 			children = (
 				AB9C32A02450AFD20020ECB7 /* PatientProfile.swift */,
+				AB14DFC824520CD00049F3F7 /* DoctorProfile.swift */,
+				AB14DFCA24520D5C0049F3F7 /* ProfilesStructs.swift */,
+				AB14DFCC245210E60049F3F7 /* Solicitation.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -631,7 +640,9 @@
 				AAA61F8A24477DB100A074F1 /* UserHistoryViewModel.swift in Sources */,
 				AA6CD98B243FC74700CF7F31 /* DateAndHourPicker.swift in Sources */,
 				265814DB243E42790051815A /* HomeView.swift in Sources */,
+				AB14DFC924520CD00049F3F7 /* DoctorProfile.swift in Sources */,
 				AAA61F8C24479F5400A074F1 /* SortableList.swift in Sources */,
+				AB14DFCB24520D5C0049F3F7 /* ProfilesStructs.swift in Sources */,
 				AAA61F8824477CDD00A074F1 /* UserHistoryView.swift in Sources */,
 				2669C45D2440E04600E6B500 /* FeelingsInfo.swift in Sources */,
 				266B3F5A24364BE800554474 /* UnwindApp.xcdatamodeld in Sources */,
@@ -646,6 +657,7 @@
 				AAA61F8524463B0800A074F1 /* ViewExtension.swift in Sources */,
 				AAA61F8E2447A38900A074F1 /* ViewModelProtocol.swift in Sources */,
 				268705A32440CE9C00BB8C4F /* DatabaseManager.swift in Sources */,
+				AB14DFCD245210E60049F3F7 /* Solicitation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

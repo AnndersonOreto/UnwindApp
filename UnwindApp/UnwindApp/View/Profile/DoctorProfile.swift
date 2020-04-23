@@ -1,5 +1,5 @@
 //
-//  PatientProfile.swift
+//  DoctorProfile.swift
 //  UnwindApp
 //
 //  Created by Marcus Vinicius Vieira Badiale on 22/04/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class PatientProfileViewModel: ObservableObject {
+class DoctorProfileViewModel: ObservableObject {
     
     @Published var userName: String = "Julia Souza"
     @Published var userEmail: String = "julia.souza@gmail.com"
@@ -17,14 +17,14 @@ class PatientProfileViewModel: ObservableObject {
     @Published var userEmailTitle: String = "E-mail"
     @Published var userPhoneTitle: String = "Telefone"
     @Published var userTypeTitle: String = "Qual melhor representa você"
-    @Published var userType: UserTypeOptions = .patient
+    @Published var userType: UserTypeOptions = .psychiatrit
     
-    @Published var navigateToSolicitation: Bool = false
+    @Published var showAlert: Bool = false
 }
 
-struct PatientProfile: View {
+struct DoctorProfile: View {
     
-    @ObservedObject var viewModel: PatientProfileViewModel = PatientProfileViewModel()
+    @ObservedObject var viewModel: DoctorProfileViewModel = DoctorProfileViewModel()
     
     var paddingAccordingDevice: CGFloat {
         return idiom == .pad ? (UIScreen.main.bounds.width * 0.18) : (UIScreen.main.bounds.width * 0.05)
@@ -51,7 +51,7 @@ struct PatientProfile: View {
         
         GeometryReader { geometry in
             ZStack() {
-                NavigationLink("", destination: SolicitationView(), isActive: self.$viewModel.navigateToSolicitation)
+                
                 VStack (spacing: 20){
                     HStack {
                         Text("Meu")
@@ -71,9 +71,9 @@ struct PatientProfile: View {
                         .frame(width: self.profileImageAccordingDevice, height: self.profileImageAccordingDevice)
                         .clipShape(Circle())
                         VStack(spacing: geometry.size.width * 0.02) {
-                            PatientProfileTextField(text: self.$viewModel.userName, title: self.viewModel.userNameTitle, idiom: self.idiom)
-                                PatientProfileTextField(text: self.$viewModel.userEmail, title: self.viewModel.userEmailTitle, idiom: self.idiom)
-                                PatientProfileTextField(text: self.$viewModel.userPhone, title: self.viewModel.userPhoneTitle, idiom: self.idiom)
+                            DoctorProfileTextField(text: self.$viewModel.userName, title: self.viewModel.userNameTitle, idiom: self.idiom)
+                                DoctorProfileTextField(text: self.$viewModel.userEmail, title: self.viewModel.userEmailTitle, idiom: self.idiom)
+                                DoctorProfileTextField(text: self.$viewModel.userPhone, title: self.viewModel.userPhoneTitle, idiom: self.idiom)
                                 Button(action: {
                                 }) {
                                     ZStack{
@@ -89,7 +89,7 @@ struct PatientProfile: View {
                                             Spacer()
                                         }.padding(.top, self.textFieldPadding)
                                     }
-                                }.buttonStyle(ProfilePickerButtonStyle())
+                                }.buttonStyle(DoctorPickerButtonStyle())
                             }
                         }
                         .padding(.horizontal, self.paddingAccordingDevice)
@@ -103,13 +103,13 @@ struct PatientProfile: View {
                     
                     VStack{
                         Button(action: {
-                            self.viewModel.navigateToSolicitation.toggle()
+                            self.viewModel.showAlert.toggle()
                         }) {
                             HStack(spacing: geometry.size.width * 0.019){
                                 Image("ic_medico")
                                     .resizable()
                                     .frame(width: self.imageSizeAccordingDevice, height: self.imageSizeAccordingDevice)
-                                Text("Solicitações")
+                                Text("Cadastrar Paciente")
                                 .kerning(0.25)
                                 .font(.system(size: self.textFieldTextSize))
                                 .fontWeight(.semibold)
@@ -148,15 +148,35 @@ struct PatientProfile: View {
                 }
                 .padding(.horizontal, geometry.size.width * 0.06)
                 
+                if self.viewModel.showAlert {
+                    BackgroundAlert {
+                        AlertsView(alertType: .registerPatient)
+                    }.onTapGesture {
+                        self.viewModel.showAlert.toggle()
+                    }
+                }
+                
             }
         }.background(BackgroundWithShape())
             
     }
 }
 
+struct DoctorPickerButtonStyle: ButtonStyle {
+    
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .padding(.horizontal, UIScreen.main.bounds.width * 0.039)
+        .padding(.vertical, UIScreen.main.bounds.width * 0.021)
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color(red: 217/255, green: 219/255, blue: 226/255), lineWidth: 1.5)
+        )
+        .foregroundColor(Color(red: 184/255, green: 188/255, blue: 201/255))
+    }
+}
 
-
-struct PatientProfileTextField: View {
+struct DoctorProfileTextField: View {
     
     @Binding var text: String
     var title: String
@@ -200,14 +220,14 @@ struct PatientProfileTextField: View {
     }
 }
 
-struct PatientProfile_Previews: PreviewProvider {
+struct DoctorProfile_Previews: PreviewProvider {
     static var previews: some View {
     
         Group {
-            PatientProfile()
+            DoctorProfile()
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
                 .previewDisplayName("iPhone 11")
-            PatientProfile()
+            DoctorProfile()
                 .previewDevice(PreviewDevice(rawValue: "iPad Pro (9.7-inch)"))
                 .previewDisplayName("iPad Pro (9.7-inch)")
         }

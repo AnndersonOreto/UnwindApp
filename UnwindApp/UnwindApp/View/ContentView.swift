@@ -44,12 +44,14 @@ struct ContentView: View {
                             }
                         }.tag(1)
                         
-                        DetailView().tabItem {
-                            VStack {
-                                Image(systemName: "person")
-                                Text("Perfil")
-                            }
-                        }.tag(2)
+                        NavigationView{
+                            PatientProfile().tabItem {
+                                VStack {
+                                    Image(systemName: "person")
+                                    Text("Perfil")
+                                }
+                            }.tag(2)
+                        }
                     }
                 } else {
                     TabView(selection: $authStatus.selectedTab) {
@@ -63,12 +65,14 @@ struct ContentView: View {
                                 Text("Histórico")
                             }
                         }.tag(0)
-                        DetailView().tabItem {
-                            VStack {
-                                Image(systemName: "person")
-                                Text("Perfil")
-                            }
-                        }.tag(1)
+                        NavigationView{
+                            DoctorProfile().tabItem {
+                                VStack {
+                                    Image(systemName: "person")
+                                    Text("Perfil")
+                                }
+                            }.tag(1)
+                        }
                     }
 
                 }

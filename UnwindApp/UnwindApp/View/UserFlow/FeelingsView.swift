@@ -49,13 +49,9 @@ class FeelingsViewModel: ObservableObject {
     }
     
     func saveFeeling() {
-        //==============================
-        //INSERT CODE TO SAVE THE FEELING
-        //==============================
         
         FeelingsInfo.sharedInstance.user_feeling = feeling.description
         FeelingsInfo.sharedInstance.image = getBigImage()
-        //authStatus.setUserFeeling(user_feeling: feeling.description, feelingType: "user_feeling")
     }
     
 }
