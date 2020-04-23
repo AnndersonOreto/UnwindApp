@@ -85,9 +85,7 @@ class AuthenticationManager: ObservableObject {
         
         guard let userUid = Auth.auth().currentUser?.email else { return }
         
-        print(userUid)
-        
-        self.database.saveFeelings(userUid: userUid) { data in
+        self.database.saveFeelings(userUid: self.replaceEmail(email: userUid)) { data in
             
             self.profile?.feelings = data
         }
@@ -96,8 +94,6 @@ class AuthenticationManager: ObservableObject {
     func getFeelingsList() {
         
         guard let userUid = Auth.auth().currentUser?.email else { return }
-        
-        print(userUid)
         
         self.database.getFeelings(userUid: self.replaceEmail(email: userUid), completion: { feelings in
             
@@ -111,9 +107,9 @@ class AuthenticationManager: ObservableObject {
     func replaceEmail(email: String) -> String {
         
         if email.contains(".") {
-            return email.replacingOccurrences(of: ".", with: "(dot)")
+            return email.replacingOccurrences(of: ".", with: "(dot)").lowercased()
         } else {
-            return email.replacingOccurrences(of: "(dot)", with: ".")
+            return email.replacingOccurrences(of: "(dot)", with: ".").lowercased()
         }
     }
     

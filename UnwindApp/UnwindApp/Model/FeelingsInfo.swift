@@ -18,22 +18,22 @@ final class FeelingsInfo {
     var user_thoughts: String = ""
     var user_action: String = ""
     var date: String = ""
-    var image: String = ""
+    var image: String = "default"
     
     init() {
         
     }
 }
 
-struct Feelings {
-    
+struct Feelings: Identifiable {
+    let id = UUID()
     var user_feeling: String = ""
     var user_emotions: String = ""
     var user_situation: String = ""
     var user_thoughts: String = ""
     var user_action: String = ""
     var date: String = ""
-    var image: String = ""
+    var image: String = "default"
 }
 
 struct FeelingsInfoArray {

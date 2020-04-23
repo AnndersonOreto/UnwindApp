@@ -22,7 +22,7 @@ struct ListRow: View {
                 .frame(maxWidth: 80)
             VStack(alignment: .leading) {
                 Text(text1)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.black)
                     .font(.system(size: 20, weight: .semibold))
                 Text(text2).foregroundColor(.secondary)
                     .font(.system(size: 15, weight: .semibold))

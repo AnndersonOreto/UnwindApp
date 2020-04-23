@@ -340,10 +340,7 @@ struct PickerButtonStyle: ButtonStyle {
 }
 struct LoginView: View {
     var body: some View {
-        
-//        NavigationView {
-            LoginViewStruct()
-//        }.navigationViewStyle(StackNavigationViewStyle())
+        LoginViewStruct()
     }
 }
 
