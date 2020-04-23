@@ -57,7 +57,7 @@ struct DescribeView: View {
     
     var body: some View {
         
-        //Background {
+//        Background {
             VStack(spacing: 130){
                 NavigationLink("", destination: DetailView(), isActive: self.$teste)
                 Text(self.viewModel.state.title)

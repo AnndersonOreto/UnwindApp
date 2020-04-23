@@ -17,6 +17,7 @@ extension Color {
     static let fontColorBlack = Color(red: 37/255, green: 46/255, blue: 72/255)
     static let sendButtonColor = Color(red: 52/255, green: 126/255, blue: 227/255)
     static let strokeBlue = Color(red: 52/255, green: 126/255, blue: 227/255)
+    static let disabledTextColor = Color(red: 72/255, green: 78/255, blue: 95/255)
 }
 
 class FeelingsViewModel: ObservableObject {
@@ -48,13 +49,9 @@ class FeelingsViewModel: ObservableObject {
     }
     
     func saveFeeling() {
-        //==============================
-        //INSERT CODE TO SAVE THE FEELING
-        //==============================
         
         FeelingsInfo.sharedInstance.user_feeling = feeling.description
         FeelingsInfo.sharedInstance.image = getBigImage()
-        //authStatus.setUserFeeling(user_feeling: feeling.description, feelingType: "user_feeling")
     }
     
 }
