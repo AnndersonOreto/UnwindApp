@@ -125,7 +125,7 @@ class AuthenticationManager: ObservableObject {
     func acceptPending() {
         guard let userUid = Auth.auth().currentUser?.email else { return }
         
-        self.database.acceptPending(source: self.replaceEmail(email: userUid), target: self.profile?.pending ?? "")
+        self.database.acceptPending(source: self.replaceEmail(email: userUid), target: self.profile?.pending ?? "", name: self.profile?.name ?? "", phone: self.profile?.phone ?? "")
     }
     
     func sendPending(email: String) {

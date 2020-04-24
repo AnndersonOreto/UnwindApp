@@ -15,10 +15,6 @@ struct PatientListView: View {
     @State var showPicker: Bool = false
     @State var sortSelected: SortOptions = .alphabetically
     
-    init() {
-        UITableView.appearance().backgroundColor = .clear
-    }
-    
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .bottom) {
@@ -46,7 +42,10 @@ struct PatientListView: View {
             }
         }.background(BackgroundWithShape())
             .onAppear {
-                self.viewModel.setPatients(self.authStatus.profile?.patients ?? [])
+                UITableView.appearance().backgroundColor = .clear
+        }
+        .onReceive(self.authStatus.profile!.$patients) { (patients) in
+            self.viewModel.setPatients(patients)
         }
     }
 }

@@ -48,8 +48,8 @@ struct UserHistoryView: View {
         .navigationBarHidden(true)
         .navigationBarTitle("")
         .edgesIgnoringSafeArea(.top)
-            .onAppear {
-                self.viewModel.setFeelings(feelings: self.authStatus.profile?.feelings?.user_array ?? [])
+            .onReceive(self.authStatus.profile!.$feelings) { (feelings) in
+                self.viewModel.setFeelings(feelings: feelings.user_array)
         }
     }
 }

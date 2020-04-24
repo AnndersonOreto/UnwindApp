@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 class AuthenticationProfile {
     
@@ -16,8 +17,8 @@ class AuthenticationProfile {
     var phone: String = ""
     var role: String = ""
     var pending: String = ""
-    var feelings: FeelingsInfoArray?
-    var patients: [String] = []
+    @Published var feelings: FeelingsInfoArray = FeelingsInfoArray(user_array: [])
+    @Published var patients: [Patient] = []
     
     init(id: String, email: String?) {
         
@@ -35,7 +36,7 @@ class AuthenticationProfile {
         self.pending = pending
     }
     
-    init(id: String, email: String?, name: String, phone: String, role: String, pending: String, patients: [String]) {
+    init(id: String, email: String?, name: String, phone: String, role: String, pending: String, patients: [Patient]) {
         
         self.id = id
         self.email = email
@@ -46,7 +47,7 @@ class AuthenticationProfile {
         self.patients = patients
     }
     
-    func setPatients(_ patients: [String]) {
+    func setPatients(_ patients: [Patient]) {
         self.patients = patients
     }
 }

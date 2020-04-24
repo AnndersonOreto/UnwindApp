@@ -82,7 +82,7 @@ class DatabaseManager {
         }
     }
     
-    func acceptPending(source: String, target: String) {
+    func acceptPending(source: String, target: String, name: String, phone: String) {
         
         var post = ["pending": ""]
         
@@ -94,9 +94,11 @@ class DatabaseManager {
             }
         }
         
-        post = [ref.childByAutoId().key ?? "": source]
+        post = ["email": source,
+                "name": name,
+                "phone": phone]
         
-        ref.child("users").child(target).child("professional_list").setValue(post) { (error, ret) in
+        ref.child("users").child(target).child("professional_list").childByAutoId().setValue(post) { (error, ret) in
             
             if let error = error {
                 
@@ -157,18 +159,23 @@ class DatabaseManager {
         })
     }
     
-    func getPacientsList(userUid: String, completion: @escaping([String])->()) {
+    func getPacientsList(userUid: String, completion: @escaping([Patient])->()) {
         
         ref.child("users").child(userUid).child("professional_list").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let value = snapshot.value as? NSDictionary {
                 
-                var pacients: [String] = []
+                var pacients: [Patient] = []
                 
                 for val in value {
                     
-                    let pacient = val.value as? String
-                    pacients.append(pacient ?? "")
+                    let patientDict = val.value as? NSDictionary
+                    let name = patientDict?["name"] as? String ?? ""
+                    let phone = patientDict?["phone"] as? String ?? ""
+                    let email = patientDict?["email"] as? String ?? ""
+                    
+                    let patient = Patient(name: name, email: email, phoneNumber: phone)
+                    pacients.append(patient)
                 }
                 
                 completion(pacients)
