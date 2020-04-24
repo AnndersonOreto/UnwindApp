@@ -17,7 +17,7 @@ struct CustomDetailView: View {
     @State var selectedDate: Date = Date()
     @State var showMailView: Bool = false
     @State var mailResult: Result<MFMailComposeResult, Error>? = nil
-    var index: Int
+    @State var feeling: Feelings
     
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
@@ -42,7 +42,7 @@ struct CustomDetailView: View {
                             VStack(alignment: .leading) {
                                 Text("Data e Hora:")
                                     .foregroundColor(.secondary)
-                                Text("\(self.authStatus.profile?.feelings?.user_array[self.index].date ?? "")")
+                                Text("\(feeling.date )")
                                     .foregroundColor(.primary)
                                     .fontWeight(.semibold)
                             }
@@ -60,7 +60,7 @@ struct CustomDetailView: View {
                                 .fontWeight(.semibold)
                                 .multilineTextAlignment(.leading)
                             Spacer()
-                            ImageAndTextWithBorder(imageName: self.authStatus.profile?.feelings?.user_array[self.index].image ?? "", text: self.authStatus.profile?.feelings?.user_array[self.index].user_feeling ?? "")
+                            ImageAndTextWithBorder(imageName: self.feeling.image , text: self.feeling.user_feeling )
                             Spacer()
                             NavigationLink(destination: FeelingsView()){
                                 Image(systemName: "pencil")
@@ -77,7 +77,7 @@ struct CustomDetailView: View {
                             .multilineTextAlignment(.leading)
                         Spacer()
                         ForEach(0 ..< getEmotionsCount()) { (index) in
-                            EmotionTextWithBorder(text: "\(self.authStatus.profile?.feelings?.user_array[self.index].user_emotions.split(separator: ",")[index] ?? "erro")")
+                            EmotionTextWithBorder(text: "\(self.feeling.user_emotions.split(separator: ",")[index] )")
                         }
                         Spacer()
                         NavigationLink(destination: EmotionView(feeling: self.viewModel.feeling)){
@@ -86,7 +86,7 @@ struct CustomDetailView: View {
                         }
                     }.asCard()
                     HStack {
-                        TitleAndText(title: "Qual foi a situação?", text: self.authStatus.profile?.feelings?.user_array[self.index].user_situation ?? "")
+                        TitleAndText(title: "Qual foi a situação?", text: self.feeling.user_situation )
                         Spacer()
                         NavigationLink(destination: DescribeView(state: .situation)) {
                             Image(systemName: "pencil")
@@ -94,7 +94,7 @@ struct CustomDetailView: View {
                         }
                     }.asCard()
                     HStack {
-                        TitleAndText(title: "Qual foi seu pensamento?", text: self.authStatus.profile?.feelings?.user_array[self.index].user_thoughts ?? "")
+                        TitleAndText(title: "Qual foi seu pensamento?", text: self.feeling.user_thoughts )
                         Spacer()
                         NavigationLink(destination: DescribeView(state: .thoughts)){
                             Image(systemName: "pencil")
@@ -102,7 +102,7 @@ struct CustomDetailView: View {
                         }
                     }.asCard()
                     HStack {
-                        TitleAndText(title: "Qual foi sua ação?", text: self.authStatus.profile?.feelings?.user_array[self.index].user_action ?? "")
+                        TitleAndText(title: "Qual foi sua ação?", text: self.feeling.user_action )
                         Spacer()
                         NavigationLink(destination: DescribeView(state: .action)){
                             Image(systemName: "pencil")
@@ -140,18 +140,12 @@ extension CustomDetailView {
     
     func getEmotionsCount() -> Int {
         
-        let val = self.authStatus.profile?.feelings?.user_array[self.index].user_emotions.split(separator: ",").count ?? 0
+        let val = self.feeling.user_emotions.split(separator: ",").count 
         
         if val > 3 {
             return 3
         } else {
             return val
         }
-    }
-}
-
-struct CustomDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomDetailView(index: 0)
     }
 }

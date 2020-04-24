@@ -30,8 +30,8 @@ struct PatientListView: View {
                     List {
                         Section(header: HeaderView(showPicker: self.$showPicker, selected: self.$sortSelected)) {
                             ForEach(self.viewModel.patients) { patient in
-                                NavigationLink(destination: HistoryView()) {
-                                    ListRow(imageName: patient.imageName, text1: patient.name, text2: "\(patient.phoneNumber) | \(patient.email)")
+                                NavigationLink(destination: HistoryView(patient: patient)) {
+                                    ListRow(imageName: patient.imageName, text1: patient.name, text2: "\(patient.phoneNumber) | \(self.authStatus.replaceEmail(email: patient.email))")
                                 }
                             }
                         }
@@ -45,6 +45,9 @@ struct PatientListView: View {
                 }
             }
         }.background(BackgroundWithShape())
+            .onAppear {
+                self.viewModel.setPatients(self.authStatus.profile?.patients ?? [])
+        }
     }
 }
 

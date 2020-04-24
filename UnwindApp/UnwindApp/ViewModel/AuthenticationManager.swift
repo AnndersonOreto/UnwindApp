@@ -104,6 +104,16 @@ class AuthenticationManager: ObservableObject {
         })
     }
     
+    func getPacientFeelings(email: String, completion: @escaping([Feelings])->()) {
+        
+        self.database.getFeelings(userUid: self.replaceEmail(email: email), completion: { feelings in
+            
+            DispatchQueue.main.async {
+                completion(feelings.user_array)
+            }
+        })
+    }
+    
     func getPendingStatus() {
         guard let userUid = Auth.auth().currentUser?.email else { return }
         
@@ -116,6 +126,23 @@ class AuthenticationManager: ObservableObject {
         guard let userUid = Auth.auth().currentUser?.email else { return }
         
         self.database.acceptPending(source: self.replaceEmail(email: userUid), target: self.profile?.pending ?? "")
+    }
+    
+    func sendPending(email: String) {
+        
+        guard let userUid = Auth.auth().currentUser?.email else { return }
+        
+        Auth.auth().fetchSignInMethods(forEmail: email, completion: {
+            (providers, error) in
+
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let providers = providers {
+                print(providers)
+                self.database.sendPending(source: self.replaceEmail(email: userUid), target: self.replaceEmail(email: email))
+            }
+        })
+        
     }
     
     func replaceEmail(email: String) -> String {

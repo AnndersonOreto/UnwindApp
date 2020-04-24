@@ -12,8 +12,16 @@ class PatientListViewModel: ObservableObject {
     
     @Published var patients: [Patient] = []
     
-    func setPatients(_ patients: [Patient]) {
-        self.patients = patients
+    func setPatients(_ patients: [String]) {
+        
+        var patientsList: [Patient] = []
+        
+        for patient in patients {
+            
+            let newPatient = Patient(name: "", email: patient, phoneNumber: "")
+            patientsList.append(newPatient)
+        }
+        self.patients = patientsList
     }
     
     func sortList(by option: SortOptions) {

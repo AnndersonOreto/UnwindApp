@@ -10,22 +10,20 @@ import SwiftUI
 
 struct HistoryView: View {
     
+    @EnvironmentObject var authStatus: AuthenticationManager
     @ObservedObject var viewModel = HistoryViewModel()
     @State var showPicker: Bool = false
     @State var sortSelected: SortOptions = .alphabetically
-    
-    init() {
-        UITableView.appearance().backgroundColor = .clear
-    }
+    @State var patient: Patient
     
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .bottom) {
                 List {
                     Section(header: HeaderView(showPicker: self.$showPicker, selected: self.$sortSelected)) {
-                        ForEach(0 ..< self.viewModel.feelings.count) { index in
-                            NavigationLink(destination: CustomDetailView(index: index)) {
-                                ListRow(imageName: self.viewModel.feelings[index].image, text1: self.viewModel.feelings[index].user_feeling, text2: self.viewModel.feelings[index].date)
+                        ForEach(self.viewModel.feelings) { feeling in
+                            NavigationLink(destination: CustomDetailView(feeling: feeling)) {
+                                ListRow(imageName: feeling.image, text1: feeling.user_feeling, text2: feeling.date)
                             }
                         }
                     }
@@ -40,11 +38,11 @@ struct HistoryView: View {
             }
         }.background(BackgroundWithShape())
         .edgesIgnoringSafeArea(.top)
-    }
-}
-
-struct HistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryView()
+            .onAppear {
+                UITableView.appearance().backgroundColor = .clear
+                self.authStatus.getPacientFeelings(email: self.authStatus.replaceEmail(email: self.patient.email), completion: { feelingsArray in
+                    self.viewModel.setFeelings(feelings: feelingsArray)
+                })
+        }
     }
 }

@@ -13,7 +13,12 @@ class HistoryViewModel: ObservableObject {
     @Published var feelings: [Feelings]
     
     init() {
-        self.feelings = fakeReports
+        self.feelings = []
+    }
+    
+    func setFeelings(feelings: [Feelings]) {
+        
+        self.feelings = feelings
     }
     
     func sortList(by option: SortOptions) {

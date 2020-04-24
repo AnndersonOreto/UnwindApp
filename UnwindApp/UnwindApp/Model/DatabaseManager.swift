@@ -73,7 +73,7 @@ class DatabaseManager {
         
         let post = ["pending": source]
         
-        ref.child("users").child(target).setValue(post) { (error, ret) in
+        ref.child("users").child(target).updateChildValues(post) { (error, ret) in
             
             if let error = error {
                 
@@ -86,7 +86,7 @@ class DatabaseManager {
         
         var post = ["pending": ""]
         
-        ref.child("users").child(source).setValue(post) { (error, ret) in
+        ref.child("users").child(source).updateChildValues(post) { (error, ret) in
             
             if let error = error {
                 

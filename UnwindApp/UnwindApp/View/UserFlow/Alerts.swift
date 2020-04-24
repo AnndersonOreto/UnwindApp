@@ -76,6 +76,7 @@ struct AlertsView: View {
 //MARK:- RegisterPatient AlertView
 struct RegisterPatient: View {
     
+    @EnvironmentObject var authStatus: AuthenticationManager
     @Binding var emailText: String
     var idiom: UIUserInterfaceIdiom
 
@@ -129,6 +130,7 @@ struct RegisterPatient: View {
                 //REGISTER PATIENT LOGIC HERE
                 //Use nameText and emailText
                 //==============================
+                self.authStatus.sendPending(email: self.emailText)
                 print(self.emailText)
             }) {
                 Text("Cadastrar")

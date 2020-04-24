@@ -29,9 +29,9 @@ struct UserHistoryView: View {
                     Spacer().frame(minHeight: 0, maxHeight: 10)
                     List {
                         Section(header: HeaderView(showPicker: self.$showPicker, selected: self.$sortSelected)) {
-                            ForEach(0 ..< self.viewModel.feelings.count) { index in
-                                NavigationLink(destination: CustomDetailView(index: index)) {
-                                    ListRow(imageName: self.viewModel.feelings[index].image, text1: self.viewModel.feelings[index].user_feeling, text2: self.viewModel.feelings[index].date)
+                            ForEach(self.viewModel.feelings) { feeling in
+                                NavigationLink(destination: CustomDetailView(feeling: feeling)) {
+                                    ListRow(imageName: feeling.image, text1: feeling.user_feeling, text2: feeling.date)
                                 }
                             }
                         }
@@ -48,6 +48,9 @@ struct UserHistoryView: View {
         .navigationBarHidden(true)
         .navigationBarTitle("")
         .edgesIgnoringSafeArea(.top)
+            .onAppear {
+                self.viewModel.setFeelings(feelings: self.authStatus.profile?.feelings?.user_array ?? [])
+        }
     }
 }
 
