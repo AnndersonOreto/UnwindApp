@@ -24,9 +24,9 @@ struct UserHistoryView: View {
             ZStack(alignment: .bottom) {
                 VStack(alignment: .leading) {
                     ListTitle(regularText: "Boa tarde, ", boldText: self.authStatus.profile?.name ?? "")
-                        .padding(.top, geometry.size.height*0.09)
+                        .padding(.top, geometry.size.height*0.06)
                         .padding(.leading)
-                    Spacer().frame(minHeight: 0, maxHeight: 10)
+                    Spacer().frame(minHeight: 0, maxHeight: 20)
                     List {
                         Section(header: HeaderView(showPicker: self.$showPicker, selected: self.$sortSelected)) {
                             ForEach(self.viewModel.feelings) { feeling in
@@ -36,7 +36,7 @@ struct UserHistoryView: View {
                             }
                         }
                     }.listStyle(GroupedListStyle())
-                }
+                }.padding(.horizontal, geometry.size.width*0.025)
                 if self.showPicker {
                     SortPicker(selected: self.$sortSelected)
                         .onDisappear {
@@ -47,8 +47,7 @@ struct UserHistoryView: View {
         }.background(BackgroundWithShape())
         .navigationBarHidden(true)
         .navigationBarTitle("")
-        .edgesIgnoringSafeArea(.top)
-            .onReceive(self.authStatus.profile!.$feelings) { (feelings) in
+        .onReceive(self.authStatus.profile!.$feelings) { (feelings) in
                 self.viewModel.setFeelings(feelings: feelings.user_array)
         }
     }

@@ -20,15 +20,21 @@ struct ListRow: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 80)
+                .padding(.trailing)
             VStack(alignment: .leading) {
+                Spacer()
                 Text(text1)
                     .foregroundColor(.black)
+                    .font(.title)
+                    .fontWeight(.semibold)
+                Spacer().frame(minHeight: 0, maxHeight: 5)
+                Text(text2)
+                    .foregroundColor(.secondary)
                     .font(.system(size: 20, weight: .semibold))
-                Text(text2).foregroundColor(.secondary)
-                    .font(.system(size: 15, weight: .semibold))
                     .lineLimit(1)
+                Spacer()
             }
-        }
+        }.padding(.all)
     }
 }
 

@@ -23,10 +23,12 @@ struct DateAndHourPicker: View {
         VStack(alignment: .center, spacing: 0) {
             HStack(alignment: .firstTextBaseline) {
                 Text("Data")
+                    .font(.system(size: 25))
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity)
                 Text("\(selected, formatter: dateFormatter)")
                     .foregroundColor(.blue)
+                    .font(.system(size: 22))
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity)
             }.padding()
