@@ -41,8 +41,8 @@ struct PatientListView: View {
                 }
             }
         }.background(BackgroundWithShape())
-            .onAppear {
-                UITableView.appearance().backgroundColor = .clear
+        .onAppear {
+            UITableView.appearance().backgroundColor = .clear
         }
         .onReceive(self.authStatus.profile!.$patients) { (patients) in
             self.viewModel.setPatients(patients)

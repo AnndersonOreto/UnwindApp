@@ -27,15 +27,15 @@ final class FeelingsInfo {
 
 struct Feelings: Identifiable {
     let id = UUID()
-    var user_feeling: String = ""
-    var user_emotions: String = ""
-    var user_situation: String = ""
-    var user_thoughts: String = ""
-    var user_action: String = ""
-    var date: String = ""
-    var image: String = "default"
+    let user_feeling: String
+    let user_emotions: String
+    let user_situation: String
+    let user_thoughts: String
+    let user_action: String
+    let date: String
+    let image: String
 }
 
 struct FeelingsInfoArray {
-    var user_array: [Feelings]
+    let user_array: [Feelings]
 }

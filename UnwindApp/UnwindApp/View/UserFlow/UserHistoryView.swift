@@ -15,10 +15,6 @@ struct UserHistoryView: View {
     @State var showPicker: Bool = false
     @State var sortSelected: SortOptions = .alphabetically
     
-    init() {
-        UITableView.appearance().backgroundColor = .clear
-    }
-    
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .bottom) {
@@ -47,9 +43,13 @@ struct UserHistoryView: View {
         }.background(BackgroundWithShape())
         .navigationBarHidden(true)
         .navigationBarTitle("")
-        .onReceive(self.authStatus.profile!.$feelings) { (feelings) in
-                self.viewModel.setFeelings(feelings: feelings.user_array)
+        .onAppear {
+            UITableView.appearance().backgroundColor = .clear
         }
+        .onReceive(self.authStatus.profile!.$feelings) { (feelings) in
+            self.viewModel.setFeelings(feelings.user_array)
+        }
+        
     }
 }
 

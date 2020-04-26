@@ -11,7 +11,7 @@ import SwiftUI
 struct DoctorDetailView: View {
     
     @EnvironmentObject var authStatus: AuthenticationManager
-    @ObservedObject var viewModel = DetailViewModel()
+    //@ObservedObject var viewModel = DetailViewModel()
     @State var showDatePicker: Bool = false
     @State var selectedDate: Date = Date()
     @State var feeling: Feelings

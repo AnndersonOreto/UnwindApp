@@ -12,7 +12,7 @@ import MessageUI
 struct DetailView: View {
     
     @EnvironmentObject var authStatus: AuthenticationManager
-    @ObservedObject var viewModel = DetailViewModel()
+    @ObservedObject var viewModel = DetailViewModel()   // -> NÃO ESTÁ SENDO UTILIZADA
     @State var showDatePicker: Bool = false
     @State var selectedDate: Date = Date()
     @State var showMailView: Bool = false

@@ -41,7 +41,7 @@ struct HistoryView: View {
             .onAppear {
                 UITableView.appearance().backgroundColor = .clear
                 self.authStatus.getPacientFeelings(email: self.authStatus.replaceEmail(email: self.patient.email), completion: { feelingsArray in
-                    self.viewModel.setFeelings(feelings: feelingsArray)
+                    self.viewModel.setFeelings(feelingsArray)
                 })
         }
     }
