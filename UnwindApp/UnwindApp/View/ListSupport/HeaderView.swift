@@ -18,11 +18,11 @@ struct HeaderView: View {
                 SortButton(showPicker: $showPicker, selected: $selected)
                 Spacer()
             }
-            Divider()
+            Spacer()
         }.listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-        .background(Color.white)
-        .cornerRadius(10)
-        .padding(.bottom)
+            .background(Color.white)
+            .cornerRadius(10)
+            .padding(.bottom)
     }
 }
 

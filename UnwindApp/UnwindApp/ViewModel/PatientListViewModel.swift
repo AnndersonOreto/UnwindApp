@@ -17,7 +17,13 @@ class PatientListViewModel: ObservableObject {
     }
     
     func setPatients(_ patients: [Patient]) {
-        self.patients = patients
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            guard let self = self else { return }
+            
+            self.patients = patients
+        }
     }
     
     func sortList(by option: SortOptions) {

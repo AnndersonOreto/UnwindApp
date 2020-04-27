@@ -25,6 +25,7 @@
 		26CEF9A9243CDFF100608866 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26CEF9A8243CDFF100608866 /* GoogleService-Info.plist */; };
 		707341BDBCDFD5D19D45DA3F /* Pods_UnwindApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CFE49F10E3D379D0602DE0D /* Pods_UnwindApp.framework */; };
 		714AFABDC7EEA942A39CAD04 /* Pods_UnwindApp_UnwindAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52E7DDA0113552DECCAF492C /* Pods_UnwindApp_UnwindAppUITests.framework */; };
+		AA46F0E92454EA8B00FCE586 /* DoctorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA46F0E82454EA8B00FCE586 /* DoctorDetailView.swift */; };
 		AA48E0602440DAD200913F4C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA48E05F2440DAD200913F4C /* MailView.swift */; };
 		AA4BBE372450B1A1009C8555 /* PatientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BBE362450B1A1009C8555 /* PatientListView.swift */; };
 		AA4BBE3B2450B33E009C8555 /* PatientListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BBE3A2450B33E009C8555 /* PatientListViewModel.swift */; };
@@ -105,6 +106,7 @@
 		6CFE49F10E3D379D0602DE0D /* Pods_UnwindApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnwindApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		805FCE6F06F6E17112176D89 /* Pods-UnwindApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwindApp.debug.xcconfig"; path = "Target Support Files/Pods-UnwindApp/Pods-UnwindApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A7180D8189109B047B03ADC1 /* Pods-UnwindAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnwindAppTests.release.xcconfig"; path = "Target Support Files/Pods-UnwindAppTests/Pods-UnwindAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		AA46F0E82454EA8B00FCE586 /* DoctorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailView.swift; sourceTree = "<group>"; };
 		AA48E05F2440DAD200913F4C /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		AA4BBE362450B1A1009C8555 /* PatientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListView.swift; sourceTree = "<group>"; };
 		AA4BBE3A2450B33E009C8555 /* PatientListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewModel.swift; sourceTree = "<group>"; };
@@ -304,7 +306,7 @@
 			children = (
 				AA4BBE362450B1A1009C8555 /* PatientListView.swift */,
 				AA50A1E824510871008B18D9 /* HistoryView.swift */,
-				AA50A1EA24511C86008B18D9 /* CustomDetailView.swift */,
+				AA46F0E82454EA8B00FCE586 /* DoctorDetailView.swift */,
 			);
 			path = DoctorFlow;
 			sourceTree = "<group>";
@@ -325,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				AA6CD97F243E5D7100CF7F31 /* DetailView.swift */,
+				AA50A1EA24511C86008B18D9 /* CustomDetailView.swift */,
 				AAEAE285243E59F40040E71B /* ImageAndTextWithBorder.swift */,
 				AA6CD986243FA26C00CF7F31 /* TitleAndText.swift */,
 				AA6CD98A243FC74700CF7F31 /* DateAndHourPicker.swift */,
@@ -630,6 +633,7 @@
 				AA85144F243BB5E700233B3F /* CustomColor.swift in Sources */,
 				AA4BBE372450B1A1009C8555 /* PatientListView.swift in Sources */,
 				AA50A1E924510871008B18D9 /* HistoryView.swift in Sources */,
+				AA46F0E92454EA8B00FCE586 /* DoctorDetailView.swift in Sources */,
 				266B3F5524364BE800554474 /* AppDelegate.swift in Sources */,
 				AB27E0ED243E3D3500F346CB /* DescribeView.swift in Sources */,
 				AB27E0E9243D0CA700F346CB /* EmotionView.swift in Sources */,

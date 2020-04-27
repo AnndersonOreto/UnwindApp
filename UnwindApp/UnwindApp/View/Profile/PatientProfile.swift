@@ -22,9 +22,15 @@ class PatientProfileViewModel: ObservableObject {
     @Published var navigateToSolicitation: Bool = false
     
     func setData(name: String, email: String, phone: String) {
-        self.userName = name
-        self.userEmail = email
-        self.userPhone = phone
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            guard let self = self else { return }
+            
+            self.userName = name
+            self.userEmail = email
+            self.userPhone = phone
+        }
     }
 }
 

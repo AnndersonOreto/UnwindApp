@@ -15,10 +15,9 @@ struct ListTitle: View {
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
             Text(regularText)
-                .fontWeight(.regular)
             + Text(boldText)
                 .fontWeight(.bold)
-        }.font(.system(size: 40))
+        }.font(.largeTitle)
         .foregroundColor(.white)
     }
 }

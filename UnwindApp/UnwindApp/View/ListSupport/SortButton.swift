@@ -19,8 +19,10 @@ struct SortButton: View {
             }) {
                 HStack(alignment: .center) {
                     Text("Ordem \(selected.rawValue.lowercased())")
+                        .font(.system(size: 20, weight: .semibold))
                     Image(systemName: "chevron.down")
                         .colorMultiply(.secondary)
+                        .imageScale(.medium)
                 }.padding([.top, .leading])
             }
         }.shadow(color: .gray, radius: 20, x: 0, y: 0)

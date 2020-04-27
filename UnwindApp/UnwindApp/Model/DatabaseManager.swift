@@ -145,7 +145,7 @@ class DatabaseManager {
                     let user_thoughts: String = feelingDict?["user_thoughts"] as? String ?? ""
                     let user_action: String = feelingDict?["user_action"] as? String ?? ""
                     let date: String = feelingDict?["date"] as? String ?? ""
-                    let image: String = feelingDict?["image"] as? String ?? ""
+                    let image: String = feelingDict?["image"] as? String ?? "default"
                     let feeling = Feelings(user_feeling: user_feeling, user_emotions: user_emotions, user_situation: user_situation, user_thoughts: user_thoughts, user_action: user_action, date: date, image: image)
                     feelings.append(feeling)
                 }

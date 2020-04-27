@@ -22,16 +22,22 @@ class DoctorProfileViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     
     func setData(name: String, email: String, phone: String, role: String) {
-           self.userName = name
-           self.userEmail = email
-           self.userPhone = phone
            
-           if role == "Psiquiatra" {
-               self.userType = .psychiatrit
-           } else {
-               self.userType = .therapist
-           }
-       }
+        DispatchQueue.main.async { [weak self] in
+            
+            guard let self = self else { return }
+            
+            self.userName = name
+            self.userEmail = email
+            self.userPhone = phone
+            
+            if role == "Psiquiatra" {
+                self.userType = .psychiatrit
+            } else {
+                self.userType = .therapist
+            }
+        }
+    }
 }
 
 struct DoctorProfile: View {

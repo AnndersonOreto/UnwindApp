@@ -14,25 +14,27 @@ struct ImageAndTextWithBorder: View {
     @State var text: String
     
     let width = UIScreen.main.bounds.width
-    let height = UIScreen.main.bounds.height
     
     var body: some View {
-        VStack(alignment: .center) {
-            Image(imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            Text(text)
-                .foregroundColor(CustomColor.feelingText.color)
-                .font(.system(size: 18))
-                .fontWeight(.semibold)
+        HStack(alignment: .center) {
+            Spacer()
+            VStack(alignment: .center) {
+                Spacer()
+                Image(imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                Text(text)
+                    .foregroundColor(CustomColor.feelingText.color)
+                    .font(.headline)
+                Spacer()
+            }
+            Spacer()
         }
-        .padding(.horizontal, 30)
-        .padding(.vertical, 20)
         .overlay (
             RoundedRectangle(cornerRadius: 10)
                 .stroke(CustomColor.feelingBorder.color, lineWidth: 1)
         )
-        .frame(width: width*0.2, height: height*0.14)
+        .frame(width: width*0.15, height: width*0.14)
     }
 }
 
@@ -50,19 +52,16 @@ struct EmotionTextWithBorder: View {
                 Spacer()
                 Text(text)
                 .foregroundColor(CustomColor.feelingText.color)
-                .font(.system(size: 18))
-                .fontWeight(.semibold)
+                .font(.headline)
                 Spacer()
             }
             Spacer()
         }
-        .padding(.horizontal, 10)
-        .padding(.vertical, 20)
         .overlay (
             RoundedRectangle(cornerRadius: 10)
                 .stroke(CustomColor.feelingBorder.color, lineWidth: 1)
         )
-        .frame(width: width*0.2, height: height*0.14)
+        .frame(width: width*0.15, height: width*0.14)
     }
 }
 

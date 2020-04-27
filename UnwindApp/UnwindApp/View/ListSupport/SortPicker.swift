@@ -17,15 +17,18 @@ enum SortOptions: String, CaseIterable, Identifiable {
 }
 
 struct SortPicker: View {
+    
     @Binding var selected: SortOptions
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             HStack(alignment: .bottom) {
                 Text("Ordem")
+                    .font(.system(size: 25))
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity)
                 Text("\(self.selected.rawValue)")
+                    .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.primary)
                     .frame(maxWidth: .infinity)
             }.padding()

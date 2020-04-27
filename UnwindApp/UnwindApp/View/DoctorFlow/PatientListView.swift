@@ -20,9 +20,8 @@ struct PatientListView: View {
             ZStack(alignment: .bottom) {
                 VStack(alignment: .leading) {
                     ListTitle(regularText: "Boa tarde, ", boldText: self.authStatus.profile?.name ?? "")
-                        .padding(.top, geometry.size.height*0.09)
                         .padding(.leading)
-                    Spacer().frame(minHeight: 0, maxHeight: 10)
+                    Spacer().frame(minHeight: 5, maxHeight: 20)
                     List {
                         Section(header: HeaderView(showPicker: self.$showPicker, selected: self.$sortSelected)) {
                             ForEach(self.viewModel.patients) { patient in
@@ -32,7 +31,8 @@ struct PatientListView: View {
                             }
                         }
                     }.listStyle(GroupedListStyle())
-                }
+                }.padding(.horizontal, geometry.size.width*0.025)
+                
                 if self.showPicker {
                     SortPicker(selected: self.$sortSelected)
                         .onDisappear {
@@ -41,8 +41,8 @@ struct PatientListView: View {
                 }
             }
         }.background(BackgroundWithShape())
-            .onAppear {
-                UITableView.appearance().backgroundColor = .clear
+        .onAppear {
+            UITableView.appearance().backgroundColor = .clear
         }
         .onReceive(self.authStatus.profile!.$patients) { (patients) in
             self.viewModel.setPatients(patients)

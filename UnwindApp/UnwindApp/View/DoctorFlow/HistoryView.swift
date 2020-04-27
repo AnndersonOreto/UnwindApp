@@ -22,13 +22,14 @@ struct HistoryView: View {
                 List {
                     Section(header: HeaderView(showPicker: self.$showPicker, selected: self.$sortSelected)) {
                         ForEach(self.viewModel.feelings) { feeling in
-                            NavigationLink(destination: CustomDetailView(feeling: feeling)) {
+                            NavigationLink(destination: DoctorDetailView(feeling: feeling, patient: self.patient)) {
                                 ListRow(imageName: feeling.image, text1: feeling.user_feeling, text2: feeling.date)
                             }
                         }
                     }
                 }.listStyle(GroupedListStyle())
-                    .padding(.top, geometry.size.height*0.1)
+                    .padding(.horizontal, geometry.size.width*0.025)
+                
                 if self.showPicker {
                     SortPicker(selected: self.$sortSelected)
                         .onDisappear {
@@ -37,11 +38,10 @@ struct HistoryView: View {
                 }
             }
         }.background(BackgroundWithShape())
-        .edgesIgnoringSafeArea(.top)
             .onAppear {
                 UITableView.appearance().backgroundColor = .clear
                 self.authStatus.getPacientFeelings(email: self.authStatus.replaceEmail(email: self.patient.email), completion: { feelingsArray in
-                    self.viewModel.setFeelings(feelings: feelingsArray)
+                    self.viewModel.setFeelings(feelingsArray)
                 })
         }
     }

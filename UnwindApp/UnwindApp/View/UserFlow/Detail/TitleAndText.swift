@@ -17,10 +17,12 @@ struct TitleAndText: View {
         VStack(alignment: .leading) {
             Text(title)
                 .foregroundColor(.primary)
+                .font(.title)
                 .fontWeight(.semibold)
-            Spacer()
+                .padding(.bottom)
             Text(text)
                 .foregroundColor(.secondary)
+                .font(.system(size: 20))
                 .multilineTextAlignment(.leading)
         }
     }

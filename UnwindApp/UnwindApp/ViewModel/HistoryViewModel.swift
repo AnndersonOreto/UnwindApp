@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 class HistoryViewModel: ObservableObject {
     
@@ -16,9 +17,14 @@ class HistoryViewModel: ObservableObject {
         self.feelings = []
     }
     
-    func setFeelings(feelings: [Feelings]) {
+    func setFeelings(_ feelings: [Feelings]) {
         
-        self.feelings = feelings
+        DispatchQueue.main.async { [weak self] in
+            
+            guard let self = self else { return }
+            
+            self.feelings = feelings
+        }
     }
     
     func sortList(by option: SortOptions) {

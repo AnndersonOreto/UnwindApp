@@ -20,7 +20,7 @@ class DetailViewModel: ObservableObject {
     @Published var numberOfEmotions: Int = 3
     
     init() {
-        self.userName = "Julia"
+        self.userName = ""
         self.feeling = fakeFeeling
         self.emotions = fakeEmotions
         
